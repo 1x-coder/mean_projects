@@ -1,0 +1,56 @@
+.heading{
+    margin-top: 20px;
+    color: #63a033;
+    margin-right:50px;
+}
+.colorg{
+    color: #63a033
+}
+.card{
+    width:800px;
+    margin-top:40px;
+    margin-left:150px;
+    padding:30px;
+
+}
+.textmarg{
+    margin-left:50px;
+}
+.textsize{
+    font-size:20px;
+}
+.textsize1{
+    font-size:16px;
+}
+.textspace{
+    margin-top:10px;
+}
+.textspace1{
+    margin-top:30px;
+}
+.colora{
+    color:#DD2C26;
+}
+.textspaceX{
+    margin-left:500px;
+}
+.tsz{
+    width:100px;
+    margin:10px;
+}
+@media screen and (max-width: 600px) {
+    .card{
+        width:350px;
+        margin-top:40px;
+        margin-left:30px;
+        padding:15px;
+    
+    }
+    .textspaceX{
+        margin-left:70px;
+        margin-top:30px;
+    }
+    .textmarg{
+        margin-left:70px;
+    }
+}

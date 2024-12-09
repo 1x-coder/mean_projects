@@ -1,0 +1,117 @@
+<div class="container-fluid">
+  <div class="row mt-5 mb-5">
+    <div class="col-md-10 col-sm-12 offset-md-1">
+      <div class="card ">
+        <img class="card-image-top reg-bg-img" src="../../assets/image/dp-reg-bg-img.jpg" alt="bg-img-reg" />
+        <div class="card-img-overlay">
+          <div class="row mt-3 ">
+            <div class="col-md-6 col-sm-12 offset-md-6 ">
+              <div class="text-center text-success display-4">
+                Register
+              </div>
+              <div class="text-center text-success">
+                for delivery-partners
+              </div>
+              <form [formGroup]="regForm" (ngSubmit)="registerUser()" class="mb-3">
+                <mat-form-field class="full-width">
+                  <mat-label>
+                    Name <span class="text-danger">*</span>
+                  </mat-label>
+                  <input type="text" matInput placeholder="Enter full name here" formControlName="name"
+                    id="regDpName" />
+                </mat-form-field>
+                <div class="text-danger">
+                  <span *ngIf="
+                      regForm.controls.name.errors?.required &&
+                      regForm.controls.name.dirty
+                    ">
+                    Field Required
+                  </span>
+                </div>
+                <mat-form-field class="full-width">
+                  <mat-label>
+                    Contact number <span class="text-danger">*</span>
+                  </mat-label>
+                  <input type="number" matInput placeholder="Enter your contact number" formControlName="mobileNum"
+                    id="regDpMobileNum" />
+                </mat-form-field>
+                <div class="text-danger">
+                  <span *ngIf="
+                      regForm.controls.mobileNum.errors?.required &&
+                      regForm.controls.mobileNum.dirty
+                    ">
+                    Field Required
+                  </span>
+                  <span *ngIf="
+                      regForm.controls.mobileNum.errors?.min ||
+                      regForm.controls.mobileNum.errors?.max" class="text-danger">
+                    Enter a valid mobile number
+                  </span>
+                </div>
+                <mat-form-field class="full-width">
+                  <mat-label>
+                    Email id <span class="text-danger">*</span>
+                  </mat-label>
+                  <input type="text" matInput placeholder="Enter your email-id" formControlName="email"
+                    id="regDpEmail" />
+                </mat-form-field>
+                <div class="text-danger">
+                  <span *ngIf="
+                      regForm.controls.email.errors?.required &&
+                      regForm.controls.email.dirty">
+                    Field Required
+                  </span>
+                </div>
+                <mat-form-field class="full-width">
+                  <mat-label>
+                    Password <span class="text-danger">*</span>
+                  </mat-label>
+                  <input type="password" matInput placeholder="Enter your password " formControlName="password"
+                    id="regDpPassword" />
+                </mat-form-field>
+                <div class="text-danger">
+                  <span *ngIf="
+                      regForm.controls.password.errors?.required &&
+                      regForm.controls.password.dirty">
+                    Field Required
+                  </span>
+                </div>
+                <mat-form-field class="full-width">
+                  <mat-label>
+                    Confirm password <span class="text-danger">*</span>
+                  </mat-label>
+                  <input type="password" matInput placeholder="Re-enter your password" formControlName="reEnterPass"
+                    id="regDpReenterPass" />
+                </mat-form-field>
+                <div class="text-danger">
+                  <span *ngIf="
+                      regForm.controls.reEnterPass.errors?.required &&
+                      regForm.controls.reEnterPass.dirty">
+                    Field Required
+                  </span>
+                  <span *ngIf="regForm.hasError('passwordMatchErr') &&
+                         regForm.controls.reEnterPass.dirty && !regForm.controls.reEnterPass.errors?.required"
+                    class="text-danger">
+                    Passwords don't match
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="deliveryPersonImage">Upload a selfie</label>
+                  <input type="file" id="deliveryPersonImage" (change)="onFileSelected($event)"/>
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="regForm.invalid || selectedFile == null">
+                  Register
+                </button>
+              </form>
+              <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+              <div class="text-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+              <a class="text-primary" href="/deliveryperson/ ">
+                Go back to login?
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

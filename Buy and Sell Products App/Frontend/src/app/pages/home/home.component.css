@@ -1,0 +1,257 @@
+li .fa{
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+   * {
+            margin: 0;
+            padding: 0;
+            /*font-family: 'Montserrat Alternates', sans-serif;*/
+        }
+        .header {
+            height: 60px;
+            background: #2375de;
+            color: #fff;
+            z-index: 100;
+            position: sticky;
+            top: 0px;
+            
+        }
+.search{
+    margin: 0px;
+    padding: 0px;
+    height: 40px;
+    /* border: 1px solid green; */
+    padding-left: 10px;
+}
+.searchDropdown ul {
+
+    list-style-type: none;
+    color: black;
+    padding-left: 15px;
+}
+.searchDropdown ul li{
+    padding: 0px;
+    margin:0px;
+    line-height: 2;
+    color: grey;
+}
+.searchDropdown{
+    position: absolute;
+    width: 222px;
+    background-color: white;
+    display: none;
+}
+
+.searchSuggestion input:focus+.searchDropdown{
+    display: block;
+}
+
+
+
+.sbtn{
+    margin-right: 350px;
+}
+.fa{
+    font-size: 20px;
+    margin-right: 4px;
+    
+}
+        h2 {
+            margin-left: 15px;
+            line-height: 60px;
+            float: left;
+            cursor: pointer;
+            /* text-transform: uppercase; */
+        }
+        .menu {
+            float: right;
+            line-height: 60px;
+        }
+        .menu a {
+            color: #fff;
+            text-transform:capitalize;
+            text-decoration: none;
+            padding: 0 10px;
+            padding-top: 10px;
+            transition: 0.4s;
+        }
+        .show-menu-btn,
+        .hide-menu-btn {
+            transition: 0.4s;
+            font-size: 30px;
+            cursor: pointer;
+            display: none;
+        }
+        .show-menu-btn {
+            float: right;
+        }
+        .show-menu-btn i {
+            line-height: 60px;
+        }
+        .menu a:hover,
+        .show-menu-btn:hover,
+        .hide-menu-btn:hover {
+            color: orange;
+        }
+        #chk {
+            position: absolute;
+            visibility: hidden;
+            z-index: -111;
+        }
+        .content {
+            padding: 0 20px;
+        }
+        .content img {
+            width: 100%;
+            max-width: 700px;
+            margin: 20px;
+        }
+        .content p {
+            text-align: justify;
+            font-size: 20px;
+        }
+.dropItems ul{
+    list-style-type: none;
+    z-index: 100;
+}
+.dropItems{
+    z-index: 100;
+    transition: 1s;
+    opacity: 0;
+    position: absolute;
+    right: -10px;
+    width: 150px;
+    color: white;
+    text-align: center;
+    border-top: 2px solid orange;
+    background-color: #34495e;
+    display: none;
+}
+.dropItems ul li:hover{
+    color: black;
+    transition: 1s;
+    background-color: orange;
+}
+.dropdown:hover .dropItems{
+    opacity: 1;
+    animation-name: listAppear;
+    animation-iteration-count: 1;
+    transition-timing-function: ease-in;
+    animation-duration: .5s;
+    display: block;
+}
+
+@keyframes listAppear{
+    0%{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+.dropItemsPre ul{
+    list-style-type: none;
+    z-index: 100;
+}
+.dropItemsPre{
+    z-index: 100;
+    position: absolute;
+    right: 70px;
+    width: 90%;
+    color: white;
+    text-align: center;
+    border-top: 2px solid orange;
+    background-color: #34495e;
+    display: none;
+}
+.dropItemsPre ul li:hover{
+    color: black;
+    background-color: orange;
+}
+
+
+.dropdownPre:hover .dropItemsPre{
+    transition: 1s;
+    display: block;
+    animation-name: listAppear;
+    animation-iteration-count: 1;
+    transition-timing-function: ease-in;
+    animation-duration: .5s;
+}
+
+.modal{
+    position: fixed;
+    top: 10%;
+    left: 60%;
+}
+/* 
+.mysearch ul{
+    position: relative;
+    z-index: 100;
+} */
+
+
+
+        @media screen and (max-width:1020px) {
+            .show-menu-btn,
+            .hide-menu-btn {
+                display: block;
+            }
+            .menu {
+                overflow: scroll;
+                z-index: 10000;
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #333;
+                right: -100%;
+                top: 0;
+                text-align: center;
+                padding: 80px 0;
+                line-height: normal;
+                transition: 0.7s;
+            }
+            .menu a {
+                display: block;
+                padding: 20px;
+                /*margin-right: 100px;*/
+            }
+            .hide-menu-btn {
+                position: absolute;
+                top: 30px;
+                right: 40px;
+            }
+            #chk:checked~.menu {
+            	position: absolute;
+                right: 0;
+            }
+            .dropItems{
+                position: absolute;
+                right: 120px;
+                top: 20px;
+                width: 150px;
+                color: white;
+                text-align: center;
+                border-left: 2px solid orange;
+                border-top: none;
+                background-color: #333;
+                display: none;
+            }
+        .dropItems ul li:hover{
+            color: black;
+            background-color: orange;
+        }
+            .dropdownPre:hover .dropItemsPre{
+                display: none;
+            }
+            .modal{
+                position: fixed;
+                top: 50%;
+                left: 0%;
+}
+        }
+

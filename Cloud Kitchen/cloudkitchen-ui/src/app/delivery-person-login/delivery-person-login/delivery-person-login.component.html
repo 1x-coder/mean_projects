@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row mt-5 mb-5">
+    <div class="col-md-10 col-sm-12 offset-md-1">
+      <div class="card">
+        <img class="card-image-top login-bg-img" src="../../assets/image/dp-login-bg-img.jpg" alt="bg-img-login" />
+        <div class="card-img-overlay">
+          <div class="row mt-5">
+            <div class="col-md-6 col-sm-12 offset-md-6">
+              <div class="text-center text-success display-4">
+                Login
+              </div>
+              <div class="text-success text-center">
+                for delivery partners
+              </div>
+              <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="mb-3">
+                <mat-form-field class="full-width">
+                  <mat-label>
+                    Contact no.
+                  </mat-label>
+                  <input type="number" matInput placeholder="Enter contact number" id="dpLoginMobileNum"
+                    formControlName="mobileNum" />
+                </mat-form-field>
+                <div *ngIf="loginForm.controls.mobileNum.errors?.required && loginForm.controls.mobileNum.dirty">
+                  <span class="text-danger">Field required</span>
+                </div>
+                <mat-form-field class="full-width">
+                  <mat-label>
+                    Password
+                  </mat-label>
+                  <input type="password" matInput placeholder="Enter password" id="dpLoginPassword"
+                    formControlName="password" />
+                </mat-form-field>
+                <div *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.dirty">
+                  <span class="text-danger">Field required</span>
+                </div>
+                <div>
+                  <button mat-raised-button color="primary" class=" float-left" [disabled]="loginForm.invalid">Login</button>
+                  <mat-spinner *ngIf="loading" diameter="20" class="float-right"></mat-spinner>
+                </div>
+              </form>
+              <br>
+              <div *ngIf="errorMessage" class="text-danger">{{errorMessage}}</div>
+              <br>
+              <div>
+                <a class="text-primary" href="/deliveryperson/register">New User? Please click here to register.</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

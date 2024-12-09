@@ -1,0 +1,61 @@
+.heading{
+    margin-top: 20px;
+    color: #63a033;
+    margin-right:50px;
+}
+.card{
+    width:750px;
+    margin-top:40px;
+    margin-left:100px;
+    padding:15px;
+
+}
+.textcolorg{
+    color:#63a033;
+}
+.textcolorgrey{
+    color:#3c3d3a;
+    
+}
+.colorg{
+    color: rgb(240, 188, 17);
+}
+.butspace{
+    margin-left:5px;
+}
+button:focus {
+    outline: none;
+}
+.icopos{
+    margin-left:300px;
+}
+.image{
+    height:180px;
+    width:180px;
+    border-radius:10px;
+    margin:10px;
+}
+.tspace{
+    margin-top:5px;
+}
+.uspace{
+    margin-top:10px;
+}
+@media screen and (max-width: 600px) {
+    .card{
+        width:350px;
+        margin-top:40px;
+        margin-left:10px;
+        padding:15px;
+    
+    }
+    .icopos{
+        margin-left:200px;
+    }
+    .image{
+        height:200px;
+        width:300px;
+        border-radius:10px;
+        margin:10px;
+    }
+}

@@ -1,0 +1,65 @@
+@import "src/styles.scss";
+
+.individual-skill {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: $bw--thin solid $clr--dark;
+    border-radius: $br--wide;
+
+    &:hover {
+        background: rgba(189, 189, 189, 0.15);
+        cursor: pointer;
+        border: $bw--thin solid $clr-accent--primary;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        transition: all 0.2s ease-in-out;
+
+        img {
+            scale: 1.1;
+            transition: all 0.15s ease-in-out;
+        }
+    }
+
+    img {
+        width: 50px;
+        aspect-ratio: 1/1;
+        // border-radius: $br--wide;
+        // margin-bottom: 0.5rem;
+    }
+
+    h3 {
+        font-family: $ff--mono;
+        font-size: $fs--small;
+        // Capitalize the first letter of each word
+        text-transform: capitalize;
+    }
+}
+
+.individual-skill::after {
+  content: attr(skill-title);
+  position: absolute;
+  padding: 10px 16px;
+  white-space: nowrap;
+  font-size: 16px;
+  background-color: #333;
+  color: white;
+  border-radius: 7px;
+  font-weight: 500;
+  opacity: 0;
+  font-family: $ff--primary;
+  bottom: -15px;
+}
+
+.individual-skill:hover::after {
+  opacity: 1;
+  transition: opacity 0.2s ease 0.2s;
+  visibility: visible;
+}
+
+.individual-skill:hover {
+  z-index: 999;
+  overflow: inherit;
+}

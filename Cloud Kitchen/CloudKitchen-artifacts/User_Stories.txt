@@ -1,0 +1,66 @@
+##################################################
+USER STORIES: Cloud Kitchen
+##################################################
+
+Users:
+------
+	1. Customers
+	2. Restaurants
+	3. Admin
+	4. Delivery Person
+
+User Stories:
+-------------
+	Customers:
+	----------
+		1. Login
+		2. Logout
+		3. Register
+		4. Search for hotel -> menu
+		5. Search for dishes -> select from hotels
+		6. Search for city -> select hotel/dishes [city dropdown from available cities from restaurant db]
+		7. View details of hotel [description, ambiance pictures, menu pictures, food pictures, menu with prices]
+		8. View details of a particular dish [Ingridients, description, cost/person]
+		9. Order a dish
+		10. View ordered
+		11. Cancel order [if it is not "out for delivery" or "delivered": status of an order ["ordered","pending","preparing","out for delivery","delivered"]].
+		12. Delete previously ordered item [already delivered only].
+		13. View user profile
+		14. Edit user profile (like address, contact, profile picture)
+		15. * View map [location of delivery boy].
+		16. * Get coupons or scratch card for discounts.
+
+	Restaurants:
+	------------
+		1. Login
+		2. Logout
+		3. Register
+		4. Add menu items
+		5. Add ambiance pictures
+		6. Add pictures of menu card or food
+		7. Delete menu items.
+		8. Edit menu details [prices, quantity, availability, discounts, promo code, name, description of dish].
+		9. Recieve orders and see orders with customer details.
+		10. Change order status [default status: ordered ; other status: ["ordered","pending","preparing","out for delivery","delivered"]]
+		11. Edit restaurant profile (images, description, etc.)
+
+	Admin:
+	------
+		1. Login
+		2. Logout
+		3. See all orders
+		4. Delete a restaurant
+		5. Delete a customer account
+		6. View average orders per restaurant [dashboarding and analysis of orders.]
+	
+	Delivery Person:
+	----------------
+		1. Login
+		2. View deliveries near their location
+		3. Pick a delivery to perform
+		4. Complete the delivery by getting the OTP from delivery target customer
+		5. Once the delivery is complete must be able to view other deliveries near the location
+		6. Should also be able to cancel a picked delivery with a fine amount
+			i. if food is picked from restaurant and then cancelled entire order amount + 5% fine is penality
+			ii. if the food is not picked from restaurant and cancelled 5% of order amount is penality
+		7. Logout

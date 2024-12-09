@@ -1,0 +1,19 @@
+.wrapper{
+	border-left: 4px solid green;
+	
+	margin-top: 10px;
+}
+
+
+.chatreq{
+	margin-left: 15px;
+}
+
+.chatreq:hover{
+	cursor: pointer;
+}
+
+h2:hover{
+	cursor: default;
+}
+

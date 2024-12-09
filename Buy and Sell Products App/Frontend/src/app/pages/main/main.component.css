@@ -1,0 +1,368 @@
+span{
+    position: relative;
+    top: -25px;
+    line-height: 0;
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-left: 10px;
+}
+
+.trending h2{
+    margin-left: 15px;
+    border-bottom: 2px solid orange;
+    margin-right: 15px;
+}
+
+.wrapper{
+	overflow-x:hidden; 
+
+}
+
+.carousel-inner img{
+    max-height: 500px;
+    z-index: -100;
+}
+
+.card{
+	margin-left: 20px;
+	height: 360px;
+	width: 250px;
+	/*border: 1px solid black;*/
+}
+
+.card .img img{
+	/*max-width: 250px;*/
+	width: 250px;
+	height: 180px;
+}
+
+.details{
+	line-height: .8;
+	padding-left: 10px;
+}
+
+.details .price{
+	font-size:22px;
+	font-weight:bold;
+	/*color: orange;*/
+}
+
+.details .kms_driven{
+	font-size:16px;
+	font-weight: bold;
+}
+
+.details .name{
+	font-size:14px;
+	font-weight: bold;
+}
+
+.details .location{
+	font-size: 12px;
+	padding-top: 10px;
+	text-transform:uppercase;
+}
+
+.details .date{
+	font-size: 12px;
+	text-transform:uppercase;
+}
+
+.detailsBtn
+{
+	width: 250px;
+	height: 180px;
+	background-color: rgba(1,1,1,.5);
+	position: absolute;
+	top: 0px;
+	text-align: center;
+	line-height: 12;
+	color: red;
+	display:none;
+}
+
+.card:hover .img .detailsBtn
+{
+	display: block;
+	animation-name: detailsBtnAppearAnim;
+	animation-duration: .3s;
+	animation-iteration-count: 1;
+
+}
+
+@keyframes detailsBtnAppearAnim{
+	0%{
+		border-radius: 200px;
+		transform: scale(.1);
+	}
+	100%{
+		border-radius: 0px;
+		transform: scale(1);
+	}
+}
+
+.card{
+	transition:1s;
+	box-shadow: 0px 0px 2px 1px rgba(1,1,1,.2);
+}	
+
+.card:hover
+	{	
+		transition:.7s;
+		transform: translateY(-5px);
+		box-shadow: 2px 2px 2px 0px rgba(1,1,1,.5);
+	}
+.footer{
+	line-height: 0;
+}
+
+
+
+.card .btns{
+
+
+}
+.card .btns .heart{
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #f7133b;
+	margin-left: 8px;
+	background-color: pink;
+	cursor: pointer;
+}
+
+.card .btns .comments{
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #0bb10b;
+	background-color: lightgreen;
+}
+
+.card .btns .heart:active .fa-heart{
+	transform: scale(1.5);
+	transition: .05s;
+	cursor: pointer;
+}
+
+.card .btns .comments:hover .fa-comments{
+	transform: scale(1.5);
+	transition: .3s;
+}
+
+
+.filter{
+    border: 2px solid grey;
+    border-left: none;
+    width: 130px;
+    position: fixed;
+    top: 50%;
+
+    background-color: white;
+    left: -110px;
+    
+}
+
+/* .filter::before{
+    content: '';
+    position: relative;
+    top: 50px;
+    left: -30px;
+
+    font-size: 0px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid lightblue;
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent; 
+} */
+
+.filter:hover{
+left: -30px;
+transition: .3s;
+}
+
+.filter h3{
+    float: right;
+    text-transform: uppercase;
+
+}
+
+.filter:hover h3{
+    float: none;
+
+    text-align: center;
+    display: inline;
+}
+.filter:hover h3 ul li{
+    display: inline;
+}
+
+.filter>ul{
+    list-style-type: none;
+    display: none;
+
+}
+.filter>ul li{
+    border-bottom: 1px solid grey;
+}
+.filter:hover>ul{
+    display: block;
+}
+
+.filter>ul li:hover{
+    background-color: #007bff;
+    transition: .3s;
+    cursor: pointer;
+    color: white;
+
+}
+
+
+/* //load anim */
+
+ .box1{
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            background-color: cadetblue;
+            animation-name: b1;
+            animation-duration: 2s;
+            animation-direction: normal;
+            animation-iteration-count: infinite;
+        }
+        .box2{
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            background-color: orange;
+            animation-name: b2;
+            animation-duration: 2s;
+            animation-direction: normal;
+            animation-iteration-count: infinite;
+        }
+        
+        @keyframes b1{
+            0%{
+               
+                top: 100px;
+                left: 100px;
+
+            }
+            
+            25%{
+               
+                top: 100px;
+                left: 200px;
+
+            }
+            
+            50%{
+                top: 200px;
+                left: 200px;
+
+            }
+            
+            75%{
+                top: 200px;
+                left: 100px;
+                
+            }
+            100%{
+                    top: 100px;
+                    top: 100px;
+                    
+            }
+           
+        }
+        
+        @keyframes b2{
+            0%{
+               
+                top: 200px;
+                left: 200px;
+
+            }
+            
+            25%{
+               
+                top: 200px;
+                left: 100px;
+
+            }
+            
+            50%{
+                top: 100px;
+                left: 100px;
+
+            }
+            
+            75%{
+                top: 100px;
+                left: 200px;
+                
+            }
+            100%{
+                    top: 200px;
+                    top: 200px;
+                    
+            }
+           
+        }
+        
+        .loadingtxt{
+            animation-name: txt;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+            position: absolute;
+            top: 300px;
+            left: 160px;
+            font-size: 22px;
+        
+        }
+        
+        @keyframes txt{
+            0%{
+               opacity: .5;
+                color: orange;
+            }
+            
+            50%{
+                opacity: 1;
+                color: orange;
+            }
+            75%{
+                opacity: 0.5;
+                color: cadetblue;
+            }
+            100%{
+                color: orange;
+            }
+        }
+
+
+ .appear{
+ 	animation-name: fadein;
+ 	animation-duration: 1s;
+ 	
+ 	animation-timing-function: linear;
+ }
+
+ @keyframes fadein{
+ 	0%{
+ 		opacity: 0;
+ 		
+ 	}
+
+ 	100%{
+ 		opacity: 1;
+ 		
+ 	}
+ }

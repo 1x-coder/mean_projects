@@ -1,0 +1,133 @@
+
+.picsum-img-wrapper{
+    width: 100%;
+    height: 85vh;
+    background-color: #004085;
+}
+
+div.ms-4{
+    flex-grow: 1;
+    padding-left: 3%;
+}
+
+@media (max-width: 700px) {
+    div.ms-4{
+        padding-left: 0;
+    }
+}
+ul.nav-pills{
+    padding: 3%;
+    padding-top: 0;
+}
+
+.d-flex{
+    flex-direction: row-reverse;
+    font-family: 'Caveat', cursive;
+}
+
+@media (max-width: 700px) {
+    .d-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    }
+    }
+
+
+
+
+
+.nav-link{
+    padding: 0.5rem 2.5rem;
+    font-size: larger;
+}
+
+.nav-link.active{
+    background-color: #004085;
+}
+
+.loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.helper{
+    background-color: rgba(255, 255, 255, 0.677);
+    padding: 5%;
+    border-radius: 10px;
+    color: #004085;
+}
+
+.helper input{
+    background-color: black;
+    margin: 2%;
+}
+
+.loginForm{
+    background: none;
+}
+
+.loginSmaller{
+    background-color: #e9ecef;
+    padding: 5%;
+    border-radius: 0.5rem;
+}
+
+.btn-primary{
+    background-color: #004085;
+}
+
+
+/**/
+
+
+
+    .row{
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .bg-indigo {
+    background-color: #004085;
+    }
+    @media (min-width: 992px) {
+    .card-registration-2 .bg-indigo {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    }
+    }
+    @media (max-width: 991px) {
+    .card-registration-2 .bg-indigo {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    }
+    }
+
+    /*---------------------------------------*/
+
+    .flexy{
+        display: flex;
+        justify-content: center;
+    }
+
+    /*
+
+    .requestsClass th, .requestsClass td{
+        padding: 0 2rem;
+    }
+
+    .requestsClass{
+        overflow-x: scroll;
+    }*/
+
+    .requestsClass{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .requestCards{
+        margin-bottom: 0;
+    }

@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 ">
+            <div class="card">
+                <img class="card-img bgimg" src="../../assets/image/dp-reg-bg-img.jpg" alt="Card image">
+                <div class="card-img-overlay">
+                    <div class="row ">
+                        <div class="col-md-7 col-sm-12 offset-md-4 marg">
+                            <mat-card-content>
+
+                                <div class="sizef text-center textcolorg">Sign Up!</div>
+                                <form [formGroup]="registerForm" (ngSubmit)="registerUser()" class="marg">
+                                    <mat-form-field class="full-width">
+                                        <mat-label>Restaurant Name: <sup class="text-danger">*</sup> </mat-label>
+                                        <input matInput placeholder="Ex. Ram Kumar" type="text" name="restaurantName" id="restaurantName" formControlName="restaurantName" />
+                                        <mat-error *ngIf="registerForm.controls.restaurantName.errors?.required">
+                                            Name is required.
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field >
+                                        <mat-label>Contact Number: <sup class="text-danger">*</sup> </mat-label>
+                                        <input matInput placeholder="Ex. 9090876897"  type="number" name="restaurantMobile" id="restaurantMobile" formControlName="restaurantMobile" />
+                                        <mat-error *ngIf="registerForm.controls.restaurantMobile.errors?.required">
+                                            Contact Number is required.
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="space">
+                                        <mat-label>Email Id: <sup class="text-danger">*</sup> </mat-label>
+                                        <input matInput placeholder="Ex. aswin@gmail.com" type="email" name="restaurantEmail" id="restaurantEmail" formControlName="restaurantEmail" />
+                                        <mat-error *ngIf="registerForm.controls.restaurantEmail.errors?.required">
+                                            Email Id is required.
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="full-width">
+                                        <mat-label>About: <sup class="text-danger">*</sup> </mat-label>
+                                        <textarea matInput placeholder="Ex. Famous North-Indian restaurant since 1996" name="restaurantAbout" id="restaurantAbout" formControlName="restaurantAbout"></textarea>
+                                      <mat-error *ngIf="registerForm.controls.restaurantAbout.errors?.required">
+                                            About is required.
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="full-width">
+                                        <mat-label>Address: <sup class="text-danger">*</sup> </mat-label>
+                                        <textarea matInput placeholder="Ex. House no:R/51..." name="restaurantAddress" id="restaurantAddress" formControlName="restaurantAddress"></textarea>
+                                      <mat-error *ngIf="registerForm.controls.restaurantAddress.errors?.required">
+                                            Address is required.
+                                        </mat-error>
+                                    </mat-form-field>
+                                    
+                                    <mat-form-field >
+                                        <mat-label>Area Pincode: <sup class="text-danger">*</sup> </mat-label>
+                                        <input matInput placeholder="Ex. 770032" type="number" name="restaurantPincode" id="restaurantPincode" formControlName="restaurantPincode" />
+                                        <mat-error *ngIf="registerForm.controls.restaurantPincode.errors?.required">
+                                            Pincode is required.
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                   
+
+                                    <mat-form-field class="space" >
+                                        <mat-label>Password: <sup class="text-danger">*</sup> </mat-label>
+                                        <input matInput placeholder="Ex. Harshita@123" type="password" name="restaurantPassword" id="restaurantPassword" formControlName="restaurantPassword" />
+                                        <mat-error *ngIf="registerForm.controls.restaurantPassword.errors?.required">
+                                            Password is required.
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <div class="form-group">
+                                        <label for="restaurantPhoto" class="form-input-field">Choose your Restaurant's avatar <sup class="text-danger">*</sup> </label>
+                                        <input type="file" name="restaurantPhoto" id="restaurantPhoto"  (change)="checkFile($event)" />
+                                        <div class="text-danger" *ngIf="registerForm.controls.restaurantPhoto.errors?.required && registerForm.controls.restaurantPhoto.touched">
+                                            Restaurant Picture is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button mat-raised-button  class=" float-left colorg"
+                                        [disabled]="registerForm.invalid">Register</button>
+                                    </div>
+                                    
+                                </form>
+                                <br>
+                                <br>
+                                <div *ngIf="errorMessage" class="text-danger">{{errorMessage}}</div>
+                                <br>
+                                <div class="registerlink">
+                                  <button class="btn btn-link" [routerLink]="['/restaurant/login']">Existing User? Please click here to
+                                    Login.</button>
+                                </div>
+                            </mat-card-content>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

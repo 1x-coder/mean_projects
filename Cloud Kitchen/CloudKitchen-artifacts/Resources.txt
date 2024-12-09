@@ -1,0 +1,34 @@
+Combined: Crash course:
+	passport-jwt
+	https://www.youtube.com/watch?v=z7872Nki5FY&list=PLYQSCk-qyTW2ewJ05f_GKHtTIzjynDgjK
+
+--------------------------------------------------------
+JWT & BCRYPT:
+	https://medium.com/@shreyamduttagupta/api-authentication-using-passport-js-and-json-web-tokens-a6094df40ab0
+
+	https://youtu.be/mbsmsi7l3r4
+
+	https://youtu.be/2jqok-WgelI
+PASSPORT JS:
+	https://www.youtube.com/watch?v=-RCnNyD0L-s
+	https://medium.com/@pandeysoni/user-authentication-using-passport-js-in-node-js-c5b85a636724
+	https://medium.com/signature-networks/learn-how-to-handle-authentication-with-node-using-passport-js-4a56ed18e81e
+
+
+HELMET:
+	https://helmetjs.github.io/
+BEST PRACTICES EXPRESS Security:
+	https://expressjs.com/en/advanced/best-practice-security.html
+	https://www.freecodecamp.org/news/express-js-security-tips/
+MULTER:
+	https://www.youtube.com/watch?v=srPXMt1Q0nY
+
+-----------
+Git Commands
+-----------
+git remote add origin "url"
+git pull origin master
+git add --all
+git commit -m "message"
+git push origin master
+

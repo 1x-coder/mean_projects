@@ -1,0 +1,20 @@
+#dependencies
+
+/node_modules
+
+#image files
+# /uploads/images/customer/*
+
+!/uploads/images/customer/.gitkeep
+
+# /uploads/images/delivery-person/*
+
+!/uploads/images/delivery-person/.gitkeep
+
+# /uploads/images/restaurant/*
+
+!/uploads/images/restaurant/.gitkeep
+
+# /uploads/images/food/*
+
+!/uploads/images/food/.gitkeep

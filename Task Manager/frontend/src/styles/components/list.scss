@@ -1,0 +1,225 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - $header-height);
+  height: calc(100dvh - $header-height);
+
+  &__wrapper {
+    display: flex;
+    position: relative;
+    margin: vw(40) 0;
+    width: 100%;
+    max-width: vw(350);
+    height: 100%;
+    @extend %backdrop;
+    max-height: vw(640);
+
+    @include media(">=desktop") {
+      max-width: vw(1000);
+    }
+
+    &--transparent {
+      .page__container {
+        background-color: transparent !important;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+    background-color: mat-color($app-background, 100);
+    width: 100%;
+    height: 100%;
+
+    .dark-mode & {
+      background-color: mat-contrast($app-background, 50);
+    }
+
+    &-wrapper {
+      position: relative;
+      z-index: 1;
+      padding: vw(50) vw(40);
+      height: 100%;
+      box-sizing: border-box;
+
+      @include media(">=desktop") {
+        padding: vw(70) vw(50);
+      }
+    }
+  }
+
+  &__add {
+    position: absolute !important;
+    bottom: vw(20);
+    left: vw(20);
+    z-index: 20;
+
+    @include media(">=desktop") {
+      right: vw(30);
+      bottom: vw(30);
+      left: unset;
+    }
+  }
+
+  &__header {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    margin: 0 0 vw(2);
+    margin-top: 0;
+    background-color: mat-color($app-background, 100) !important;
+    padding: vw(20) 0 vw(20);
+    height: vw(110);
+    font-size: vw(22);
+    box-sizing: border-box;
+
+    @include media(">=desktop") {
+      flex-direction: row;
+    }
+
+    .dark-mode & {
+      background-color: mat-contrast($app-background, 100) !important;
+    }
+
+    &-title {
+      display: flex;
+      align-items: center;
+      margin: 0 0 0 vw(56) !important;
+      font-size: vw(34) !important;
+      font-weight: 400 !important;
+    }
+
+    &-icons {
+      margin-right: vw(28) !important;
+
+      button {
+        margin-left: vw(8);
+      }
+    }
+
+    &-search {
+      display: flex;
+      flex: 0 0 auto;
+      flex-direction: row;
+      align-items: center;
+      padding: 0 vw(10) 0 vw(10);
+      box-sizing: border-box;
+      place-content: center flex-end;
+
+      &-submit {
+        margin-left: vw(16) !important;
+
+        span {
+          padding: 0 !important;
+        }
+      }
+
+      .dark-mode & {
+        color: $white;
+      }
+
+      mat-icon {
+        display: flex;
+        position: relative;
+        top: vw(4);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: mat-contrast($app-background, 50) !important;
+        font-size: vw(24) !important;
+
+        .dark-mode & {
+          color: mat-color($app-background, 900) !important;
+        }
+      }
+
+      .mat-form-field {
+        width: 100% !important;
+      }
+
+      .mat-form-field-wrapper {
+        padding-bottom: 0 !important;
+      }
+
+      .mat-form-field-underline {
+        bottom: 0 !important;
+      }
+    }
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: mat-color($app-background, 100);
+    height: calc(100% - $table-header-height - $paginator-height - ($shadow-margin * 2)) !important;
+
+    @include media(">=desktop") {
+      height: calc(100% - $table-header-height - $shadow-margin) !important;
+    }
+
+    .dark-mode & {
+      background-color: mat-contrast($app-background, 50) !important;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    height: 100%;
+
+    &-vscroll {
+      width: 100%;
+      height: 100%;
+
+      @include media(">=desktop") {
+        height: calc(100% - $header-height);
+      }
+
+      table {
+        padding: 0 vw(15);
+        width: 100%;
+
+        @include media(">=desktop") {
+          padding: 0;
+        }
+      }
+    }
+
+    &-header {
+      margin: 0 !important;
+      font-size: vw(16) !important;
+
+      @include media(">=desktop") {
+        font-size: vw(18) !important;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      line-height: vw(22);
+      font-size: vw(16);
+
+      @include media(">=desktop") {
+        font-size: vw(18);
+      }
+    }
+
+    p {
+      margin: 0;
+      font-size: vw(12);
+    }
+
+    &-actions {
+      height: vw(45);
+    }
+  }
+}

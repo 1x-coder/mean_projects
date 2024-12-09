@@ -1,0 +1,11 @@
+<a
+  
+  class="btn btn-sm mr-4"
+  [ngClass]="{ 'disabled': isSubmitting,
+               'btn-outline-info': !profile.following,
+               'btn-success': profile.following }"
+  (click)="toggleFollowing()">
+  <i class="ion-plus-round"></i>
+  &nbsp;
+  {{ profile.following ? 'Unfollow' : 'Follow' }}
+</a>

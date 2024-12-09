@@ -1,0 +1,30 @@
+<div class="projects">
+    <div class="projects__chip">
+        <app-chip [icon]="icon" [content]="'Projects'"></app-chip>
+    </div>
+    <div class="projects__content">
+        <h2>My <span>Projects</span>.</h2>
+        <p>This section showcases a collection of my notable projects, demonstrating my skills, creativity, and problem-solving abilities. It offers a glimpse into my hands-on experience and serves as a portfolio highlighting my accomplishments in various domains.</p>
+    </div>
+    <div *ngIf="!loading" class="projects__list">
+        <div *ngFor="let project of projects" class="projects__list__project glassmorphism-light">
+            <img class="projects__list__project__image" src="{{ project.image }}">
+            <div class="projects__list__project__title">
+                {{ project.name }}
+            </div>
+            <div class="projects__list__project__description">
+                {{ project.description }}
+            </div>
+            <ul class="projects__list__project__technologies">
+                Technologies:
+                <li *ngFor="let tech of project.technologies" class="projects__list__project__technologies__tech">
+                    {{ tech.name }}
+                </li>
+            </ul>
+      <a href="{{project.link}}" class="projects__list__project__button">
+                <app-button [content]="'Check it Out.'"></app-button>
+            </a>
+        </div>
+    </div>
+    <app-loading-ripples *ngIf="loading"></app-loading-ripples>
+</div>

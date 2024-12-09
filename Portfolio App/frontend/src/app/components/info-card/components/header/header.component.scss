@@ -1,0 +1,36 @@
+@import "src/styles.scss";
+
+.header {
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__name {
+        color: $clr--primary;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+
+        h1 {
+            font-family: $ff--primary;
+            font-size: $fs--large;
+        }
+    }
+
+    &__title {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        
+        p {
+            text-align: right;
+            font-family: $ff--secondary;
+            font-size: 1.3rem;
+        }
+    }
+}

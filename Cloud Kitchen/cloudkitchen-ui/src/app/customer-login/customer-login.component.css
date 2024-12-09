@@ -1,0 +1,50 @@
+.login-form-block{
+    height: 130%;
+    margin-top: 20px;
+    padding: 20px;
+    background: url('../../assets/image/dp-login-bg-img.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+
+}
+
+.form-area{
+    float: right;
+    width: 50%;
+}
+
+.form-heading{
+    color: #63a033;
+}
+
+mat-form-field{
+    width: 100%;
+    color: #63a033;
+}
+
+mat-label{
+    color: #63a033;
+}
+
+.form-control{
+    color: #63a033;
+}
+
+.login-btn{
+    background-color: #63a033;
+    color: #e5e5e5;
+    width: 50%;
+}
+
+.login-btn:hover{
+    background-color: #477425;
+    color: #e5e5e5;
+}
+
+.register-banner{
+    margin-top:25px;
+    cursor: pointer;
+    color: #dd2c26;
+    font-size: 18px;
+}

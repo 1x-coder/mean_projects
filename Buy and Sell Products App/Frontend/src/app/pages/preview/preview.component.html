@@ -1,0 +1,89 @@
+<br >
+<div class="container">
+<div class="row">
+	<div class="col-xl-8 col-lg-8 col-md-6 col-sm-12 col-12 img shadow">
+		<img [src]="imgUrl">
+		<div class="img-slide ">
+			<ul>
+				<li class="shadow" (click)="changeImg(1)"></li>
+				<li class="shadow" (click)="changeImg(2)"></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 sidebar">
+		<div class="product_details">
+			<p class="price">{{resCBData.price |currency:'INR'}}</p>
+			<p class="kms_driven">{{resCBData.year_reg}}</p>
+			<p class="name">{{resCBData.brand}}  {{resCBData.model}}</p>
+			<p class="address">{{resCBData.locality}}, {{resCBData.city}}</p>
+			<p class="date">{{resCBData.date_posted |date:'mediumDate'}}</p>
+		</div>
+		<div class="seller_details">
+			<p class="tag1">Seller Descripton</p>
+			<p class="tag2">
+				<img src="assets/img/defaultProfile.png" height="80px">
+				 {{resCBData.seller}}</p>
+			 <p class="email">{{resCBData.selleremail}}</p>
+			<p (click)="redirectToSeller()" class="btnTag">CHAT WITH SELLER</p>
+			<p class="phone"> 
+				<i class="fa fa-phone" aria-hidden="true"></i>
+				  {{mobileNumberPrivacy}}
+				  <a href="" *ngIf="!loggedIn" routerLink="/login">show number</a>
+			</p>
+		</div>
+	</div>
+
+</div>
+<br>
+<hr>
+
+<div class="row " >
+
+	<div class="details key col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 ">
+		<h2>Details</h2>
+		<hr>
+		<ul>
+			<li>Brand</li>
+			<li >Model</li>
+			<!-- <li>Fuel</li> -->
+			<!-- <li>Kms Driven</li> -->
+			<li>Registration Year</li>
+
+
+		</ul>
+
+		
+	</div>
+	<!-- <div class="row">
+		<div class="details_heading"></div>
+		<div class="Description"></div>
+	</div> -->
+
+	<div class="details value col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 ">
+		<h2 style="opacity: 0;">Details</h2>
+		<hr>
+		<ul>
+			<li>{{resCBData.brand}}</li>
+			<li>{{resCBData.model}}</li>
+			<!-- <li>{{resCBData.fuel}}</li> -->
+			<!-- <li>{{resCBData.kms_driven}} Kms</li> -->
+			<li>{{resCBData.year_reg}}</li>
+
+		</ul>
+
+	</div>
+	
+	<br>
+		<br>
+	<div class="description col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+		
+		<h2>Description</h2>
+		<hr>
+		{{resCBData.description}}
+	</div>
+
+</div>
+
+</div>
+<br>

@@ -1,0 +1,117 @@
+
+
+
+
+<div>
+
+
+    <div class="searchComponent">
+        <br>
+        <h2 class="searchTitle"><em>Your Ultimate Cinematic Pleasure Awaits..</em></h2>
+            <div class="searchBar">
+       
+                <input  type="text" class="searchInput" [(ngModel)]="_userService.searchInput" placeholder="enter movie title">
+                <button class="btn btn-primary" (click)="_userService.searchMovies()">
+                    <clr-icon shape="search"></clr-icon>
+                </button>
+            </div>
+            <br>
+    </div>
+
+
+
+
+
+
+
+<br>
+<h2 class='title'>{{ _userService.title }}</h2>
+
+<ul class="defaultMovies">
+        <li class="moviePosters" style="list-style: none" 
+        
+        
+        
+        *ngFor="let movie of _userService.movies">
+        
+    <div class="movieCard">
+
+
+
+        <button class="movieSelector" 
+        
+        (click)="openModal(movie)">
+
+
+
+            <img src="https://image.tmdb.org/t/p/w300/{{ movie.poster_path }}">
+            
+            
+            
+        </button><br>
+
+
+
+    
+
+
+
+
+
+        <p class="movieTitles">{{ movie.title}}</p>
+        <div class="rating"> User Rating: {{ movie.vote_average }}</div>
+        <br>
+        <button [ngClass]="{'favorite_heart' : !movie.favorited, 'favorite_heart_clicked' : movie.favorited} " 
+        (click)="addFavorite(movie.title, movie.id)"
+        *ngIf="movie.favorited; else notFavorited"
+        >
+
+        <svg 
+        class="bi bi-heart-fill"  width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+          </svg>
+      
+            Favorited
+           
+        
+        </button>
+
+
+        
+        <ng-template #notFavorited>
+        <button [ngClass]="{'favorite_heart' : !movie.favorited, 'favorite_heart_clicked' : movie.favorited} " (click)="addFavorite(movie.title, movie.id)"
+        
+        >
+
+        <svg 
+        class="bi bi-heart-fill"  width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+          </svg>
+      
+          {{ _userService.favoriteButtonText }}
+           
+        
+        </button>
+    </ng-template>
+
+    </div>
+        
+        </li>
+    </ul>
+
+<!-- 
+    <clr-modal [clrModalOpen]="basic">
+        <h3 class="modal-title">{{movieActive?.title}}</h3>
+        <div class="modal-body">
+            <p>{{ movieActive?.overview }}</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline">Watch Now</button>
+            <button type="button" class="btn btn-primary" >Ok</button>
+        </div>
+    </clr-modal> -->
+
+
+    <app-modal [basic]="basic" [movieActive]="movieActive"></app-modal>
+
+</div>

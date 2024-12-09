@@ -1,0 +1,94 @@
+.go-home{
+    margin-top:10px;
+}
+.go-home:hover{
+    cursor: pointer;
+    color: #dd2c26;
+}
+
+.description-block{
+    width: 100%;
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.description-block .content{
+    float: left;
+}
+
+.description-block .image{
+    float: right;
+}
+
+.description-block .image img{
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+}
+
+.restaurant-title{
+    color: #63a033;
+}
+
+.ambiance-heading{
+    color: #63a033;
+}
+
+.menu-heading{
+    color: #63a033;
+}
+
+.menu-search{
+    display: flex;
+}
+
+.menu-block{
+    width: 100%;
+}
+
+
+.food-card{
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #fbfcc9;
+}
+
+.food-card .card-title{
+    color: #63a033;
+}
+
+.food-card .add-btn{
+    background-color: #63a033;
+    color: #e5e5e5;
+    float: right;
+}
+
+.food-card .add-btn:hover{
+    background-color: #477425;
+    color: #e5e5e5;
+}
+
+.food-card img{
+    height: 150px;
+    width: 180px;
+    border-radius: 15px;
+}
+
+.discount{
+    font-weight: 500;
+}
+
+.veg-only-toggle{
+    color: #63a033;
+}
+.ordering-cart-btn{
+    background-color: #63a033;
+    color: #e5e5e5;
+}
+
+.ordering-cart-btn:hover{
+    background-color: #477425;
+    color: #e5e5e5;
+}

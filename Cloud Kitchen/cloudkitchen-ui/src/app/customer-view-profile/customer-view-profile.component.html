@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-12 heading">
+        <span class="h2">{{user.name}}'s Profile</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="content-block">
+            <div class="content">
+                <table>
+                    <tr>
+                        <td> <strong>Username:</strong> </td>
+                        <td>{{user.userName}}</td>
+                    </tr>
+                    <tr>
+                        <td> <strong>Contact Number:</strong> </td>
+                        <td>{{user.mobileNum}}</td>
+                    </tr>
+                    <tr>
+                        <td> <strong>Email ID:</strong> </td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                    <tr>
+                        <td> <strong>Address:</strong> </td>
+                        <td>{{user.address}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="image">
+                <img src="{{profilePic}}" alt="user image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="edit-btn-block col-3 offset-9 text-center">
+        <button class="btn btn-success edit-btn" (click)="goToEdit()">Edit Profile</button>
+    </div>
+</div>

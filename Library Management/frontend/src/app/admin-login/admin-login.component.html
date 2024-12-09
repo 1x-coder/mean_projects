@@ -1,0 +1,34 @@
+<div class="loginForm jumbotron">
+    <div class="loginSmaller">
+    <form>
+        
+       
+        <div class="form-outline mb-4">
+            <h1>Privatna prijava na sistem za admine</h1>
+            <br/>
+          <input type="text" id="username1" name="username" [(ngModel)]="username" class="form-control form-control-lg"
+            placeholder="Unesite korisnicko ime" />
+          <label class="form-label" for="username1">Email address</label>
+        </div>
+
+        
+        <div class="form-outline mb-3">
+          <input type="password" id="pass1" name="password" [(ngModel)]="password"  class="form-control form-control-lg"
+            placeholder="Unesite lozinku" />
+          <label class="form-label" for="pass1">Password</label>
+        </div>
+
+    
+
+        <div class="text-center text-lg-start mt-4 pt-2">
+          <button type="button" class="btn btn-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="logInToSystem()">Prijava</button>
+
+        </div>
+        <br/>
+        <span style='color: red'>{{error}}</span>
+
+      </form>
+    </div>
+
+</div>

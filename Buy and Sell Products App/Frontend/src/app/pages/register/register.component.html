@@ -1,0 +1,77 @@
+<div class="main">
+       <div class="box col-xl-4 col-lg-4 col-md-4 col-sm-8 col-12">
+        <h2>
+            Register
+        </h2>
+        <form [formGroup]="myForm" (ngSubmit)="register()">
+            <div class="inputBox">
+               <input type="text" required formControlName="name">
+                <label>Name</label>
+            </div>
+            <div class="inputBox">
+               <input type="text" required formControlName="mobile">
+                <label>Phone No</label>
+            </div>
+            <div class="inputBox">
+               <input type="text" required formControlName="email">
+                <label>Email</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" required formControlName="password">
+                <label>Password</label>
+            </div>
+            <div class="inputBox" (click)="removeConfirmPassErr()">
+               <input type="password" required formControlName="confirm_pass">
+                <label>Confirm Password</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="confirmPassErr">
+                Password and confirm password did'nt match
+            </div>
+            
+            <input data-toggle="modal" data-target="#exampleModal" class="shadow" type="submit" [disabled]="myForm.invalid" value="submit">
+        </form>
+
+        <a href="#" routerLink="/login" class="login">Alredy Registered?     Login</a>
+    </div>
+
+    </div>
+
+
+
+
+<!-- Modal -->
+<div *ngIf="!confirmPassErr">
+<div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Account Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="!otp">
+        Sending confirmation code <div class="spinner-border text-primary" role="status">
+        </div> 
+        </div >
+        <div *ngIf="otp">
+        We have sent an 6 digit Code to your email <span class="text-success"> {{email}}</span>
+        </div>
+        <br>
+        <form [formGroup]="otpForm">
+            <input type="text" placeholder="Enter Confirmation Code here" formControlName="enteredOtp" (click)="removeOtpErr()">
+        </form>
+        <br>
+        <div class="alert alert-danger" *ngIf="wrongOtp">
+                Incorrect Confirmation Code
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="removeOtpErr()">Change Email</button>
+        <button type="button" class="btn btn-primary"  (click)="OtpConfirmSignup()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

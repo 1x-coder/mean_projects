@@ -1,0 +1,26 @@
+Customer:
+Contact Number: 9090909090
+Password: elon@12Ka4
+
+
+8965236556
+sonamPass@123
+
+-----------------------
+Delivery: 
+Contact Number: 8080808080
+Password: dinesh@123
+
+8965236532
+rakeshPass@123
+-----------------------
+Restaurant:
+Contact: 7077817139
+Password: shalimar
+
+6589324123
+biriyaniHouse@123
+----------------------
+Admin:
+Contact: 9599790218
+Password: Admin@123

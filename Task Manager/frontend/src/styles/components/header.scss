@@ -1,0 +1,58 @@
+.header {
+  height: 100%;
+
+  &__sidenav {
+    width: vw(180);
+
+    a {
+      letter-spacing: 0;
+
+      &:last-child {
+        position: absolute !important;
+        bottom: 0 !important;
+      }
+
+      mat-icon {
+        padding-right: vw(10) !important;
+      }
+
+      &.active,
+      &:hover {
+        background-color: mat-color($primary, 50) !important;
+
+        .dark-mode & {
+          background-color: mat-color($primary, A400) !important;
+        }
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+
+    &-wrapper {
+      display: flex;
+      align-content: center;
+      margin-right: vw(16);
+
+      mat-icon {
+        margin-right: vw(8);
+      }
+    }
+  }
+
+  &__logged-out {
+    a:first-child {
+      margin-right: vw(6);
+    }
+  }
+
+  &__logo {
+    font-size: vw(22);
+
+    @include media(">=desktop") {
+      font-size: vw(26);
+    }
+  }
+}

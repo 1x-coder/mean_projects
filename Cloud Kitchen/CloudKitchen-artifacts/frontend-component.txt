@@ -1,0 +1,46 @@
+/
+------
+    AppComponent - navbar
+    HomeComponent
+    LoginComponent
+    RegisterComponent
+    HotelDetailsComponent
+    OrderComponent
+    ViewProfileComponent
+    ViewOrdersComponent
+    EditUserProfileComponent
+
+/restaurant
+------------
+    AppComponent - navbar
+    RestaurantHomeComponent
+    RestaurantLoginComponent
+    RestaurantRegisterComponent
+    AddMenuItemComponent
+    ManageOrderComponent
+    AmbianceComponent
+    EditMenuItemComponent 
+    EditRestaurantProfileComponent
+    ViewRestaurantPeofileComponent
+
+/delivery
+---------
+    AppComponent - navbar
+    DeliveryPersonHomeComponent
+    DeliveryPersonLogin
+    DeliveryPersonRegister
+    ViewDeliveryPersonProfileDetails
+    EditDeliveryPersonProfileDetails
+    Manage Deliveries
+    PenaltyComponent
+
+/admin
+-------
+
+    AppComponent - navbar
+    AdminHomeComponent
+    AdminLoginComponent
+    ViewAllOrders
+    ViewAllCustomers
+    ViewAllDestinations
+    ViewDeliveryPersonsComponents

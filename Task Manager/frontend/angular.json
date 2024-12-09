@@ -1,0 +1,120 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false,
+    "cache": {
+      "enabled": true
+    },
+    "packageManager": "yarn",
+    "schematicCollections": ["@angular-eslint/schematics"]
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "default": {
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "configurations": {
+            "development": {
+              "buildOptimizer": false,
+              "extractLicenses": false,
+              "namedChunks": true,
+              "optimization": false,
+              "sourceMap": true,
+              "vendorChunk": true
+            },
+            "production": {
+              "aot": true,
+              "budgets": [
+                {
+                  "maximumError": "6mb",
+                  "maximumWarning": "4mb",
+                  "type": "initial"
+                },
+                {
+                  "maximumError": "4kb",
+                  "maximumWarning": "2kb",
+                  "type": "anyComponentStyle"
+                }
+              ],
+              "buildOptimizer": true,
+              "extractLicenses": true,
+              "fileReplacements": [
+                {
+                  "replace": "./environments/environment.ts",
+                  "with": "./environments/environment.prod.ts"
+                }
+              ],
+              "namedChunks": false,
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "vendorChunk": false
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "././assets/",
+                "output": "./assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "././assets/images/favicon",
+                "output": "./"
+              }
+            ],
+            "index": "./index.html",
+            "inlineStyleLanguage": "scss",
+            "main": "./main.ts",
+            "outputPath": "dist",
+            "polyfills": "./polyfills.ts",
+            "scripts": [],
+            "styles": ["./src/styles/main.scss"],
+            "tsConfig": "tsconfig.json"
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "default:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "fix": true,
+            "lintFilePatterns": ["./**/*.ts", "./**/*.html"]
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "default:build:development"
+            },
+            "production": {
+              "browserTarget": "default:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "sourceRoot": "app"
+    }
+  },
+  "version": 1
+}

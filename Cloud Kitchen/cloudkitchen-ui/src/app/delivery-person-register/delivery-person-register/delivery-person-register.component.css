@@ -1,0 +1,26 @@
+.reg-bg-img {
+    height: auto;
+    width: 900px;
+    object-fit: cover;
+}
+@media screen and (max-width: 600px) {
+    .reg-bg-img{
+        display: none;
+    }
+}
+
+
+.img-card-pos {
+    position: relative;
+    display: flex;
+}
+
+.full-width {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.mat-focused .mat-form-field-label {
+    color: green !important;
+}

@@ -1,0 +1,52 @@
+
+<nav class="sticky-top shadow navbar navbar-expand-lg navbar-light bg-light mobview">
+  <a class="navbar-brand" href="#">ADMINPANEL</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Welcome {{ username}} <span class="sr-only">(current)</span></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item drop-feat caret">
+        <a class="nav-link" href="#">Features<i class="fa fa-caret-up rotate" style="padding-left: 3px;"></i></a>
+        
+	<div style="border-top: 2px solid orange;" class="content-feat" >
+		<div class="featHov nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		  <a class="nav-link" id="v-pills-home-tab" data-toggle="pill"  routerLink="./category" role="tab" aria-controls="v-pills-home" aria-selected="true">Categories</a>
+		  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Chat Box</a>
+		  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Feedbacks</a>
+		  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Statistics</a>
+		  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+		</div>
+		
+	</div>
+
+
+
+      </li>
+     
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item pl-auto">
+        <a class="nav-link" href="#">{{email}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+

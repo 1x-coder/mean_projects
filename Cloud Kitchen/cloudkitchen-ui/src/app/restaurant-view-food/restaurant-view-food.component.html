@@ -1,0 +1,43 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <h1 class=" heading "><b>Restaurant #{{restaurantData.restaurantId}}</b></h1>
+        
+          
+</div>
+<div  *ngFor="let item of foodDetailArray; let i = index">
+<div class="row" >
+    <div class="col-md-12">
+   
+        
+        <div class="card">
+          <div class="row" >
+          <div class="col-md-3">
+           
+              <img class="image" src="http://localhost:1050/restaurant/getFoodImage/{{item.img}}" alt="Food Image" />
+          
+          
+        </div>
+              <div class="col-md-8 offset-md-1">  
+               <h1 class="textcolorg"><b>{{item.name}}</b></h1>
+                  <div class="text-secondary">{{item.description}}</div>
+                <div >Category:{{item.category}}</div>
+                <div class="tspace">Price:<b>{{item.price|currency:'INR':'symbol':'1.0'}}</b></div>
+                <div >Discount:<span class="colorg">{{item.discount}}%</span></div>
+                <div *ngIf="item.available==false" class="text-danger uspace">Unvailable</div>
+                <div >
+                <button  mat-icon-button  class="icopos" (click)="editFood(item)" >
+                   
+                    <mat-icon [ngStyle]="{'color':'#63a033'}">create</mat-icon>
+                  </button>
+                  <button mat-icon-button class="butspace" (click)="deleteFood(item.foodId)" >
+                    <mat-icon [ngStyle]="{'color':'rgb(209, 21, 21)'}">delete</mat-icon>
+                  </button> 
+                </div>
+                </div>
+              </div>
+                </div>
+              </div>
+</div>
+   </div>        
+  </div>          

@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Maze&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
+
+/* You can add global styles to this file, and also import other style files */
+/*
+  Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+  - The "symbol *" part is to solve Firefox SVG sprite bug
+*/
+*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+  }
+  /* Preferred box-sizing value */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  /* Reapply the pointer cursor for anchor tags */
+  a {
+    cursor: revert;
+  }
+  /* Remove list styles (bullets/numbers) */
+  ol, ul, menu {
+    list-style: none;
+  }
+  /* For images to not be able to exceed their container */
+  img {
+    max-width: 100%;
+  }
+  /* removes spacing between cells in tables */
+  table {
+    border-collapse: collapse;
+  }
+  /* revert the 'white-space' property for textarea elements on Safari */
+  textarea {
+    white-space: revert;
+  }
+  /* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+  :where([hidden]){
+    display:none;
+  }
+  /* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly. */
+  :where([contenteditable]){
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+  }
+  /* apply back the draggable feature - exist only in Chromium and Safari */
+  :where([draggable="true"]) {
+    -webkit-user-drag: element;
+  }
+
+  .everything{
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: black;
+  }
+
+  .mainHeader{
+    height: 10vh;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Aboreto', cursive;
+    font-family: 'Rubik Maze', cursive;
+    
+}
+
+.mainSection{
+min-height: 85%;
+}
+
+  .mainFooter{
+    height: 5vh;
+    color:white;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 2%;
+    font-family: 'Caveat', cursive;
+    font-size: larger;
+    font-family: 'Tangerine', cursive;
+  }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x: hidden;}
+

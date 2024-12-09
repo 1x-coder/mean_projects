@@ -1,0 +1,78 @@
+<!-- SIGNUP FORM -->
+    <section class="login">
+        <div class="login_box">
+            <div class="left">
+                <form action="">
+                    <h3 class="text-center">Sign Up</h3><hr>
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" formControlName="fullname" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f['fullname'].errors }" placeholder="Enter Full Name" />
+                                <div *ngIf="submitted && f['fullname'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['fullname'].errors['required']">Fullname is required</div>
+                                </div> 
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" formControlName="email" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Enter Email Address" />
+                                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                    <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Create Password</label>
+                                <input [type]="active?'text':'password'" formControlName="password" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" placeholder="Enter Password" />
+                                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                    <div *ngIf="f['password'].errors['minlength']">
+                                        Password must be at least 6 characters
+                                    </div>
+                                    <div *ngIf="f['password'].errors['maxlength']">
+                                        Password must not exceed 16 characters
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input [type]="active?'text':'password'" formControlName="confirmPassword" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }" placeholder="Confirm Password" />
+                                <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['confirmPassword'].errors['required']">
+                                        Confirm Password is required
+                                    </div>
+                                    <div *ngIf="f['confirmPassword'].errors['matching']">
+                                        Confirm Password does not match
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-left">
+                                <li *ngIf="!active" style="color: blue"><fa-icon class="eye" (click)="toggleShow()" [icon]="faEye" ></fa-icon>   Show Password</li>
+                                <li *ngIf="active" style="color: red;"><fa-icon class="eye" (click)="toggleShow()" [icon]="faGhost" ></fa-icon>  Hide Password</li>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="text-center">
+                                    <button type="submit"> Sign Up </button> <br>
+                                    <span> Already have an Account!
+                                    <a style="color: blue; text-decoration: underline;" routerLink="/login">LogIn</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+
+            <div class="right">
+                <img src="https://raw.githubusercontent.com/ismailvtl/ismailvtl.github.io/master/images/cloud-storage.png"
+                    alt="LoginImage">
+            </div>
+        </div>
+    </section>

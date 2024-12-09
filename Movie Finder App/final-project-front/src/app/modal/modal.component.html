@@ -1,0 +1,15 @@
+
+
+
+<clr-modal [clrModalOpen]="basic">
+    <h3 class="modal-title">{{movieActive?.title}}</h3>
+    
+    <div class="modal-body">
+        <img src="{{ movieActive.poster }}">
+        <p>{{ movieActive?.overview }}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline">Watch Now</button>
+        <button type="button" class="btn btn-primary" >Ok</button>
+    </div>
+</clr-modal>

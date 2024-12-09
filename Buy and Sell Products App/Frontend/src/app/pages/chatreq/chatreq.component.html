@@ -1,0 +1,14 @@
+<div  class="container-fluid">
+<br>
+<h2>All Chats</h2>
+<br>
+<div class=" wrapper" >
+
+<div *ngFor="let user of resData" class="box">
+	
+	<p class="chatreq" (click)="navigateToChat(user)">{{user}}</p>
+	<hr>
+</div>
+
+</div>
+</div>

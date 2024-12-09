@@ -1,0 +1,22 @@
+#box
+{
+    border: 0.5px solid;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+label, #txt
+{
+    font-weight: bold;
+}
+
+button{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+::placeholder
+{
+    font-style: italic;
+    opacity: 0.5;
+}

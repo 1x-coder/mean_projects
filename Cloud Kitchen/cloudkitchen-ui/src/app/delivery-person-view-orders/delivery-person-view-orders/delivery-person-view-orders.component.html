@@ -1,0 +1,81 @@
+<div class="loader">
+  <mat-spinner *ngIf="loading" diameter="50" class="text-center"></mat-spinner>
+</div>
+<div *ngIf="errorMessage" class="row mt-5 content">
+  <div class="col-sm-12 col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="text-danger">{{ errorMessage }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!loading && !errorMessage" class="content">
+  <div class="row text-success mt-5">
+    <div class="col-md-4 offset-md-1 col-sm-12">
+      <h1>Pick an order to deliver</h1>
+    </div>
+  </div>
+  <div class="row mt-1">
+    <div class="col-md-8 offset-md-2 col-sm-12">
+      <div class="card mt-3" *ngFor="let order of orders">
+        <div class="card-header">
+          <span class="text-danger float-left"
+            >Order Id: {{ order.orderId }}</span
+          >
+          <span class="text-info float-right">
+            Order time: {{ order.createdAt | date: "medium" }}
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 col-sm-12">
+              Food Items:
+              <ul>
+                <li *ngFor="let food of order.food">
+                  {{ food }}
+                </li>
+              </ul>
+
+
+            </div>
+            <div class="col-md-4 col-sm-12">
+              Pick the order from 
+              <br>
+              <b>{{ order.restaurant.restaurantName }},</b>
+              <div>
+                <p>
+                  {{ order.restaurant.restaurantAddress }}
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                Deliver To
+                <br>
+                <b>{{order.customer.name}}</b>
+                <div>
+                    <p>{{order.customer.address}}</p>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-sm-12 col-lg-4">
+              <div>
+                <span>Order Current Status: {{ order.state }} </span>
+              </div>
+            </div>
+            <div class="col-md-4 offset-md-4 col-lg-4 offset-lg-4 col-sm-12">
+                <span>Change Status: </span>
+                <select name="status" id="status" #status (change)="changeStatus(order.orderId, status.value)" >
+                  <option default>{{ order.state }}</option>
+                  <option value="pickup">Pick Up Order</option>
+                  <option value="complete">Delivered</option>
+                  <option value="cancel">Cancel Order</option>
+                </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

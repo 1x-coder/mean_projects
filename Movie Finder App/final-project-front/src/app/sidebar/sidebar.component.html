@@ -1,0 +1,30 @@
+
+
+<div class="container box"> 
+
+
+
+
+ <div class="menuItems">
+    <button class="btn btn-primary" (click)="_userService.getTrending()">Now Trending</button>
+<br><br>
+    <button class="btn btn-primary" (click)="_userService.getPopular()">Most Popular</button> 
+<br><br>
+    <button class="btn btn-primary" (click)="_userService.getLatestMovies()">Latest</button> 
+<br><br>
+    <button class="btn btn-primary" (click)="_userService.getTopRated()">Top-Rated</button> 
+<br><br>
+    <button class="btn btn-primary" (click)="_userService.getUpcoming()">Upcoming</button> 
+  </div>
+
+
+
+
+
+<ul *ngFor="let item of list">
+    <li class="genreList" style="list-style-type: none;"> {{ item.name }} </li>
+</ul>
+
+
+
+</div>

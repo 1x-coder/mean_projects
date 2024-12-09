@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <br>
+    <h2 class="text-center">Category Manager</h2>
+    <br>
+    <button routerLink="../addcategory" class="shadow btn btn-success">Add Category<i class="
+        
+    fa fa-plus-square"></i></button>
+    
+    <table class="table table-bordered">
+       <br>
+        <tr>
+            <th>S.no</th>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Edit</th>
+        </tr>
+        
+        <tr *ngFor="let r of resData;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{r.catName}}</td>
+            <div style="  text-align: justify;">
+            <td>{{r.catDescription}}</td>
+            </div>
+            <td class="smImg"><img class="shadow mainImg" src="http://localhost:7000/images/{{r.catImg}}" width="200px;" >
+                <div class="lgImg" >
+                    <img class="shadow" src="http://localhost:7000/images/{{r.catImg}}">
+                </div>
+            
+            </td>
+            <td class=" btn-group">
+                <button class="shadow btn btn-warning">Modify<i class="fa fa-pencil-square" aria-hidden="true"></i></button>
+                <button class="shadow btn btn-danger">Delete<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </td>
+        </tr>
+        
+        
+        
+    </table>
+</div>

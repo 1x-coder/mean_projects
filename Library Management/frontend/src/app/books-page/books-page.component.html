@@ -1,0 +1,159 @@
+
+<div class="container emp-profile">
+    
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img [src]="activeBook.picture" alt="" max-width="300px" max-height="480px" id="mainPicture"/>
+                </div>
+            </div>
+            <div class="col-md-6" >
+                <div class="">
+                            <h4 *ngIf="!editingMode">{{activeBook.title}}</h4>
+                            <h5 *ngIf="editingMode">Title</h5><input *ngIf="editingMode" type="text" [(ngModel)] = "infoTitle">
+
+                            <h6 *ngIf="!editingMode">{{activeBook.writer}}</h6>
+                            <h5 *ngIf="editingMode">Writers</h5><input *ngIf="editingMode" type="text" [(ngModel)] = "infoWriter">
+                            
+                            <p *ngIf="!editingMode">ID: {{activeBook.idBook}}</p>
+                            
+                           
+                                <h6 *ngIf="!editingMode">Zanr: {{activeBook.genre}} </h6>
+                                <h5 *ngIf="editingMode">Zanr</h5><input *ngIf="editingMode" type="text" [(ngModel)] = "infoGenre">
+                                <br/>
+                                <h5 *ngIf="!editingMode">Podaci o izdanju:</h5>
+                                <h6 *ngIf="!editingMode">{{activeBook.publisher}} </h6>
+                                <h5 *ngIf="editingMode">Izdavac</h5><input *ngIf="editingMode" type="text" [(ngModel)] = "infoPublisher">
+                                <h6 *ngIf="!editingMode">{{activeBook.pubYear}} </h6>
+                                <h5 *ngIf="editingMode">Godina izdanja</h5><input *ngIf="editingMode" type="text" [(ngModel)] = "infoPubYear">
+                                <h6 *ngIf="!editingMode">{{activeBook.language}} </h6>
+                                <h5 *ngIf="editingMode">Jezik</h5><input *ngIf="editingMode" type="text" [(ngModel)] = "infoLanguage">
+                                <h5 *ngIf="!editingMode">Na stanju: {{activeBook.amount}} </h5>
+                                <h5 *ngIf="editingMode">Kolicina</h5><input *ngIf="editingMode" type="text" [(ngModel)] = "infoAmount">
+
+                                <br/>
+                                <button *ngIf="userCan && readerUser.blocked==false"type="button" class="btn btn-primary" (click)="take()" style="margin-right: 2%;" >Zaduzi</button>
+                                <button *ngIf="reservationCan && readerUser.blocked==false"type="button" class="btn btn-primary" style="margin-right: 2%;" (click)="reserve()" >Rezervisi</button>
+                                <button *ngIf="editingMode" style="margin: 2% 2% 2% 0" type="button" class="btn btn-primary" (click)="updateBook()">Izmeni</button>
+                                <button *ngIf="readerUser.type == 'admin' && editingMode" type="button" class="btn btn-light btn" data-mdb-ripple-color="dark" style="background-color:#c14545; color: white; margin: 0 2%;" (click)="deleteBook()">Obrisi knjigu</button>
+                                <span *ngIf="!userCan" style='color: red;'>{{errorMsg}}</span>
+                                <br/>
+                                <span style='color: red;'>{{errorBookIsTaken}}</span>
+                                
+                                <br/>
+                                
+                                <input *ngIf="editingMode" id="pictureUpload" type="file" (change)="addPicture($event)" accept="image/jpg, image/png"  required >
+                                <img *ngIf="isSaved" [src]="picturePath()" alt="" />
+                                <span style='color: red'>{{pictureAddingMessage}}</span>
+
+                                <span style='color: red'>{{takingErrorMessage}}</span>
+                                <span style='color: green'>{{successMessage}}</span>
+                                <span style='color: green'>{{reservationMessage}}</span>
+
+
+                </div>
+            </div>
+        </div>
+        <button *ngIf="readerUser.type == 'moderator' || readerUser.type == 'admin'" type="button" class="btn btn-light" (click)="switch()" style="margin: 1em">Mod za izmenu</button>
+        <button *ngIf="readerUser.type == 'moderator' || readerUser.type == 'admin'" type="button" class="btn btn-light" (click)="switch2()" style="margin: 1em">Mod za citanje</button>     
+        <div style="padding: 0 2%;">
+            <ngb-rating  [(rate)]="activeBook.averageRating" [starTemplate]="t" [readonly] = "true"></ngb-rating>
+            <ng-template #t let-fill="fill">
+                <span class="star" [class.full]="fill === 10">
+                  <span class="half" [style.width.%]="fill">&starf;</span>&star;
+                </span>
+              </ng-template>
+          <pre style="font-family: 'Caveat', cursive;">Prosecna ocena: <b>{{activeBook.averageRating}}</b></pre>
+          <hr>
+        </div>
+
+
+        
+        <br/>
+        <br/>
+       
+
+       
+        <div *ngIf="canComment" style="padding: 0 2%;">
+            <h5>Unesite komentar i zeljenu ocenu:</h5>
+            <br/>
+            <textarea maxlength="1000" placeholder="Unesite komentar" cols="80" rows="5" [(ngModel)]="commentTextToInsert"></textarea>
+            <br/>
+            <br/>
+            
+           
+              
+              <ngb-rating [(rate)]="ratingToInsert" [starTemplate]="t" [readonly]="true" [max]="10"></ngb-rating>
+              
+              
+              <pre>Ocena: <b>{{ratingToInsert}}</b></pre>
+
+
+          <input type="text" placeholder="Unesite ocenu" [(ngModel)] = "ratingToInsert">
+          <br/>
+
+            <button type="button" class="btn btn-light" style=" margin: 2% 0;background-color: #343a40; color:white" (click)="addComment()">Unesi komentar</button>
+            <hr>
+        </div>
+        <span *ngIf="!canComment" style="color: #0062cc;margin: 0 2%;">Nije moguce ostaviti novi komentar, ili niste zaduzivali knjigu ili ste vec ostavili komentar</span>
+        
+        <br/>
+        <br/>
+        
+
+        <div style="padding: 0 2%;">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Komentari</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span style="color:#0062cc" *ngIf='allReviews.length == 0' >Nema ocena i komentara</span></td>
+                </tr>
+
+              <tr *ngFor='let p of allReviews'>
+                <td>
+                    <div>
+                        <h6>{{p.username}}</h6>
+                        
+                        <ngb-rating  [(rate)]="p.rating" [starTemplate]="t" [readonly] = "true"></ngb-rating>
+                        <pre style="font-family: 'Caveat', cursive;">Ocena: <b>{{p.rating}}</b></pre>
+                        {{p.comment}}
+                        <br/>
+                        <p>{{parseDate(p)}}</p>
+                        <p style="text-align: right;color:#0062cc" *ngIf="p.edited">Azurirano</p>
+                        
+                        <button type="button" *ngIf="p.username == readerUser.username" class="btn btn-sm btn-light" style="background-color: #343a40; color:white; float: right;" (click)="toggleCanEdit()">Azuriraj</button>
+                        <br/>
+                        <div *ngIf="canEdit && p.username == readerUser.username" >
+                            <h5>Unesite komentar i zeljenu ocenu:</h5>
+                            <br/>
+                            <textarea maxlength="1000" placeholder="Unesite komentar" cols="80" rows="5" [(ngModel)]="updateCommentTextToInsert"></textarea>
+                            <br/>
+                            <br/>
+                            
+                           
+                              
+                              <ngb-rating [(rate)]="updateRatingToInsert" [starTemplate]="t" [readonly]="true" [max]="10"></ngb-rating>
+                              
+                              
+                              <pre>Ocena: <b>{{updateRatingToInsert}}</b></pre>
+                
+                
+                          <input type="text" placeholder="Unesite ocenu" [(ngModel)] = "updateRatingToInsert">
+                          <br/>
+                
+                            <button type="button" class="btn btn-light" style=" margin: 2% 0;background-color: #343a40; color:white" (click)="updateComment(p)">Azuriraj komentar</button>
+                            <hr>
+                        </div>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn btn-light" style=" margin: 2% 2%;background-color: #343a40; color:white" (click)="returnToMainPage()"> <-Nazad na pocetnu stranu</button>
+
+    </div>

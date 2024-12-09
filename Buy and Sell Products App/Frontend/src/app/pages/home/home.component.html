@@ -1,0 +1,119 @@
+   
+
+    <div class="header shadow " style="position: fixed;width: 100%;">
+        <h2 class="" routerLink="/"><i style="font-size: 30px;" class="fa fa-ioxhost " aria-hidden="true"></i>
+ <span class="">Old_Mine</span></h2>
+
+        <input type="checkbox" id="chk">
+        <label for="chk" class="show-menu-btn">
+            <i style="font-size: 30px;" class="fa fa-bars" aria-hidden="true"></i>
+        </label>
+        <ul class="menu">
+          <label>
+           <a class="searchSuggestion">
+            <input class="search" type="text" placeholder="search">
+            <div  class="shadow searchDropdown">
+            <ul>
+              <li style="cursor: pointer;" (click)="search()">cars latest</li>
+              <li style="cursor: pointer;" (click)="search()">sam mobile</li>
+              <li style="cursor: pointer;" (click)="search()">laptop i5</li>
+              <li style="cursor: pointer;" (click)="search()">bike</li>
+            </ul>
+          </div>
+           </a>
+           <a style="cursor: pointer;" (click)="search()"><i style=""  class="sbtn fa fa-search" aria-hidden="true"></i></a>
+           </label>
+            <a href="" routerLink="/"><i class="fa fa-home" aria-hidden="true"></i>
+                Home</a>
+            <a href=""  class="dropdownPre"><i class="fa fa-star-o" aria-hidden="true"></i>Premium
+                <div class="dropItemsPre">
+                   <div style="line-height: 1.5;text-align: justify;" class="row pt-2">
+                       <div class="col-4 pr-4 pl-4">
+                        Rs100/1month  
+                        <hr>
+                        This is a new offer This is a new offer
+                        This is a new offer This is a new offer
+                         This is a new offer This is a new offer
+                        This is a new offer This is a new offer
+                       </div>
+                       <div class="col-4 pr-4">
+                           Rs500/6Month
+                            <hr>
+                        This is a new offer This is a new offer
+                        This is a new offer This is a new offer
+                         This is a new offer This is a new offer
+                        This is a new offer This is a new offer
+                       </div>
+                       <div class="col-4 pr-4">
+                           Rs1000/Year
+                            <hr>
+                        This is a new offer This is a new offer
+                        This is a new offer This is a new offer
+                         This is a new offer This is a new offer
+                        This is a new offer This is a new offer
+                       </div>
+                   </div>
+                </div>
+            </a>
+            <a href="#" style=" padding-bottom: 20px;" class="dropdown"><i class="fa fa-file-text-o" aria-hidden="true"></i>Categories
+                <div class="dropItems ">
+                    <ul *ngFor="let r of resData">
+                        <li>{{r.catName}}</li>
+                    
+                    </ul>
+                </div>
+            </a>
+            <a data-toggle="modal" data-target="#exampleModalScrollable" href="" style="background-color:orange; padding-bottom: 10px;color:black;"><i class="fa fa-paper-plane" aria-hidden="true"></i>PostFreeAd</a>
+            <a class="dropdown" style="cursor: pointer;padding-bottom: 20px;" >
+              <span routerLink="/login"><i class="fa fa-user-circle-o" aria-hidden="true"></i>{{userName}}</span><span routerLink="/register">{{regName}}</span>
+              <div *ngIf="userEmail"  class="dropItems mr-3">
+                    <ul>
+                        <li routerLink="/profile" ><i class="fa fa-user-o" aria-hidden="true"></i>Profile</li>
+                        <li routerLink="/myads" ><i class="fa fa-address-book-o" aria-hidden="true"></i>MyAds</li>
+                        <li routerLink="/chatreq"><i class="fa fa-comments-o" aria-hidden="true"></i>Chats</li>
+                        <li (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</li>
+                    
+                    </ul>
+                </div>
+              
+
+            </a>
+            <label for="chk" class="hide-menu-btn">
+                <i class="fa fa-times"></i>
+            </label>
+        </ul>
+
+    </div>
+    
+<!--    MOdel-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Select Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="categoryForm">
+              <select formControlName="category">
+                    <option selected  hidden>Select one</option>
+                    <option *ngFor="let r of resData">{{r.catName}}</option>
+              </select>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button style="margin: 5px;padding: 5px;" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button [disabled]="categoryForm.invalid" style="margin: 5px;padding: 5px;" type="button" class="btn btn-primary" (click)="selectCategory()" data-dismiss="modal">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<!--/model    -->
+   <router-outlet></router-outlet>

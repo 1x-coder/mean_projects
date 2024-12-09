@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        
+          <h1 class="display-4">Log In</h1>
+          <p class="lead">Log in to begin using your account</p>
+        </div>
+    
+    
+       
+
+            <div class="row">
+                <div class="column-sm">
+                    <input type="text" name="email" placeholder="Email" [(ngModel)]="form.email" />
+    
+                </div>
+            </div>
+            <div class="row">
+                <div class="column-sm">
+                    <input type="password" name="password" placeholder="Password" [(ngModel)]="form.password" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="column-sm">
+                    <button type="submit" (click)="logIn()" class="btn btn-primary">Log In</button>
+                </div>
+            
+            </div>
+    
+        </div>

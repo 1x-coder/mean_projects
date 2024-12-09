@@ -1,0 +1,107 @@
+<div class="animJumbo jumbotron jumbotron-fluid img">
+  <div class="container">
+    <h1 class="display-4 ">Cars</h1>
+    <p class="lead ">This is best place to sell your car.</p>
+  </div>
+</div>
+
+<div class="container-fluid ">
+	<br>
+<div class="wrapper col-xl-6 col-md-6 col-lg-6 col-sm-12 col-12 shadow ml-auto mr-auto" style="background-color: #e4e4e4">
+	<form [formGroup]="myForm" (ngSubmit)="postCar()"> 
+		<br>
+		<div class="label">
+			<label>Your Brand<sup>*</sup></label>
+			<br>
+			<input type="" list="brand" name="" placeholder="Search for Brand" class="form-control" formControlName="brand">
+			<datalist id="brand">
+                                <option id="7638" value="Ashok Leyland"></option><option id="3960" value="Aston Martin"></option><option id="205" value="Audi"></option><option id="207" value="BMW"></option><option id="206" value="Bentley"></option><option id="7648" value="Bugatti"></option><option id="7652" value="Caterham"></option><option id="208" value="Chevrolet"></option><option id="7673" value="DC"></option><option id="209" value="Daewoo"></option><option id="7660" value="Datsun"></option><option id="29259" value="Eicher Polaris"></option><option id="3961" value="Ferrari"></option><option id="210" value="Fiat"></option><option id="29256" value="Force Motors"></option><option id="211" value="Ford"></option><option id="212" value="Hindustan Motors"></option><option id="213" value="Honda"></option><option id="214" value="Hyundai"></option><option id="7677" value="ICML"></option><option id="7719" value="Isuzu"></option><option id="3963" value="Jaguar"></option><option id="54157" value="Jeep"></option><option id="3964" value="Lamborghini"></option><option id="3965" value="Land Rover"></option><option id="54158" value="Lexus"></option><option id="215" value="Mahindra"></option><option id="216" value="Maruti Suzuki"></option><option id="3966" value="Maserati"></option><option id="217" value="Mercedes Benz"></option><option id="3967" value="Mini"></option><option id="218" value="Mitsubishi"></option><option id="219" value="Nissan"></option><option id="220" value="Opel"></option><option id="3968" value="Porsche"></option><option id="7730" value="Premier"></option><option id="364" value="Renault"></option><option id="221" value="Rolls Royce"></option><option id="29257" value="San"></option><option id="222" value="Skoda"></option><option id="29258" value="Ssangyong"></option><option id="223" value="Tata"></option><option id="224" value="Toyota"></option><option id="225" value="Volkswagen"></option><option id="226" value="Volvo">                              </option>
+        </datalist>
+                              
+		</div>
+		<div class="label">
+			<br>
+			<label>Your Model<sup>*</sup></label>
+			<br>
+			<input type="text" name="" placeholder="model" class="form-control" formControlName="model">
+		</div>
+		<br>
+		<!-- <div class="label">
+			<label>Fuel Type<sup>*</sup></label>
+			<br>
+			<ul class="fuel" >
+				<li><input type="radio" value="petrol" name="fuel" formControlName="fuel" checked> <label>Petrol</label></li>
+				<li><input type="radio" value="diesel" name="fuel" formControlName="fuel"><label>Diesel</label></li>
+				<li><input type="radio" value="cng" name="fuel" formControlName="fuel"><label>CNG</label></li>
+				<li><input type="radio" value="lpg" name="fuel" formControlName="fuel"><label>LPG</label></li>
+				<li><input type="radio" value="electric" name="fuel" formControlName="fuel"><label>Electric</label></li>
+			</ul>
+		</div> -->
+
+		<div class="label">
+			<label>Description<sup>*</sup></label>
+			<br>
+			<textarea rows="4" cols="75" placeholder="write something about your product to attract customers... 
+for eg. kms_driven, Fuel type, present condition, engine power etc." class="form-control" formControlName="description"></textarea>
+		</div>
+		<br>
+		<div class="label">
+			<label>Year of registration<sup>*</sup></label>
+			<br>
+			<input type="number" name="" min="1990" max="2019" class="form-control" formControlName="year_reg">
+		</div>
+		<br>
+		<!-- <div class="label">
+			<label>Kms Driven<sup>*</sup></label>
+			<br>
+			<input type="text" name="" class="form-control" formControlName="kms_driven">
+		</div> -->
+		<br>
+		<div class="label">
+			<label>City<sup>*</sup></label><br>
+			<input type="text" name="" class="form-control" formControlName="city">
+		</div>
+		<br>
+		<div class="label">
+			<label>Locality<sup>*</sup></label><br>
+			<input type="text" name="" class="form-control" formControlName="locality">
+		</div>
+		<br>
+		<div class="label">
+			<label>Set a price<sup>*</sup></label><br>
+			<input style="padding-left: 30px;" type="number" name="" class="form-control" formControlName="price">
+			<span class="rs">₹</span>
+		</div>
+		<div class="label">
+			<label>Upload Photos</label>
+
+				<div class="carsImg" >
+				<label  for="img1"><img  height="200px" width="300px" style="border:2px solid #007bff; margin-right: 50px;"  [src]="urls[0]" class="shadow" width="180"></label>
+				<label for="img2"><img height="200px" width="300px" style="border:2px solid #007bff;"  [src]="urls[1]" class="shadow" width="180"></label>
+				</div>
+				<div class="hide">
+					<input type="file" id="img1"  (change)="detectFiles($event,0)">
+					<input type="file" id="img2"  (change)="detectFiles($event,1)" [disabled]="!firstTime" >
+				</div>	
+		</div>
+		<br>
+			<div *ngIf="imgErr" class="alert alert-danger">
+			Select 2 images
+			</div>	
+
+			<div *ngIf="myForm.invalid" class="alert alert-danger">
+			All Fieds are mandatory
+			</div>		
+        <hr>
+
+			
+				<button class="btn btn-success shadow" type="submit" [disabled]="myForm.invalid">Post Ad</button>
+				<br>
+				<br>
+	</form>
+</div>
+</div>
+
+
+<br>
+<br>

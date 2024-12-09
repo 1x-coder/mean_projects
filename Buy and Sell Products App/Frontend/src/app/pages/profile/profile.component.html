@@ -1,0 +1,159 @@
+<br>
+
+<div class="container-fluid ">
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	  <li class="nav-item">
+	    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Personal Info</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Change Password</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Edit</a>
+	  </li>
+	</ul>
+	<div class="tab-content" id="myTabContent">
+
+	  <div class="tab-pane fade show active info" id="home" role="tabpanel" aria-labelledby="home-tab">
+	  	<!-- profile -->
+	  	<br>
+	  	<div class="row">
+
+	  		<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 dp">
+	  			<img  [src]="defaultProfileImg" width="250px">
+	  		</div>
+	  		<div *ngFor="let r of resProfile" class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 details">
+	  			<h3 class="name">{{r.username}}</h3>
+	  			<p class="small email">
+	  			Verified by <img src="assets/img/googleLogo.png" height="35px;"><br>
+	  			{{r.email}}</p>
+	  			
+	  			<hr>
+	  			<br>
+	  			<div class="row">
+	  			<div class="key col-4">
+	  			<ul>
+	  				<li>Mobile No.</li>
+	  				<li>D.O.B</li>
+	  				<li>Address</li>
+	  				<br>
+	  				<li>Total Ads posted</li>
+	  				<li>Active Ads </li>
+	  				<li>Inactive Ads</li>
+	  				<li>Total Products Sold</li>
+	  				<li>Free Ads</li>
+	  				<li>Premium Ads</li>
+	  			</ul>
+	  			</div>
+
+	  			<div class="value col-4">
+	  			<ul>
+	  				<li>{{r.mobile}}</li>
+	  				<li>{{r.dob|date:'mediumDate'}}</li>
+	  				<li>{{r.locality}}, {{r.city}}</li>
+	  				<br>
+	  				<li>20</li>
+	  				<li>3</li>
+	  				<li>4</li>
+	  				<li>5</li>
+	  				<li>2</li>
+	  				<li>1</li>
+	  			</ul>
+	  			</div>
+	  			</div>
+	  			
+	  		</div>
+
+
+	  		
+	  	</div>
+	  	<br>
+	 
+
+
+
+
+
+
+	</div>
+
+	  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+	  	<!-- change password -->
+	  	<br>
+	  	<div class="chngPass  col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+	  		<form>
+	  		<div>
+	  			<label>Old Password</label>
+	  			<input type="password" name="" class="form-control">
+	  		</div>
+	  		<br>
+	  		<div>
+	  			<label>New Password</label>
+	  			<input type="password" name="" class="form-control">
+	  		</div>
+	  		<br>
+	  		<div>
+	  			<label>Confirm Password</label>
+	  			<input type="password" name="" class="form-control">
+	  		</div> 
+	  		<br>
+	  		<p class="updateBtn">Update Password</p>
+
+	  		</form>
+	  	</div>
+	  	<br>
+
+
+	  </div>
+
+	  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+	  	<!-- edit -->
+	  	<br>
+	  	<div class="row">
+	  	<div class="chngPass col-md-4">
+	  		<form [formGroup]="updateForm"  *ngFor="let r of resProfile" (ngSubmit)="updateProfile()">
+	  		<div>
+	  			<label>Name</label>
+	  			<input type="text" name="" class="form-control" formControlName="name" value="{{r.username}}" required>
+	  		</div>
+	  		<br>
+	  		<div>
+	  			<label>Email</label>
+	  			<input type="text" name="" class="form-control" readonly formControlName="email" value="{{r.email}}">
+	  		</div>
+	  		<br>
+	  		<div>
+	  			<mat-form-field class="example-full-width">
+				  <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob" value="{{r.dob}}">
+				  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				  <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+				</mat-form-field>
+	  		</div>
+	  		<br>
+	  		<div>
+	  			<label>Phone</label>
+	  			<input type="number" name="" class="form-control" formControlName="mobile" value="{{r.mobile}}">
+	  		</div> 
+	  		<br>
+	  		<div>
+	  			<label>Address</label>
+	  			<input type="text" name="" class="form-control" value="{{r.locality}}" formControlName="locality">
+	  			<input type="text" name="" class="form-control" value ="{{r.city}}" formControlName="city">
+	  		</div> 
+	  		<br>
+	  		<span class="submitBtnPos">
+	  		<input type="submit" name="" class="updateBtn" value="Update Details">
+	  		</span>
+	  		</form>
+	  	</div>
+	  	<div class="col-6 changedp">
+	  		<img [src]="defaultProfileImg" width="300px;" height="370px;">
+	  		<label for="selectImg"><p  class=" choosepic">Change photo</p></label>
+	  		<input class="hide" id="selectImg" type="file" name="" (change)="detectFiles($event)">
+
+	  	</div>
+	  	</div>
+	  	<br>
+	  </div>
+	</div>
+</div>

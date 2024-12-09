@@ -1,0 +1,60 @@
+.home-container{
+    
+    
+}
+
+.hero-img{
+    margin-top: 30px;
+    border-radius: 25px;
+    z-index: -10;
+}
+
+@media screen and (max-width: 600px) {
+    .hero-img{
+        width: 300px;
+    }
+}
+.search-bar{
+    position: relative;
+    top: -300px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.search-btn{
+    background-color: #63a033;
+    color: #e5e5e5;
+}
+
+.search-btn:hover{
+    background-color: #477425;
+    color: #e5e5e5;
+}
+
+.restaurant-card{
+    padding: 10px;
+    width: 100%;
+    background-color: #fbfcc9;
+}
+
+.restaurant-card .card-title{
+    color: #63a033;
+}
+
+.restaurant-card .details-btn{
+    background-color: #63a033;
+    color: #e5e5e5;
+    float: right;
+}
+
+.restaurant-card .details-btn:hover{
+    background-color: #477425;
+    color: #e5e5e5;
+}
+
+.restaurant-card img{
+    height: 250px;
+    width: 180px;
+    border-radius: 15px;
+}

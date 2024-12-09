@@ -1,0 +1,24 @@
+@import "src/styles.scss";
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  &__link {
+    margin: 0 1%;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1/1;
+
+      &:hover {
+        // border: $bw--thin solid $clr-accent--primary;
+        // border-radius: 100%;
+        color: $clr--primary;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

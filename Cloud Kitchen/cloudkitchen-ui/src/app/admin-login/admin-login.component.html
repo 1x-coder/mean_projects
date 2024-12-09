@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row mt-5 mb-5">
+      <div class="col-md-10 col-sm-12 offset-md-1">
+        <div class="card cd">
+          <img
+            class="card-image-top login-bg-img"
+            src="../../assets/image/dp-login-bg-img.jpg"
+            alt="bg-img-login"
+          />
+          <div class="card-img-overlay">
+            <div class="row mt-5">
+              <div class="col-md-6 col-sm-12 offset-md-6">
+                <div class="text-center ts display-4">
+                  Login
+                </div>
+                <div class="ts text-center">
+                  for Admins 
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="login()" class="mb-3">
+                  <mat-form-field class="full-width">
+                    <mat-label>
+                      Contact no.
+                    </mat-label>
+                    <input matInput placeholder="Enter contact number" id="adminMobileNum"
+                    formControlName="contact"/>
+                  </mat-form-field>
+                  <div *ngIf="loginForm.controls.contact.errors?.required && loginForm.controls.contact.dirty">
+                    <span class="text-danger">Field required</span>
+                  </div>
+                  <mat-form-field class="full-width">
+                    <mat-label>
+                      Password
+                    </mat-label>
+                    <input matInput type="password" placeholder="Enter password"  id="adminPassword"
+                    formControlName="pass" />
+                  </mat-form-field>
+                  <div *ngIf="loginForm.controls.pass.errors?.required && loginForm.controls.pass.dirty">
+                    <span class="text-danger">Field required</span>
+                  </div>
+                  <button type="submit" class="btn btnx" [disabled]="loginForm.invalid">Login</button>
+                  <mat-spinner *ngIf="loading" diameter="20" class="float-right"></mat-spinner>
+                </form>
+                <br>
+              <div *ngIf="errorMessage" class="text-danger">{{errorMessage}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

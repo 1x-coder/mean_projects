@@ -1,0 +1,107 @@
+<div class="row">
+    <p class="h6 go-home" (click)="goHome()">Go to home.</p>
+</div>
+
+<div class="row">
+    <div class="description-block" *ngIf = "restaurantDetails">
+        <div class="content">
+            <span class="h2 restaurant-title">{{restaurantDetails.restaurantName | titlecase}}</span><br>
+            <span class="text-muted"> {{restaurantDetails.restaurantAddress | titlecase }} - {{restaurantDetails.restaurantPincode}} </span> <br>
+            <span>{{restaurantDetails.restaurantEmail}}</span><br>
+            <span>{{restaurantDetails.restaurantMobile}}</span><br>
+            <span>Rating: {{ restaurantDetails.restaurantRating}}</span><br>
+            <span>{{restaurantDetails.restaurantAbout | titlecase }}</span>
+        </div>
+        <div class="image">
+            <img src="http://localhost:1050/customer/getRestaurantImage/{{restaurantDetails.restaurantPhoto}}" alt="Restaurant Image" />
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="ambiance-block">
+        <div class="ambiance-heading">
+            <p class="h2">Ambiance</p>
+        </div>
+
+        <div class="ambiance-slider">
+            <!-- Code yet to be written -->
+            <p class="text-muted">Content coming up soon ...</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="menu-block">
+        <div class="menu-heading">
+            <p class="h2">Menu</p>
+        </div>
+
+        <div class="menu-toggle">
+            <mat-slide-toggle ngModel name="vegOnly" (change)="displayVeg()"> <span class="veg-only-toggle h6">Veg Only</span> </mat-slide-toggle>
+        </div>
+        <div class="menu-search col-md-8 col-lg-8 offset-md-2 offset-lg-2 col-12">
+            <input type="text" placeholder="Search Food Items 🍭" [(ngModel)]="searchKeyword" class="form-control"/>
+            <button class="btn" (click)="foodSearch()">🍳</button>
+        </div>
+
+        <div class="menu-list">
+            <div class="row" *ngFor="let foodItem of foodDetails">
+                <div class="col-md-8 col-lg-8 offset-md-2 offset-lg-2 col-12" *ngIf="vegOnly">
+                    <div class="card food-card" *ngIf="foodItem.available && foodItem.veg">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="card-image">
+                                    <img src="http://localhost:1050/customer/getFoodImage/{{foodItem.img}}" alt="Restaurant Profile Image." />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="card-content text-justify">
+                                    <p class="h4 card-title text-center">{{foodItem.name | titlecase}}</p>
+                                    <span class="h6 text-muted">Price: </span>{{foodItem.price | currency:'INR'}} <sup class="text-success discount">{{foodItem.discount/100 | percent}}</sup> <br>
+                                    <span *ngIf="foodItem.veg" class="text-success h6">Veg</span>
+                                    <span *ngIf="!foodItem.veg" class="text-danger h6">Non-Veg</span>
+                                    <br>
+                                    <span class="text-right">
+                                        <button *ngIf="isLoggedIn" class="btn btn-success add-btn" (click)="addToCart(food_id)">Add to cart.</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-8 offset-md-2 offset-lg-2 col-12" *ngIf= "!vegOnly">
+                    <div class="card food-card" *ngIf="foodItem.available">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="card-image">
+                                    <img src="http://localhost:1050/customer/getFoodImage/{{foodItem.img}}" alt="Restaurant Profile Image." />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="card-content text-justify">
+                                    <p class="h4 card-title text-center">{{foodItem.name | titlecase}}</p>
+                                    <span class="h6 text-muted">Price: </span>{{foodItem.price | currency:'INR'}} <sup class="text-success discount">{{foodItem.discount/100 | percent}}</sup> <br>
+                                    <span *ngIf="foodItem.veg" class="text-success h6">Veg</span>
+                                    <span *ngIf="!foodItem.veg" class="text-danger h6">Non-Veg</span>
+                                    <br>
+                                    <span class="text-right">
+                                        <button *ngIf="isLoggedIn" class="btn btn-success add-btn" (click)="addToCart(foodItem)">Add to cart.</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-lg-8 col-12 offset-lg-2 offset-md-2">
+        <button *ngIf="isLoggedIn" class="btn btn-success ordering-cart-btn form-control" (click)="viewOrderingCart()">View Ordering Cart.</button>
+    </div>
+</div>

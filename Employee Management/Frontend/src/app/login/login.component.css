@@ -1,0 +1,109 @@
+::-webkit-scrollbar
+{
+    display: none;
+}
+
+img {
+    width: 100%;
+}
+
+.login {
+    height: 800px;
+    width: 100%;
+    background: linear-gradient(#ff00ee, #0278ff);
+    position: relative;
+}
+
+.login_box {
+    width: 60%;
+    height: 68%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 4px 22px -8px #0004;
+    display: flex;
+    overflow: hidden;
+}
+
+.login_box .left {
+    width: 48%;
+    height: 100%;
+    padding: 10px 12px;
+
+}
+
+.mb-3 {
+    margin-bottom: 4px!important;
+}
+
+.login_box .right {
+    width: 59%;
+    height: 100%
+}
+
+.left .contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.left {
+    background: linear-gradient(-45deg, #dcd7e0, #fff);
+}
+
+::placeholder
+{
+    font-style: italic;
+    opacity: 0.5;
+}
+
+button {
+    border: none;
+    padding: 12px 40px;
+    border-radius: 8px;
+    display: block;
+    margin: auto;
+    background: linear-gradient(#ff00ee, #0278ff);
+    color: #fff;
+    font-weight: bold;
+    -webkit-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
+    -moz-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
+    box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
+}
+
+button:hover
+{
+    background: linear-gradient(#0278ff,#ff00ee);
+}
+
+
+
+.right {
+    padding: 50px 10px;
+}
+
+.form-label
+{
+    font-size: large;
+}
+
+.text-left
+{
+    font-size: small;
+}
+
+.text-left li{
+    list-style-type: none;
+}
+
+.eye
+{
+    margin-left: 2px;
+}

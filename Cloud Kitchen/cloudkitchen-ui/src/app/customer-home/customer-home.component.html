@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-12">
+        <div class="home-container text-center">
+            <img src="../../assets/image/backgroung.jpg" height="500px" width="800px" class="hero-img" alt="background" />
+            <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-12 offset-6">
+                <div class="search-bar">
+                    <input type="text" class="form-control" placeholder="Enter what you seek. 🍳" [(ngModel)]="searchedKey"/>&nbsp;
+                    <button class="search-btn btn btn-success" (click)="searchFood()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-lg-8 col-12 offset-lg-2 offset-md-2">
+        <div *ngIf="errorMessage" class="text-center">
+            <p class="h5 text-secondary">{{errorMessage}}</p>
+        </div>
+        <div *ngIf = "searchOutcomes">
+            <div class="row" *ngFor = "let restaurant of searchOutcomes">
+                <div class="card restaurant-card">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                            <div class="card-image">
+                                <img src="http://localhost:1050/customer/getRestaurantImage/{{restaurant.restaurantPhoto}}" alt="Restaurant Profile Image." />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="card-content text-justify">
+                                <p class="h4 card-title text-center">{{restaurant.restaurantName | titlecase}}</p>
+                                <span class="h6 text-muted">Address: </span>{{restaurant.restaurantAddress | titlecase}} <br>
+                                {{restaurant.restaurantAbout | titlecase}}<br>
+                                <span class="h6">Rating: </span>{{restaurant.restaurantRating}} <br>
+                                <span class="text-right">
+                                    <button class="btn btn-success details-btn" (click)="viewDetails(restaurant._id)">View Details</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

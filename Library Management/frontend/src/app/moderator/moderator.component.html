@@ -1,0 +1,765 @@
+
+  <div class="d-flex">
+    
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+        <li><a (click)="active='profile'"><div class="flexy"><img [src]="readerUser.picture" width="120rem"></div></a></li>
+        <br/>
+        <li><h3 style="text-align: center; color: white">{{readerUser.name}} {{readerUser.lastName}}</h3></li>
+        <br/>
+        <br/>
+        
+      <li ngbNavItem="main">
+        <a ngbNavLink>Pocetna</a>
+        <ng-template ngbNavContent>
+          
+
+          <div class="container jumbotron customBackground" style="display: flex;justify-content:center;">
+            
+            <div class=" requestsClass" style="display: flex; flex-direction: column;justify-content:center;">
+              <h1 style="color: white">KNJIGA DANA</h1>
+              <br>
+                <div class="card" style="width: 18rem; margin: 0.5rem; border-radius: 0.5rem; min-height: 20rem;">
+                  
+                    <div style="display: flex;">
+                      <div style="flex-grow: 1;">
+                        <div style="display: flex; justify-content: center; padding: 10%;"><img [src]="this.allBooks[this.randomBook].picture"max-width="100px" height="100px"></div>
+                        <div class="card-body">
+                          
+                          <h4 class="card-title">Naslov: {{this.allBooks[this.randomBook].title}}</h4>
+                          <h5 class="card-title">Autori: {{this.allBooks[this.randomBook].writer}}</h5>
+                          
+                          <ngb-rating [(rate)]="this.allBooks[this.randomBook].averageRating" [readonly] = "true"></ngb-rating>
+                            <hr>
+                          <pre style="font-family: 'Caveat', cursive;">Prosecna ocena: <b>{{this.allBooks[this.randomBook].averageRating}}</b></pre>
+                          
+                        </div>
+                      
+                     
+                      </div>
+        
+                </div>
+              </div>
+              <br>
+              <h3 style="color: white;">Obavestenja:</h3>
+              <br>
+              <div>
+              <div *ngFor='let p of notifications' >
+                <h6 class="notificationClass">{{p.text}}</h6>
+                <br/>
+              </div>
+            </div>
+
+
+
+        </div>
+      </div>
+
+
+        </ng-template>
+      </li>
+      <li ngbNavItem="profile">
+        <a ngbNavLink>Profil</a>
+        <ng-template ngbNavContent>
+            
+          <div class="row d-flex justify-content-center align-items-center registrationPanel">
+            <div class="col-12">
+              <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                <div class="card-body p-0">
+                  <div class="row g-0">
+
+
+                    <div class="col-lg-6">
+                      <div class="p-5">
+                        
+                        <h1 class="fw-normal mb-5" style="color: #4835d4;">Profil korisnika:</h1>
+                      
+                        <img width="100rem" [src]="readerUser.picture">
+                        
+
+      
+                        <div class="row">
+                          
+                            <div class="col-md-5 mb-4 pb-2">
+                              
+                              <div class="form-outline form-white">
+                                <br/>
+                                <input type="text" id="input5" class="form-control form-control-lg" name="registerName" [(ngModel)]="registerName" required />
+                                <label class="form-label" for="input5">Ime</label>
+                            </div>
+                            <span style='color: red'>{{registerNameMessage}}</span>
+        
+                            </div>
+                            <div class="col-md-7 mb-4 pb-2">
+        
+                              <div class="form-outline form-white">
+                                <br/>
+                                <input type="text" id="input6" class="form-control form-control-lg" name="registerLastName" [(ngModel)]="registerLastName" required />
+                                <label class="form-label" for="input6">Prezime</label>
+                                
+                              </div>
+                              <span style='color: red'>{{registerLastNameMessage}}</span>
+                            </div>
+                          </div>
+                              
+
+                              <div class="mb-4 pb-2">
+                                <div class="form-outline">
+                                  <input type="text" id="input7" class="form-control form-control-lg" name="registerAddress" [(ngModel)]="registerAddress" required/>
+                                  <label class="form-label" for="input7">Adresa</label>
+                                  
+                                </div>
+                                <span style='color: red'>{{registerAddressMessage}}</span>
+                              </div>
+
+                              <div class="mb-4 pb-2">
+                                <div class="form-outline">
+                                  <input type="text" id="input8" class="form-control form-control-lg" name="registerContact" [(ngModel)]="registerContact" required />
+                                  <label class="form-label" for="input8">Kontakt telefon</label>
+                                </div>
+                                <span style='color: red'>{{registerContactMessage}}</span>
+                              </div>
+
+                              
+
+
+
+
+
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-lg-6 bg-indigo text-white">
+                      <div class="p-5">
+                       
+                        <h3 class="fw-normal mb-5">Izmenite podatke po potrebi i pritisnite dugme azuriraj</h3>
+                        
+
+
+                        
+                        <div class="form-outline">
+                          <input type="text" id="input9" class="form-control form-control-lg" name="registerEmail" [(ngModel)]="registerEmail" required />
+                          <label class="form-label" for="input9">Email adresa</label>
+                        </div>
+                        <span style='color: red'>{{registerEmailMessage}}</span>
+
+
+
+
+                        <div class="mb-4 pb-2">
+                          <div class="form-outline form-white">
+                            <input type="text" id="input10" class="form-control form-control-lg" name="registerUsername" [(ngModel)]="registerUsername" required />
+                            <label class="form-label" for="input10">Korisnicko ime</label>
+                          </div>
+                          <span style='color: red'>{{registerUsernameMessage}}</span>
+                        </div>
+      
+                        
+
+                          <tr>
+                            <td>
+                                <input id="pictureUpload" type="file" (change)="addPicture($event)" accept="image/jpg, image/png"  *ngIf="readerUser.blocked==false" required >
+                            </td>
+                            {{pictureAddingMessage}}
+                            <img *ngIf="isSaved" [src]="picturePath()" alt="" />
+                            
+                        </tr>
+                        
+                        <br/>
+                        
+                        
+      
+                        <button type="button" class="btn btn-light btn-lg"
+                          data-mdb-ripple-color="dark" (click)="update()" *ngIf="readerUser.blocked==false">Azuriraj</button>
+                        
+                          <span *ngIf="validationSuccess" style='color: green; margin: 2%;'>Uspesno azurirane informacije o korisniku!</span>
+                          
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+            </div >
+            
+            <div  style="margin: 2%; background-color: #FFFFFF; padding: 2%; border-radius: 0.5rem;">
+              <h2 style="color: #29598a; margin: 2%;">Pregled citalackih navika</h2>
+              <h5 style="color: #29598a">Broj procitanih knjiga u prethodnih 12 meseci</h5>
+              <br/>
+              <div style="display: flex; flex-wrap: wrap;">
+              <div class="grafico" *ngFor="let item of takenBooksGraph">
+                <div class="content">
+                    <div class="bars">
+                        <span style="color: #29598a">{{item.Value}}</span>
+                        <div class="bar" [style.background-color]="item.Color" [style.height]='item.Size'></div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="legends">
+                    <span style="color: #29598a" >{{item.Legend}}</span>
+                </div>
+            </div>
+          </div>
+
+          <br/>
+          <br/>
+          <br/>
+
+            <div style="margin: 2%; " >
+              <h5 style="color: #29598a">Broj procitanih knjiga po zanrovima</h5>
+
+              <div style="display: flex; flex-wrap: wrap;">
+              <div class="grafico" *ngFor="let item of genresGraph">
+                <div class="content">
+                    <div class="bars" >
+                        <span style="color: #29598a">{{item.Value}}</span>
+                        <div class="bar" [style.background-color]="item.Color" [style.height]='item.Size'></div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="legends">
+                    <span style="color: #29598a">{{item.Legend}}</span>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+          </div>
+   
+
+
+
+
+
+
+
+          
+
+
+
+        </ng-template>
+      </li>
+      <li ngbNavItem="changePassword" *ngIf="readerUser.blocked==false">
+        <a ngbNavLink>Promena lozinke</a>
+        <ng-template ngbNavContent>
+          
+          <div style="display: flex;justify-content:center;align-items: center;">
+          <div class="col-lg-6 bg-indigo text-white" style="border-radius: 0.5rem;">
+            <div class="p-5">
+              <h3 class="fw-normal mb-5">Promena lozinke</h3>
+              
+
+              <div class="mb-4 pb-2">
+                <div class="form-outline form-white">
+                  <input type="password" id="oldPassword" class="form-control form-control-lg" name="oldPassword" [(ngModel)]="oldPassword" required />
+                  <label class="form-label" for="oldPassword">Stara lozinka</label>
+                  <span style='color: red; display: block; margin-top: 1%;'>{{oldPasswordMessage}}</span>
+                </div>
+                
+              </div>
+
+              <div class="mb-4 pb-2">
+                <div class="form-outline form-white">
+                  <input type="password" id="newPassword1" class="form-control form-control-lg" name="newPassword1" [(ngModel)]="newPassword1" required />
+                  <label class="form-label" for="newPassword1">Nova lozinka</label>
+                  <span style='color: red; display: block; margin-top: 1%;'>{{newPassword1Message}}</span>
+                </div>
+                
+              </div>
+
+              <div class="mb-4 pb-2">
+                  <div class="form-outline form-white">
+                    <input type="password" id="newPassword2" class="form-control form-control-lg" name="newPassword2" [(ngModel)]="newPassword2" required />
+                    <label class="form-label" for="newPassword2">Potvrda nove lozinke</label>
+                    <span style='color: red; display: block; margin-top: 1%;'>{{newPassword2Message}}</span>
+                  </div>
+                  
+                </div>
+              
+              
+
+
+              <button type="button" class="btn btn-light btn-lg"
+                data-mdb-ripple-color="dark" (click)="changePassword()" >Promeni lozinku</button>
+                <br/>
+                <br/>
+                <span style='color: red; display: block; margin-top: 1%;' >{{badOldPasswordMessage}}</span>
+                <span style='color: red; display: block; margin-top: 1%;'>{{notSameMessage}}</span>
+                <span style='color: red; display: block; margin-top: 1%;'>{{requiredRegex2Message}}</span>
+                <span *ngIf="changePasswordSuccess" style='color: green; margin: 2%;'>Uspesno promenjena lozinka</span>
+                
+              </div>
+          </div>
+        </div>
+
+        </ng-template>
+      </li>
+      
+
+      
+<!--------------------------------------RAZLIKA MODERATORA U ODNOSU NA OBICNOG KORISNIKA------------>
+
+
+<!--------------------------------------DODAVANJE KNJIGA DIREKTNO U SISTEM---------------------------------------->
+
+
+<li ngbNavItem="addBooksDirect" *ngIf="readerUser.blocked==false">
+  <a ngbNavLink>Dodavanje knjiga</a>
+  <ng-template ngbNavContent>
+    
+     
+
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                  <div class="card-body p-0">
+                    <div class="row g-0">
+
+
+                      <div class="col-lg-6">
+                        <div class="p-5">
+                          <h3 class="fw-normal mb-5" style="color: #4835d4;">Osnovne informacije o knjizi</h3>
+        
+        
+                          
+
+
+                            
+                            <div class="mb-4 pb-2">
+                              <div class="form-outline">
+                                <input type="text" id="input55" class="form-control form-control-lg" name="newBookTitle" [(ngModel)]="newBookTitle" required/>
+                                <label class="form-label" for="input7">Naziv knjige</label>
+                                
+                              </div>
+                              <span style='color: red'>{{newBookTitleMessage}}</span>
+                            </div>
+
+
+                            
+                            <div class="mb-4 pb-2">
+                              <div class="form-outline">
+                                <input type="text" id="input56" class="form-control form-control-lg" name="newBookWriter" [(ngModel)]="newBookWriter" required/>
+                                <label class="form-label" for="input7">Autor</label>
+                                
+                              </div>
+                              <span style='color: red'>{{newBookWriterMessage}}</span>
+                            </div>
+                                
+                            <!--<h6>Zanr(izabrati do 3 zanra)</h6>
+                            <select class="form-select" multiple aria-label="multiple select example" name="model" [(ngModel)]="newBookArrayGenre">
+                              <option selected value="Thriller">Thriller</option>
+                              <option value="Mistery">Mistery</option>
+                              <option value="Fantasy">Fantasy</option>
+                              <option value="Drama">Drama</option>
+                            </select>-->
+
+                            <mat-form-field>
+                              <mat-label style="color: black;  font-family: 'Caveat', cursive;">Zanr(izabrati do 3 zanra)</mat-label>
+                              <mat-select name="model" [(ngModel)]="newBookArrayGenre" multiple>
+                                <mat-option *ngFor="let genre of genresList" [value]="genre">{{genre}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+
+                            <span style='color: red'>{{newBookArrayGenreError}}</span>
+                            
+
+                                <div class="mb-4 pb-2">
+                                  <div class="form-outline">
+                                    <input type="text" id="input8" class="form-control form-control-lg" name="newBookPublisher" [(ngModel)]="newBookPublisher" required />
+                                    <label class="form-label" for="input8">Izdavac</label>
+                                  </div>
+                                  <span style='color: red'>{{newBookPublisherMessage}}</span>
+                                </div>
+
+                                
+
+
+
+                              <div class="form-outline">
+                                <input type="text" id="input9" class="form-control form-control-lg" name="newBookPubYear" [(ngModel)]="newBookPubYear" required />
+                                <label class="form-label" for="input9">Godina izdanja</label>
+                              </div>
+                              <span style='color: red'>{{newBookPubYearMessage}}</span>
+
+
+                        </div>
+                      </div>
+
+
+
+                      <div class="col-lg-6 bg-indigo text-white">
+                        <div class="p-5">
+                          <h3 class="fw-normal mb-5">Unesite informacije i pritisnite dodaj knjigu!</h3>
+        
+                          <div class="mb-4 pb-2">
+                            <div class="form-outline form-white">
+                              <input type="text" id="input10" class="form-control form-control-lg" name="newBookLanguage" [(ngModel)]="newBookLanguage" required />
+                              <label class="form-label" for="input10">Jezik</label>
+                            </div>
+                            <span style='color: red'>{{newBookLanguageMessage}}</span>
+                          </div>
+
+                          
+                          <tr>
+                            <td>
+                                <input id="pictureUpload" type="file" (change)="addPictureBook($event)" accept="image/jpg, image/png"  required >
+                            </td>
+                            {{pictureAddingMessageBook}}
+                            <img *ngIf="isSavedBook" [src]="picturePathBook()" alt="" />
+                            
+                        </tr>
+                        <span style='color: red'>{{requiredPictureMessageBook}}</span>
+                        <br/>
+                        
+
+      
+                        <button type="button" class="btn btn-light btn-lg"
+                          data-mdb-ripple-color="dark" (click)="registerNewBook()">Dodaj knjigu</button>
+                        
+                          <span *ngIf="validationSuccessBook" style='color: green; margin: 2%;'>Uspesno dodata knjiga!</span>
+                          <!--<img [src]="picture">-->
+
+
+
+        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+     
+
+
+
+  </ng-template>
+</li>
+
+    
+
+
+
+
+     
+    
+      <!---------------------------PREGLED ZADUZENIH KNJIGA-------------------------------------------------------->
+
+      
+      <li ngbNavItem="requestsBook">
+        <a ngbNavLink>Pregled zaduzenih knjiga</a>
+        <ng-template ngbNavContent>
+          
+            <div class="container jumbotron customBackground" style="display: flex;justify-content:center;">
+                
+                    <div class=" requestsClass">
+                    
+                        <div *ngFor='let p of requestsToConfirm' style="margin: 0.5rem;">
+                            <div class="card" *ngIf="!p.processed" style="display: flex;width: 18rem; border-radius: 0.5rem; min-height: 30rem;">
+                              <div style="flex-grow: 1;">
+                            <div style="display: flex; justify-content: center; padding: 10%;"><img [src]="p.picture" max-width="100px" height="100px"></div>
+                            <div class="card-body">
+                              <h4 class="card-title">Naslov: {{p.title}}</h4>
+                              <h5 class="card-title">Autori: {{p.writer}}</h5>
+                              
+                              <h5 class="card-title" *ngIf="calculateDaysLeft(p) > 0">Preostali broj dana za vracanje knjige: <span style="color: green;">{{calculateDaysLeft(p)}}</span></h5>
+                              <h5 class="card-title" *ngIf="calculateDaysLeft(p) < 0">Broj dana koliko kasnite sa vracanjem knjige: <i><span style="color: red;">{{-calculateDaysLeft(p)}}</span></i></h5>
+                              <br/>
+                            </div>
+                              <div style="display: flex; justify-content:center;">
+                                <button *ngIf="readerUser.blocked==false" class="btn btn-primary" style="margin: 10px;"(click)="navigateToBookPage(p.idBook)">Detalji</button>
+                              <button  class="btn btn-primary" style="margin: 10px;" (click)="returnBook(p)">Razduzivanje</button>
+                              <button  *ngIf="!p.extended" class="btn btn-primary" style="margin: 10px;" (click)="extendDeadline(p)">Produzi</button>
+                              
+                              </div>
+                            </div>
+                        </div>
+                        <!--<div *ngIf="p.processed" style="display: flex;justify-content:center;">
+                            <p>Obradjen!</p>
+                        </div>-->
+
+
+                          </div>
+                        <span *ngIf='requestsToConfirm.length == 0 || requestsToConfirm == []' style='color: red; display: block; margin-top: 1%;'>"Nemate novih zahteva!"</span>
+
+                        
+                    </div>
+                
+            </div>
+        </ng-template>
+      </li>
+
+
+      <!--------------------------KNJIGA DANA-------------------------------------------------------------------------->
+
+
+      
+
+      <!---------------------------ISTORIJA ZADUZENJA-------------------------------------------------------->
+
+      <li ngbNavItem="history">
+        <a ngbNavLink>Istorija zaduzenja</a>
+        <ng-template ngbNavContent>
+          
+            <div class="container jumbotron" style="display: flex;justify-content:center;">
+                        
+                    <table class="table" *ngIf='historyLogs.length > 0'>
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">Naziv knjige</th>
+                          <th scope="col">Autori</th>
+                          <th scope="col">Datum zaduzivanja</th>
+                          <th scope="col">Datum vracanja knjige</th>
+                        </tr>
+                        <tr>
+                          <td scope="col"></td>
+                          <td scope="col">
+                            <button class="material-icons" style="font-size: 1rem; margin-left: 1em;" (click)="sortByTitle()"><span class="material-symbols-outlined">arrow_drop_up</span></button>
+                            <button class="material-icons" style="font-size: 1rem; margin-left: 1em;" (click)="sortByTitleDesc()"><span class="material-symbols-outlined">arrow_drop_down</span></button>
+                          </td>
+                          <td scope="col">
+                            <button class="material-icons" style="font-size: 1rem; margin-left: 1em;" (click)="sortByWriter()"><span class="material-symbols-outlined">arrow_drop_up</span></button>
+                            <button class="material-icons" style="font-size: 1rem; margin-left: 1em;" (click)="sortByWriterDesc()"><span class="material-symbols-outlined">arrow_drop_down</span></button>  
+                          </td>
+                          <td scope="col">
+                            <button class="material-icons" style="font-size: 1rem; margin-left: 1em;" (click)="sortByLoanDate()"><span class="material-symbols-outlined">arrow_drop_up</span></button>
+                            <button class="material-icons" style="font-size: 1rem; margin-left: 1em;" (click)="sortByLoanDateDesc()"><span class="material-symbols-outlined">arrow_drop_down</span></button>  
+                          </td>
+                          <td scope="col">
+                            <button class="material-icons" style="font-size: 1rem; margin-left: 1em;" (click)="sortByReturnDate()"><span class="material-symbols-outlined">arrow_drop_up</span></button>
+                            <button class="material-icons" style="font-size: 1rem; margin-left: 1em;" (click)="sortByReturnDateDesc()"><span class="material-symbols-outlined">arrow_drop_down</span></button>
+                          </td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor='let p of historyLogs'>
+                          <th scope="row"></th>
+                          <td>{{p.title}}</td>
+                          <td>{{p.writer}} </td>
+                          <td>{{makeDateFromString(p.loanDate)}}</td>
+                          <td>{{makeDateFromString(p.returnDate)}}</td>
+                          <td><button *ngIf="readerUser.blocked==false" class="btn btn-primary" (click)="navigateToBookPage(p.idBook)">Detalji</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+                    <span *ngIf='historyLogs.length == 0' style='color: red; display: block; margin: 1%;'>"Nemate ranijih pozajmica!"</span>
+                    
+                
+            </div>
+        </ng-template>
+      </li>
+      
+      <!-------------------------------------------------------OSNOVNA PRETRAGA------------------------->
+     
+      
+      <li ngbNavItem="searchBasic">
+        <a ngbNavLink>Osnovna pretraga</a>
+        <ng-template ngbNavContent>
+          
+            <div class="container" style="display: flex;justify-content:center;">
+            <div class="mb-3 col-lg-6" style="background-color:#004085; padding: 5%; border-radius: 0.5rem;">
+               <h3 style="color:white">Osnovna pretraga:</h3>
+                <input type="text" class="form-control" placeholder="Unesite naziv knjige" [(ngModel)]="searchParam" style="margin: 5% 0;">
+                <input type="text" class="form-control" placeholder="Unesite nazive autora (razdvojene zarezom)" [(ngModel)]="searchParamAuthor" style="margin: 5% 0;">
+                <button type="button" class="btn btn-primary"
+              data-mdb-ripple-color="dark" (click)="doSearch()" style="margin: 2% 0;">Pretraga</button>
+              </div> 
+              
+            </div>
+            <div class="cardContainer">
+              
+
+             
+                    <div style="display: flex; justify-content:center; flex-wrap: wrap;">
+                <div class="card" *ngFor='let p of searchResults' style="width: 18rem; margin: 0.5rem; border-radius: 0.5rem; min-height: 30rem;">
+                  
+                  
+                    <div style="display: flex;">
+                      <div style="flex-grow: 1;">
+                    <div style="display: flex; justify-content: center; padding: 10%;"><img [src]="p.picture" max-width="100px" height="100px"></div>
+                    <div class="card-body">
+                      <h5 class="card-title">ID: {{p.idBook}}</h5>
+                      <h4 class="card-title">Naslov: {{p.title}}</h4>
+                      <h5 class="card-title">Autori: {{p.writer}}</h5>
+                      <h5 class="card-title">Zanr: {{p.genre}}</h5>
+                      <h5 class="card-title">Izdavac: {{p.publisher}}</h5>
+                      <h5 class="card-title">Godina izdanja: {{p.pubYear}}</h5>
+                      <h5 class="card-title">Jezik: {{p.language}}</h5>
+                      
+                      
+                      <ngb-rating [(rate)]="p.averageRating" [readonly] = "true"></ngb-rating>
+                        <hr>
+                      <pre style="font-family: 'Caveat', cursive;">Prosecna ocena: <b>{{p.averageRating}}</b></pre>
+                      <button *ngIf="readerUser.blocked==false" class="btn btn-primary" style="margin: 10px;"(click)="navigateToBookPage(p.idBook)">Detalji</button>
+                    </div>
+                     <h3 style="color:red;">{{searchMessage}}</h3>
+                  
+        
+                    
+          </div>
+
+
+                  </div>
+                </div>
+                
+
+                
+            </div>
+        
+
+            </div>
+
+        </ng-template>
+      </li>
+
+
+
+ <!----------------------------------ZAHTEVI---------------------------->
+
+ <li ngbNavItem="requests" *ngIf="readerUser.blocked==false">
+  <a ngbNavLink>Zahtevi za knjige</a>
+  <ng-template ngbNavContent>
+    
+      <div class="container jumbotron" style="display: flex;justify-content:center; flex-wrap: wrap;">
+          
+             
+              
+                  <div class="card" *ngFor='let p of requestsToConfirmBook' style="width: 18rem; margin: 0.5rem; border-radius: 0.5rem;">
+                      
+                      <div style="display: flex; justify-content: center; padding: 10%;"><img [src]="p.picture" width="100px" height="100px"></div>
+                      <div class="card-body">
+                        <h5 class="card-title">Korisnicko ime podnosioca zahteva: {{p.username}}</h5>
+                        <p class="card-text requestCards">Naziv knjige: {{p.title}}</p>
+                        <p class="card-text requestCards">Autori: {{p.writer}}</p>
+                        <p class="card-text requestCards">Zanr: {{p.genre}}</p>
+                        <p class="card-text requestCards">Izdavac: {{p.publisher}}</p>
+                        <p class="card-text requestCards">Godina izdanja : {{p.pubYear}}</p>
+                        <p class="card-text requestCards">Jezik: {{p.language}}</p>
+                       
+                          <br/>
+                        <div style="display: flex; justify-content:space-around;">
+                          <button (click)="acceptRequest(p)" class="btn btn-primary" style="background-color:green;margin: 1%;">Prihvati zahtev</button>
+                        <button (click)="refuseRequest(p)" class="btn btn-primary" style="background-color:red;margin: 1%;">Odbij zahtev</button>
+                        
+                        </div>
+                      </div>
+                  </div>
+                   
+                  <span *ngIf='requestsToConfirmBook.length == 0' style='color: red; display: block; margin-top: 1%;'>"Nemate novih zahteva!"</span>
+
+                  
+              </div>
+          
+      
+  </ng-template>
+</li>
+
+
+
+
+
+
+<!-------------------------------------------------------------NAPREDNA PRETRAGA---------------------------->
+
+
+      
+<li ngbNavItem="searchAdvanced" *ngIf="readerUser.blocked==false">
+  <a ngbNavLink>Napredna pretraga</a>
+  <ng-template ngbNavContent>
+    
+      <div class="container" style="display: flex;justify-content:center;">
+      <div class="mb-3 col-lg-6" style="background-color:#004085; padding: 5%; border-radius: 0.5rem;">
+        <h3 style="color:white">Napredna pretraga:</h3>
+        <br/>
+          <input type="text" class="form-control mb-3" placeholder="Unesite naziv knjige" [(ngModel)]="searchAdvancedParamTitle">
+          <input type="text" class="form-control mb-3" placeholder="Unesite nazive autora (razdvojene zarezom)" [(ngModel)]="searchAdvancedParamAuthor">
+          <div style="display: flex;justify-content:space-between; gap: 10px;">
+            <input type="text" class="form-control mb-3 col-lg-5 col-md-4" placeholder="Godina izdanja od" [(ngModel)]="searchParamYearAfter" >
+            <input type="text" class="form-control mb-3 col-lg-5 col-md-4" placeholder="Godina izdanja do" [(ngModel)]="searchParamYearBefore">
+          
+          </div>
+          
+          <input type="text" class="form-control mb-3" placeholder="Izdavac" [(ngModel)]="searchParamPublisher">
+          
+          
+          <mat-form-field>
+            <mat-label>Izaberite zanr</mat-label>
+            <mat-select [(ngModel)]="formGenres" multiple>
+              <mat-option *ngFor="let genre of genresList" [value]="genre">{{genre}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button style="float: right; margin: 4% 0;font-family: 'Caveat', cursive; " type="button" class="btn btn-primary"
+          data-mdb-ripple-color="dark" (click)="doAdvancedSearch()">Pretraga</button>
+          
+        </div>
+       
+        <br/>
+        <br/>
+        <br/>
+
+        
+      </div>
+      
+      <div class="cardContainer">
+        
+
+       
+              <div style="display: flex; justify-content:center; flex-wrap: wrap;">
+          <div class="card" *ngFor='let p of advancedSearchResult' style="width: 18rem; margin: 0.5rem; border-radius: 0.5rem; min-height: 30rem;">
+            
+            
+              <div style="display: flex;">
+                <div style="flex-grow: 1;">
+              <div style="display: flex; justify-content: center; padding: 10%;"><img [src]="p.picture" max-width="100px" height="100px"></div>
+              <div class="card-body">
+                <h5 class="card-title">ID: {{p.idBook}}</h5>
+                <h4 class="card-title">Naslov: {{p.title}}</h4>
+                <h5 class="card-title">Autori: {{p.writer}}</h5>
+                <h5 class="card-title">Zanr: {{p.genre}}</h5>
+                <h5 class="card-title">Izdavac: {{p.publisher}}</h5>
+                <h5 class="card-title">Godina izdanja: {{p.pubYear}}</h5>
+                <h5 class="card-title">Jezik: {{p.language}}</h5>
+                
+                
+                <ngb-rating [(rate)]="p.averageRating" [readonly] = "true"></ngb-rating>
+                  <hr>
+                <pre style="font-family: 'Caveat', cursive;">Prosecna ocena: <b>{{p.averageRating}}</b></pre>
+                <button  class="btn btn-primary" style="margin: 10px;"(click)="navigateToBookPage(p.idBook)">Detalji</button>
+              </div>
+               <h3 style="color:red;">{{searchMessage}}</h3>
+            
+  
+              
+    </div>
+
+
+            </div>
+          </div>
+          
+
+          
+      </div>
+  
+
+      </div>
+
+  </ng-template>
+</li>
+
+
+      <!---------------------------ODJAVA---------------------->
+
+      <li ngbNavItem="logOut">
+        <a ngbNavLink (click)="logOut()">Odjava</a>
+      </li>
+
+    </ul>
+  
+    <div [ngbNavOutlet]="nav" class="ms-4"></div>
+  </div>

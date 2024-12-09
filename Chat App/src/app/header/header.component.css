@@ -1,0 +1,15 @@
+mat-toolbar {
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}

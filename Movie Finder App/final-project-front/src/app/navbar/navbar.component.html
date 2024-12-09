@@ -1,0 +1,44 @@
+<header>
+    
+    <p>
+    <a routerLink="/home"><img class="logo" src="../../assets/logo.png" width="300" height="70"></a>
+    </p>
+
+    <!-- <div class="search-bar">
+        <input type="text" [(ngModel)]="_userService.searchInput" placeholder="enter movie title"/>
+        <button class="searchbtn"(click)="_userService.searchMovies()">search</button>
+      </div> -->
+
+
+    <nav>
+        <ul class="nav-links">
+            <li routerLink= "/home" routerLinkActive="activeLink"> Home </li>
+            <li routerLink= "/register" routerLinkActive="activeLink" *ngIf="!_userService.isLoggedIn"> Sign Up </li>
+            <li routerLink= "/login" routerLinkActive="activeLink" *ngIf="!_userService.isLoggedIn" > Log in </li>
+            <li routerLink= "/favorites" routerLinkActive="activeLink" *ngIf="_userService.isLoggedIn" >My Favorites</li>
+
+
+            <li  *ngIf="_userService.isLoggedIn">
+                <clr-dropdown [clrCloseMenuOnItemClick]="false">
+                <button clrDropdownTrigger class="open left-bottom" aria-label="Dropdown button">
+                    <clr-icon shape="cog" class="is-inverse" size="24"></clr-icon>
+                    <clr-icon shape="caret down" class="is-inverse"></clr-icon>
+                </button>
+                <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                    <label class="dropdown-header open left-bottom" aria-hidden="true">Account Settings</label>
+                    <div aria-label="Dropdown header Action 1 left-bottom" clrDropdownItem (click)="_userService.settingsLogout()">Log Out</div>
+                
+                </clr-dropdown-menu>
+                </clr-dropdown>
+             </li>
+         
+
+        </ul>
+    </nav>
+</header>
+
+
+
+<!-- *ngIf="_userService.isLoggedIn" -->
+
+<!-- Create account settings page-->

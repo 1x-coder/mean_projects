@@ -1,0 +1,310 @@
+
+
+  <div class="d-flex">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+      
+      <li ngbNavItem="main">
+        <a ngbNavLink>Pocetna</a>
+        <ng-template ngbNavContent>
+          
+            <ngb-carousel *ngIf="images">
+                <ng-template ngbSlide>
+                  <div class="picsum-img-wrapper" style="border-radius: 0.5rem;">
+                    <div style="display: flex; justify-content: center; align-items: center;"><div style="padding: 5%; display: flex; padding-top: 3%;"><div style="flex-grow: 1; max-width: 350px; max-height: 500px; display: flex; justify-content: center;"><img [src]="images[0]"  alt="Random second slide"></div></div></div>
+                    
+                    
+                  </div>
+                  <div class="carousel-caption">
+                    <h3> {{allBooks[0].title}}</h3>
+                   
+                    <p>{{allBooks[0].writer}}</p>
+                    <ngb-rating [(rate)]="allBooks[0].averageRating" [readonly] = "true"></ngb-rating>
+                    <p>Rate: {{allBooks[0].averageRating}}</p>
+                  </div>
+                </ng-template>
+
+                <ng-template ngbSlide>
+                  <div class="picsum-img-wrapper" style="border-radius: 0.5rem;">
+                    <div style="display: flex; justify-content: center; align-items: center;"><div style="padding: 5%; display: flex; padding-top: 3%;"><div style="flex-grow: 1; max-width: 350px; max-height: 500px; display: flex; justify-content: center;"><img [src]="images[1]"  alt="Random second slide"></div></div></div>
+                    
+                    
+                  </div>
+                  <div class="carousel-caption">
+                    <h3> {{allBooks[1].title}}</h3>
+                   
+                    <p>{{allBooks[1].writer}}</p>
+                    <ngb-rating [(rate)]="allBooks[0].averageRating" [readonly] = "true"></ngb-rating>
+                    <p>Rate: {{allBooks[1].averageRating}}</p>
+                  </div>
+                </ng-template>
+                
+                <ng-template ngbSlide>
+                  <div class="picsum-img-wrapper" style="border-radius: 0.5rem;">
+                    <div style="display: flex; justify-content: center; align-items: center;"><div style="padding: 5%; display: flex; padding-top: 3%;"><div style="flex-grow: 1; max-width: 350px; max-height: 500px; display: flex; justify-content: center;"><img [src]="images[2]"  alt="Random second slide"></div></div></div>
+                    
+                    
+                  </div>
+                  <div class="carousel-caption">
+                    <h3>{{allBooks[2].title}}</h3>
+                    
+                    <p>{{allBooks[2].writer}}</p>
+                    <ngb-rating [(rate)]="allBooks[0].averageRating" [readonly] = "true"></ngb-rating>
+                    <p>Rate: {{allBooks[2].averageRating}}</p>
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+
+
+
+
+
+
+
+        </ng-template>
+      </li>
+      <li ngbNavItem="logIn">
+        <a ngbNavLink>Prijava</a>
+        <ng-template ngbNavContent>
+            <div class="loginForm jumbotron">
+                    <div class="loginSmaller">
+                    <form>
+                        
+                       
+                        <div class="form-outline mb-4">
+                            <h1>Prijava na sistem</h1>
+                            <br/>
+                          <input type="text" id="username1" name="username" [(ngModel)]="username" class="form-control form-control-lg"
+                            placeholder="Unesite korisnicko ime" />
+                          <label class="form-label" for="username1">Email address</label>
+                        </div>
+              
+                        
+                        <div class="form-outline mb-3">
+                          <input type="password" id="pass1" name="password" [(ngModel)]="password"  class="form-control form-control-lg"
+                            placeholder="Unesite lozinku" />
+                          <label class="form-label" for="pass1">Password</label>
+                        </div>
+              
+                    
+              
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                          <button type="button" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="logInToSystem()">Prijava</button>
+
+                        </div>
+                        <br/>
+                        <span style='color: red'>{{error}}</span>
+              
+                      </form>
+                    </div>
+
+        </div>
+
+
+
+
+
+
+        </ng-template>
+      </li>
+      <li ngbNavItem="register">
+        <a ngbNavLink>Registracija</a>
+        <ng-template ngbNavContent>
+          
+           
+
+                  <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-12">
+                      <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                        <div class="card-body p-0">
+                          <div class="row g-0">
+
+
+                            <div class="col-lg-6">
+                              <div class="p-5">
+                                <h3 class="fw-normal mb-5" style="color: #4835d4;">Osnovne informacije</h3>
+              
+              
+                                <div class="row">
+                                    <div class="col-md-5 mb-4 pb-2">
+                
+                                      <div class="form-outline form-white">
+                                        <input type="text" id="input5" class="form-control form-control-lg" name="registerName" [(ngModel)]="registerName" required />
+                                        <label class="form-label" for="input5">Ime</label>
+                                    </div>
+                                    <span style='color: red'>{{registerNameMessage}}</span>
+                
+                                    </div>
+                                    <div class="col-md-7 mb-4 pb-2">
+                
+                                      <div class="form-outline form-white">
+                                        <input type="text" id="input6" class="form-control form-control-lg" name="registerLastName" [(ngModel)]="registerLastName" required />
+                                        <label class="form-label" for="input6">Prezime</label>
+                                        
+                                      </div>
+                                      <span style='color: red'>{{registerLastNameMessage}}</span>
+                                    </div>
+                                  </div>
+                                      
+
+                                      <div class="mb-4 pb-2">
+                                        <div class="form-outline">
+                                          <input type="text" id="input7" class="form-control form-control-lg" name="registerAddress" [(ngModel)]="registerAddress" required/>
+                                          <label class="form-label" for="input7">Adresa</label>
+                                          
+                                        </div>
+                                        <span style='color: red'>{{registerAddressMessage}}</span>
+                                      </div>
+
+                                      <div class="mb-4 pb-2">
+                                        <div class="form-outline">
+                                          <input type="text" id="input8" class="form-control form-control-lg" name="registerContact" [(ngModel)]="registerContact" required />
+                                          <label class="form-label" for="input8">Kontakt telefon</label>
+                                        </div>
+                                        <span style='color: red'>{{registerContactMessage}}</span>
+                                      </div>
+
+                                      
+
+
+
+                                    <div class="form-outline">
+                                      <input type="text" id="input9" class="form-control form-control-lg" name="registerEmail" [(ngModel)]="registerEmail" required />
+                                      <label class="form-label" for="input9">Email adresa</label>
+                                    </div>
+                                    <span style='color: red'>{{registerEmailMessage}}</span>
+
+
+                              </div>
+                            </div>
+
+
+
+                            <div class="col-lg-6 bg-indigo text-white">
+                              <div class="p-5">
+                                <h3 class="fw-normal mb-5">Informacije o nalogu</h3>
+              
+                                <div class="mb-4 pb-2">
+                                  <div class="form-outline form-white">
+                                    <input type="text" id="input10" class="form-control form-control-lg" name="registerUsername" [(ngModel)]="registerUsername" required />
+                                    <label class="form-label" for="input10">Korisnicko ime</label>
+                                  </div>
+                                  <span style='color: red'>{{registerUsernameMessage}}</span>
+                                </div>
+              
+                                <div class="mb-4 pb-2">
+                                  <div class="form-outline form-white">
+                                    <input type="password" id="input11" class="form-control form-control-lg" name="registerPassword" [(ngModel)]="registerPassword" required />
+                                    <label class="form-label" for="input11">Lozinka</label>
+                                  </div>
+                                  <span style='color: red'>{{registerPasswordMessage}}</span>
+                                  <span style='color: red'>{{requiredRegexMessage}}</span>
+                                </div>
+
+                                <div class="mb-4 pb-2">
+                                    <div class="form-outline form-white">
+                                      <input type="password" id="input12" class="form-control form-control-lg" name="registerConfirmPassword" [(ngModel)]="registerConfirmPassword" required />
+                                      <label class="form-label" for="input12">Potvrda lozinke</label>
+                                    </div>
+                                    <span style='color: red'>{{registerConfirmPasswordMessage}}</span>
+                                  </div>
+                                
+                                  <tr>
+                                    <td>
+                                        <input id="pictureUpload" type="file" (change)="addPicture($event)" accept="image/jpg, image/png"  required >
+                                    </td>
+                                    {{pictureAddingMessage}}
+                                    <img *ngIf="isSaved" [src]="picturePath()" alt="" />
+                                    
+                                </tr>
+                                <span style='color: red'>{{requiredPictureMessage}}</span>
+                                <br/>
+                                
+
+              
+                                <button type="button" class="btn btn-light btn-lg"
+                                  data-mdb-ripple-color="dark" (click)="registration()">Register</button>
+                                
+                                  <span *ngIf="validationSuccess" style='color: green; margin: 2%;'>Uspesno poslat zahtev za registraciju</span>
+                                  <!--<img [src]="picture">-->
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+           
+
+
+
+        </ng-template>
+      </li>
+
+       <!-------------------------------------------------------OSNOVNA PRETRAGA------------------------->
+     
+      
+       <li ngbNavItem="searchBasic">
+        <a ngbNavLink>Osnovna pretraga</a>
+        <ng-template ngbNavContent>
+          
+            <div class="container" style="display: flex;justify-content:center;">
+            <div class="mb-3 col-lg-6" style="background-color:#004085; padding: 5%; border-radius: 0.5rem;">
+               <h3 style="color:white">Osnovna pretraga:</h3>
+                <input type="text" class="form-control" placeholder="Unesite naziv knjige" [(ngModel)]="searchParam" style="margin: 5% 0;">
+                <input type="text" class="form-control" placeholder="Unesite nazive autora (razdvojene zarezom)" [(ngModel)]="searchParamAuthor" style="margin: 5% 0;">
+                <button type="button" class="btn btn-primary"
+              data-mdb-ripple-color="dark" (click)="doSearch()" style="margin: 2% 0;">Pretraga</button>
+              </div> 
+              
+            </div>
+            <div class="cardContainer">
+              
+
+             
+                    <div style="display: flex; justify-content:center; flex-wrap: wrap;">
+                <div class="card" *ngFor='let p of searchResults' style="width: 18rem; margin: 0.5rem; border-radius: 0.5rem; min-height: 30rem;">
+                  
+                  
+                    <div style="display: flex;">
+                      <div style="flex-grow: 1;">
+                    <div style="display: flex; justify-content: center; padding: 10%;"><img [src]="p.picture" max-width="100px" height="100px"></div>
+                    <div class="card-body">
+                      <h5 class="card-title">ID: {{p.idBook}}</h5>
+                      <h4 class="card-title">Naslov: {{p.title}}</h4>
+                      <h5 class="card-title">Autori: {{p.writer}}</h5>
+                      <h5 class="card-title">Zanr: {{p.genre}}</h5>
+                      <h5 class="card-title">Izdavac: {{p.publisher}}</h5>
+                      <h5 class="card-title">Godina izdanja: {{p.pubYear}}</h5>
+                      <h5 class="card-title">Jezik: {{p.language}}</h5>
+                      
+                      
+                      <ngb-rating [(rate)]="p.averageRating" [readonly] = "true"></ngb-rating>
+                        <hr>
+                      <pre style="font-family: 'Caveat', cursive;">Prosecna ocena: <b>{{p.averageRating}}</b></pre>
+                      
+                    </div>
+                     <h3 style="color:red;">{{searchMessage}}</h3>
+                  
+        
+                    
+          </div>
+
+
+                  </div>
+                </div>
+                
+
+                
+            </div>
+        
+
+            </div>
+
+        </ng-template>
+      </li>
+
+    </ul>
+  
+    <div [ngbNavOutlet]="nav" class="ms-4"></div>
+  </div>

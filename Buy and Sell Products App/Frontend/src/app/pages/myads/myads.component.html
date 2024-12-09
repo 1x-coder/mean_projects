@@ -1,0 +1,54 @@
+<br>
+<div class="container-fluid">
+	<div class="topBar col-12">
+		<h2>Your Ads</h2>
+		<ul>
+			<li>View All</li>
+			<li>Active Ads</li>
+			<li>Inactive Ads</li>
+		</ul>
+	</div>
+
+	<br>
+
+	<div style="margin-left: 50%;" *ngIf="!resCarBikeData" class="spinner-border text-primary " role="status">
+  		<span class="sr-only">Loading...</span>
+	</div>
+
+	<div class="ad row" *ngFor="let item of resCarBikeData">
+		<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">
+			<img src="{{item.img1}}" height="100px;">
+		</div>
+
+		<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+
+			<p class="name font-weight-bold">{{item.brand}} {{item.model}}</p>
+			<p>Post date : {{item.date_posted |date:'longDate'}}</p>
+			<p>{{item.price |currency:'INR'}}</p>
+		</div>
+
+		<div class="col-2 status">
+			<p class="bg-success">Active</p>
+			<p class="bg-warning">Not Sold</p>
+		</div>
+
+		<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 info">
+			<p class="text-success"><i class="fa fa-hand-o-up" aria-hidden="true"></i>
+ 				Visits : {{item.visits}}</p>
+			<p style="color: #f8788e;"><i class="fa fa-heart-o" aria-hidden="true"></i> Likes : {{item.likes}}</p>
+		</div>
+
+		<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 action">
+			<p class="delete " (click)="deleteAdCarBike(item._id)">Delete Ad</p>
+			<p class="deactivate">Deactivate Ad</p>
+		</div>
+		
+	</div>
+	
+
+	<br>
+
+
+
+</div>
+

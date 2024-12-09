@@ -1,0 +1,161 @@
+<!-- EMPLOYEE DETAILS PAGE -->
+
+<nav class="navbar">
+    <div class="container">
+        <a class="navbar-brand"> <h3>Employee Management</h3> </a>
+        <span class="d-flex">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onAddEmployee()">+ Add Employee</button>
+        </span>
+    </div>
+</nav>
+
+<!--MODAL FORM -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> {{editMode?'Update':'Add'}} Employee Details</h1>
+                <button (click)="onCloseModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="empForm" (ngSubmit)="onEmpSubmit();">
+
+                    <input type="hidden"  class="form-control" name="_id" id="_id"  ngModel formControlName="_id" />
+
+                    <div class="mb-1">
+                        <label for="empname" class="form-label">Employee Name</label>
+                        <input type="text"  class="form-control" name="empname" id="empname" ngModel placeholder="Enter Employee Name" formControlName="empname" required />
+                        <span style="color: red;" *ngIf="empname && empname.invalid && empname.touched">Please enter a valid Name</span>
+                    </div>
+                    
+                    <div class="mb-1">
+                        <label for="empno" class="form-label">Employee No.</label>
+                        <input type="text" class="form-control" name="empno" id="empno" ngModel placeholder="Enter Employee Number" formControlName="empno" required />
+                        <span style="color: red;" *ngIf="empno && empno.invalid && empno.touched">Please enter a valid Emp No.</span>
+                    </div>
+            
+                    <div class="mb-1">
+                        <label for="jobrole" class="form-label">Job Role</label>
+                        <input type="text" class="form-control" name="jobrole" id="jobrole" ngModel placeholder="Enter Job role" formControlName="jobrole" required />
+                        <span style="color: red;" *ngIf="jobrole && jobrole.invalid && jobrole.touched">Please enter a Job Role</span>
+                    </div>
+            
+                    <div class="mb-1">
+                        <label for="salary" class="form-label">Salary</label>
+                        <input type="number" class="form-control" name="salary" id="salary" ngModel placeholder="Enter Salary" formControlName="salary" required />
+                        <span style="color: red;" *ngIf="salary && salary.invalid && salary.touched">Please enter a valid Salary</span>
+                    </div>
+            
+                    <div class="mb-1">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" ngModel placeholder="Enter Email Address" formControlName="email" required />
+                        <span style="color: red;" *ngIf="email && email.invalid && email.touched">Please enter a valid Email</span>
+                    </div>
+            
+                    <div class="mb-1">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" name="phone" id="phone" ngModel placeholder="Enter Phone Number" formControlName="phone" required />
+                        <span style="color: red;" *ngIf="phone && phone.invalid && phone.touched">Please enter a valid Phone No.</span>
+                    </div>
+
+                    <div class="text-center mt-2">
+                        <button (click)="onCloseModal()" type="button" class="btn btn-danger" id="cancel" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- EMPLOYEE LIST -->
+<div class="container my-2" id="box">
+    <h5>Employees List</h5> <hr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Sl No.</th>
+                <th scope="col">Employee No</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Job Role</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone No.</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <!-- EMPLOYEE DETAILS ROW -->
+        <tbody>
+            <tr *ngFor="let item of employees ;let i=index" >
+                <td scope="row">{{i+1}}</td>   
+                <td>{{item.empno}}</td>
+                <td>{{item.empname}}</td>
+                <td>{{item.jobrole}}</td>
+                <td>{{item.salary}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.phone}}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="onEditEmployee(item)">Edit</button>
+
+                    <button class="btn btn-sm btn-danger" (click)="onDeleteEmployee(item._id)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+
+<!-- ADD EMPLOYEE FORM -->
+<!-- <div class="container my-2" id="box">
+    <h5>Employee Details</h5> <hr>
+    <form class="row g-3" [formGroup]="empForm" (ngSubmit)="onEmpSubmit();">
+        <div class="col-md-4">
+            <label for="empname" class="form-label">Name</label>
+            <input type="text"  class="form-control" name="empname" id="empname" ngModel placeholder="Enter Name" formControlName="empname" required />
+            <span style="color: red;" *ngIf="empname && empname.invalid && empname.touched">Please enter a valid name</span>
+        </div>
+        
+        <div class="col-md-4">
+            <label for="empid" class="form-label">Emp ID</label>
+            <input type="text" class="form-control" name="empid" id="empid" ngModel placeholder="Eg. ABC123YZ" formControlName="empid" required />
+            <span style="color: red;" *ngIf="empid && empid.invalid && empid.touched">Please enter a valid empid</span>
+        </div>
+
+        <div class="col-md-4">
+            <label for="jobrole" class="form-label">Job Role</label>
+            <input type="text" class="form-control" name="jobrole" id="jobrole" ngModel placeholder="Eg. Developer" formControlName="jobrole" required />
+            <span style="color: red;" *ngIf="jobrole && jobrole.invalid && jobrole.touched">Please enter a jobrole</span>
+        </div>
+
+        <div class="col-md-4">
+            <label for="salary" class="form-label">Salary</label>
+            <input type="number" class="form-control" name="salary" id="salary" ngModel placeholder="Eg. 20,000" formControlName="salary" required />
+            <span style="color: red;" *ngIf="salary && salary.invalid && salary.touched">Please enter a valid salary</span>
+        </div>
+
+        <div class="col-md-4">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="email" ngModel placeholder="test@email.com" formControlName="email" required />
+            <span style="color: red;" *ngIf="email && email.invalid && email.touched">Please enter a valid email</span>
+        </div>
+
+        <div class="col-md-4">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="tel" class="form-control" name="phone" id="phone" ngModel placeholder="222 333 4444" formControlName="phone" required />
+            <span style="color: red;" *ngIf="phone && phone.invalid && phone.touched">Please enter a valid phone no.</span>
+        </div>
+        
+        <div class="text-center">
+            <button type="submit" class="btn btn-success"> Submit </button>
+        </div>
+    </form>
+</div> -->

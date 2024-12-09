@@ -1,0 +1,6 @@
+{
+    "env": {
+        "MONGO_ATLAS_PW": "O3LX6camgtqDvlO9",
+        "JWT_KEY": "sercret_signing_key"
+    }
+}

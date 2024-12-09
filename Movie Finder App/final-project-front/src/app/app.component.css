@@ -1,0 +1,11 @@
+.mainUI {
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    align-content: start;
+
+
+}
+

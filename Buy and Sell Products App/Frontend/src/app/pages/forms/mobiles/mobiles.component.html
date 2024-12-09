@@ -1,0 +1,107 @@
+<div class="animJumbo jumbotron jumbotron-fluid img">
+  <div class="container">
+    <h1 class="display-4 ">Mobiles, Tablets</h1>
+    <p class="lead ">This is best place to sell your used mobile.</p>
+  </div>
+</div>
+
+<div class="container-fluid ">
+	<br>
+<div class="wrapper col-xl-6 col-md-6 col-lg-6 col-sm-12 col-12 shadow ml-auto mr-auto" style="background-color: #e4e4e4">
+	<form [formGroup]="myForm" (ngSubmit)="postCar()"> 
+		<br>
+		<div class="label">
+			<label>Your Brand<sup>*</sup></label>
+			<br>
+			<input type="" list="brand" name="" placeholder="Search for Brand" class="form-control" formControlName="brand">
+			<datalist id="brand">
+                                <option id="7638" value="Apple"></option><option id="3960" value="Samsung"></option><option id="205" value="MI"></option><option id="207" value="Gionee"></option><option id="206" value="Infocus"></option><option id="7648" value="RealMe"></option><option id="7652" value="Oneplus"></option><option id="208" value="Nokia"></option><option id="7673" value="Sony"></option><option id="209" value="Vivo"></option><option id="7660" value="Lenovo"></option><option id="29259" value="Asus"></option><option value="Oppo"></option>
+                                <option value="Lava"></option><option value="Micromax"></option>
+        </datalist>
+                              
+		</div>
+		<div class="label">
+			<br>
+			<label>Your Model<sup>*</sup></label>
+			<br>
+			<input type="text" name="" placeholder="model" class="form-control" formControlName="model">
+		</div>
+		<br>
+		<!-- <div class="label">
+			<label>Sim Slots<sup>*</sup></label>
+			<br>
+			<ul class="fuel" >
+				<li><input type="radio" value="one" name="slots" formControlName="slots" checked> <label>One</label></li>
+				<li><input type="radio" value="two" name="slots" formControlName="slots"><label>Two</label></li>
+				<li><input type="radio" value="three" name="slots" formControlName="slots"><label>Three</label></li>
+				
+			</ul>
+		</div> -->
+
+		<div class="label">
+			<label>Description<sup>*</sup></label>
+			<br>
+			<textarea placeholder="write something about your product to attract customers... 
+for eg. processor, memory, present condition, ram, display size etc." rows="4" cols="75" class="form-control" formControlName="description"></textarea >
+		</div>
+		<br>
+		<div class="label">
+			<label>Year of Buying<sup>*</sup></label>
+			<br>
+			<input type="number" name="" min="1990" max="2019" class="form-control" formControlName="year_reg">
+		</div>
+		<br>
+		<!-- <div class="label">
+			<label>Memory<sup>*</sup></label>
+			<br>
+			<input type="text" name="" class="form-control" formControlName="memory" placeholder="RAM / Internal Storage">
+		</div> -->
+		<br>
+		<div class="label">
+			<label>City<sup>*</sup></label><br>
+			<input type="text" name="" class="form-control" formControlName="city">
+		</div>
+		<br>
+		<div class="label">
+			<label>Locality<sup>*</sup></label><br>
+			<input type="text" name="" class="form-control" formControlName="locality">
+		</div>
+		<br>
+		<div class="label">
+			<label>Set a price<sup>*</sup></label><br>
+			<input style="padding-left: 30px;" type="number" name="" class="form-control" formControlName="price">
+			<span class="rs">₹</span>
+		</div>
+		<div class="label">
+			<label>Upload Photos</label>
+
+				<div class="carsImg" >
+				<label  for="img1"><img  height="200px" width="300px" style="border:2px solid #007bff; margin-right: 50px;"  [src]="urls[0]" class="shadow" width="180"></label>
+				<label for="img2"><img height="200px" width="300px" style="border:2px solid #007bff;"  [src]="urls[1]" class="shadow" width="180"></label>
+				</div>
+				<div class="hide">
+					<input type="file" id="img1"  (change)="detectFiles($event,0)">
+					<input type="file" id="img2"  (change)="detectFiles($event,1)" [disabled]="!firstTime" >
+				</div>	
+		</div>
+		<br>
+			<div *ngIf="imgErr" class="alert alert-danger">
+			Select 2 images
+			</div>	
+
+			<div *ngIf="myForm.invalid" class="alert alert-danger">
+			All Fieds are mandatory
+			</div>		
+        <hr>
+
+			
+				<button class="btn btn-success shadow" type="submit" [disabled]="myForm.invalid">Post Ad</button>
+				<br>
+				<br>
+	</form>
+</div>
+</div>
+
+
+<br>
+<br>

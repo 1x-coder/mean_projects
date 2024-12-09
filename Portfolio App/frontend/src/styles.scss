@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Lora:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding: 7vmax;
+}
+
+// Colors
+$clr--primary: #fcfcfc;
+$clr--secondary: #95959a;
+$clr-background--primary: #1f1f21;
+$clr-background--secondary: #19191b;
+$clr-background--dark: #121216;
+$clr-accent--primary: #2ae98b;
+$clr-accent--lighter: #2aff8f;
+$clr-accent--secondary: #238f5b;
+$clr--dark: $clr-background--primary;
+
+// Lightmode Colors
+// $clr--primary: #1f1f21;
+// $clr--secondary: #19191b;
+// $clr-background--primary: #fcfcfc;
+// $clr-background--secondary: #95959a;
+// $clr-background--dark: #fcfcfc; /* You can adjust this if needed */
+// $clr-accent--primary: #238f5b;
+// $clr-accent--lighter: #2ae98b;
+// $clr-accent--secondary: #2aff8f;
+// $clr--dark: $clr-background--primary; /* You can adjust this if needed */
+
+
+// Fonts
+$ff--primary: 'Poppins', sans-serif;
+$ff--secondary: 'Lora', serif;
+$ff--mono: 'Fira Code', monospace;
+
+// Font Weights
+$fw--regular: 400;
+$fw--semi-bold: 600;
+$fw--bold: 700;
+
+// Font Sizes
+$fs--extra-small: 0.8rem;
+$fs--small: 1rem;
+$fs--medium: 1.3rem;
+$fs--large: 2rem;
+$fs--extra-large: 2.7rem;
+$fs--extra-extra-large: 3.7rem;
+
+// Line Heights
+$lh--small: 1.2rem;
+$lh--medium: 1.7rem;
+$lh--large: 2rem;
+
+// Border Width
+$bw--thinnest: 0.5px;
+$bw--thin: 1px;
+$bw--thick: 2px;
+
+// Border Radius
+$br--wide: 20px;
+$br--small: 10px;
+
+.glassmorphism-light {
+  background: rgba(189, 189, 189, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.8px);
+  -webkit-backdrop-filter: blur(3.8px);
+}
+
+.glassmorphism-hard {
+  background: rgba(189, 189, 189, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.8px);
+  -webkit-backdrop-filter: blur(3.8px);
+}
+
+
+// Scrollbars
+::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #8e8e8e49;
+    border-radius: 100vw;
+    margin-block: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(112, 111, 111);
+    border-radius: 100vw;
+}
+
+body::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--linear-gradient);
+    border-radius: 100vw;
+    margin-block: 0.2rem;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--clr-main);
+    border-radius: 100vw;
+    padding: 0.1rem;
+}
+
+// Reset Styling for all HTML and CSS
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+
+body {
+  line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+  display:block;
+}
+
+nav ul {
+  list-style:none;
+}
+
+blockquote, q {
+  quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content:'';
+  content:none;
+}
+
+a {
+  margin:0;
+  padding:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color:#ff9;
+  color:#000;
+  text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color:#ff9;
+  color:#000;
+  font-style:italic;
+  font-weight:bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom:1px dotted;
+  cursor:help;
+}
+
+table {
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display:block;
+  height:1px;
+  border:0;
+  border-top:1px solid #cccccc;
+  margin:1em 0;
+  padding:0;
+}
+
+input, select {
+  vertical-align:middle;
+}
+
+

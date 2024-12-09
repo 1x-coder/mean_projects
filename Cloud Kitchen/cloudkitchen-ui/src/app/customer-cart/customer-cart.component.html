@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-4 col-lg-4 col-12">
+        <button class="btn btn-success back-btn">Continue Ordering</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="address-block">
+            <span class="h3 address-label">Deliver At</span>
+            <div>
+                <strong>{{ user.address }}</strong> <br>
+                <strong>{{ user.pincode }}</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="cart-block">
+            <span class="h4 cart-label">Cart</span>
+            <div *ngIf="orderingCart.length>0">
+                <div class="row foodItems" *ngFor="let order of orderingCart">
+                    <div class="col-4">
+                        <strong>{{order.name}}</strong> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4 offset-8 h3">
+        <span class="price-lebel">Order Total: </span> {{totalPrice | currency:'INR'}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-success checkout-btn" (click)="order()" >Proceed To Checkout</button>
+    </div>
+</div>

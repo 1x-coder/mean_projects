@@ -1,0 +1,87 @@
+.card{
+    margin-top:10px;
+    height:490px;
+    border-radius: 10px;
+    }
+    .bgimg{
+        height:490px;
+        border-radius: 10px;
+        
+    }
+    .textcolorg{
+        color: #63a033;
+    }
+    .colorg{
+        background-color: #63a033;
+        color:white;
+    }
+    .full-width{
+        width:440px;
+    }
+    .space{
+        margin-left:30px;
+    }
+    .sizef{
+        font-size: 45px;
+    }
+    .marg{
+        margin-bottom:40px;
+    }
+    .margForm{
+        margin-left:50px;
+        margin-top:30px;
+    }
+    .spaceX{
+        margin-left:75px;
+    }
+    .spacey{
+        margin-left:410px;
+    }
+    .spacez{
+        margin-left:30px;
+    }
+    .spacek{
+        margin-left:30px;
+    }
+   
+    @media screen and (max-width: 600px) {
+    
+        .bgimg{
+            display: none;
+        }
+        .full-width{
+            width:300px;
+        }
+        mat-form-field{
+            width:300px;
+        }
+        .space{
+            margin-left:60px;
+        }
+        .card{
+            margin-top:10px;
+            margin-bottom:10px;
+            height:750px;
+            border-radius: 10px;
+            }
+            .spaceX{
+                margin-left:0px;
+            }
+            .spacey{
+                margin-left:0px;
+            }
+            .margForm{
+                margin-left:5px;
+                margin-top:30px;
+            }
+            .spacez{
+                margin-left:0px;
+            }
+            .spacek{
+                margin-left:45px;
+            }
+            .sizef{
+                font-size: 32px;
+                margin-top:20px;
+            }
+    }

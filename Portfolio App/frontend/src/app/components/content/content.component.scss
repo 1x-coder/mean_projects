@@ -1,0 +1,147 @@
+@import "src/styles.scss";
+
+@media only screen and (max-width: 1024px) {
+  .content-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__navigation {
+      display: none;
+    }
+
+    &__content {
+      width: 100%;
+    }
+  }
+}
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    // align-items: center;
+    margin: 0 2%;
+
+    &__content {
+        padding: 0 2%;
+        width: 90%;
+
+        &__introduction {
+            width: 100%;
+            height: 100vh;
+        }
+
+        &__resume {
+            width: 100%;
+        }
+
+        &__skills {
+            width: 100%;
+        }
+
+        &__projects {
+            width: 100%;
+        }
+
+        &__contact {
+            width: 100%;
+        }
+
+        .spacing {
+            width: 100%;
+            height: 4rem;
+        }
+    }
+
+    &__navigation {
+        position: sticky;
+        top: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 10%;
+        margin: 0 auto;
+        height: 100vh;
+
+        &__navigation-sidebar {
+            width: 70%;
+
+            padding: 0.5rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            // Draw an oval border
+            border: $bw--thinnest solid $clr--secondary;
+            border-radius: $br--wide;
+
+
+            &__link {
+                // padding: 1rem 1rem;
+                position: relative;
+                width: 90%;
+                aspect-ratio: 1 / 1;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                text-decoration: none;
+                color: $clr--primary;
+
+                // border-radius: 10%;
+                border-radius: $br--small;
+
+                &:hover {
+                  cursor: pointer;
+                  z-index: 9;
+                  overflow: inherit;
+                }
+
+                &::after {
+                  content: attr(link-title);
+                  position: absolute;
+                  padding: 10px 16px;
+                  top: -20px;
+                  white-space: nowrap;
+                  font-size: 16px;
+                  background: rgba(189, 189, 189, 0.15);
+                  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                  backdrop-filter: blur(3.8px);
+                  -webkit-backdrop-filter: blur(3.8px);
+                  color: $clr--primary;
+                  border-radius: 7px;
+                  font-weight: 500;
+                  opacity: 0;
+                  font-family: $ff--primary;
+                }
+
+                &:hover::after {
+                  opacity: 0.8;
+                  transition: opacity 0.1s ease 0.5s;
+                  visibility: visible;
+                }
+
+                a {
+                    width: 45%;
+                    color: $clr--primary;
+
+                    img {
+                        width: 100%;
+                        color: $clr--primary;
+
+                        svg path {
+                            fill: $clr--primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

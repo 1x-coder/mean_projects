@@ -1,0 +1,28 @@
+.navigation {
+    a {
+        text-decoration: none;
+        padding: 0 15px;
+        color: #707070;
+        &:hover {
+            color: var(--add-cart-button-background);
+        }
+    }
+    .active {
+        color: var(--add-cart-button-background);
+    }
+}
+
+.change-theme {
+    
+}
+
+.router-change-progress-bar {
+   ::ng-deep {
+    .mat-progress-bar {
+        position: absolute!important;
+        top: 70px;
+        left: 0;
+        z-index: 9999;
+    }
+   }
+}

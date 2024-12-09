@@ -1,0 +1,33 @@
+<div>
+    <h1  class="z">Your Penalities</h1>
+</div>
+<div *ngIf="order ;else a">
+    <div *ngFor='let o of order'>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-sm-12">
+                <div class="card text-center">
+                    <h2>Order#: {{o.order}}</h2> <br>
+                    <h2>Date: {{o.createdAt|date }}</h2> <br>
+                    <h2>Penality amount: {{o.penalityCost}}</h2> <br>
+                    <div *ngIf='o.paid;else b'>
+                        <h2>Penality Status:<span style="color: #63a033;">Paid</span></h2> <br>
+                    </div>
+                    <ng-template #b>
+                        <h2>Penality Status: <span style="color: #dd2c26;">Unpaid</span></h2> <br>
+                    </ng-template>
+                    <button type="button" (click)="pay(o.penaltiesId)" class="btn btn-dark buttn" >Pay Penality</button>
+                    <div *ngIf="successMessage">
+                        <span style="color: #63a033;">{{successMessage}}</span>
+                    </div>
+                    <div *ngIf='errorMessage'>
+                        <span style="color: #dd2c26;">{{errorMessage}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<ng-template #a>
+    <h1  class="z">No Penalities</h1>
+</ng-template>

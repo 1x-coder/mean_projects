@@ -1,0 +1,79 @@
+<br>
+<br>
+<div class="container">
+    <br>
+    <br>
+    <div class="col-xl-4 col-md-6 col-sm-7 col-12 col-lg-5 Center">
+       <h1 class="text-center">Register as Admin</h1> 
+       <br>
+        <form [formGroup]="signupForm" (ngSubmit)="loginData()"> 
+        <div class="form-group">
+            <label>Name</label>
+            <input  type="text" class="form-control" placeholder="username" formControlName="username">
+            <div *ngIf="signupForm.controls.username.invalid && signupForm.controls.username.touched">
+                 <div *ngIf="signupForm.controls.username.errors.required" class="alert alert-danger">
+                 *This field is required
+                 </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input (click)="removeEmailAlreadyRegistered()" type="email" class="form-control" placeholder="email" formControlName="email">
+            <div *ngIf="signupForm.controls.email.invalid && signupForm.controls.email.touched">
+                 <div *ngIf="signupForm.controls.email.errors.required" class="alert alert-danger">
+                 *This field is required
+                 </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="password" class="form-control" formControlName="password">
+            <div *ngIf="signupForm.controls.password.invalid && signupForm.controls.password.touched">
+                 <div *ngIf="signupForm.controls.password.errors.required" class="alert alert-danger">
+                 *This field is required</div>
+            
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input (click)="removeconfirm_passErr()" type="password" class="form-control" placeholder="confirm password" formControlName="confirm_pass">
+            <div *ngIf="signupForm.controls.confirm_pass.invalid && signupForm.controls.confirm_pass.touched">
+                 <div  *ngIf="signupForm.controls.confirm_pass.errors.required" class="alert alert-danger">
+                 *This field is required
+                 </div>
+            </div>
+            <div *ngIf="confirm_passErr" class="alert alert-danger">
+                 Password and confirm password din't match 
+            </div>
+        </div>
+        <div class="form-group">
+            <label>AdminId</label>
+            <input (click)="removeadminidErr()" type="text" class="form-control" placeholder="confirm admin ID" formControlName="adminid">
+            <div *ngIf="signupForm.controls.adminid.invalid && signupForm.controls.adminid.touched">
+                 <div *ngIf="signupForm.controls.adminid.errors.required" class="alert alert-danger">
+                 *This field is required
+                 </div>
+            </div>
+            <div *ngIf="adminidErr" class="alert alert-danger">
+                 Incorrect admin ID 
+            </div>
+        </div>
+
+        <div *ngIf="regSuccMsg" class="alert alert-success">
+                 Registerd successfully
+        </div>
+
+        <div *ngIf="regFailMsg" class="alert alert-danger">
+                 Email Id already registered
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Register</button>
+        <!-- <a href="#" style="margin-left: 140px">Forgot password</a> -->
+        </form>
+        <br>
+        <p>
+            Already Registered? <a style="cursor: pointer;" href="#" routerLink="/">Login Now</a>
+        </p>
+        
+    </div>   
+</div>

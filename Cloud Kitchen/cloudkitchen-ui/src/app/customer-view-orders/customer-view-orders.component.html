@@ -1,0 +1,29 @@
+<div>
+    <h1  class="z">Ordered Items</h1>
+</div>
+<div *ngIf="order ;else a">
+<div *ngFor='let o of order'>
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3 col-sm-12">
+            <div class="card text-center">
+                <h1>Order #: {{oId}}</h1>  <br>
+                <h2>{{resti}}</h2> <br>
+                <h2 style="color:#63a033">Amount Paid: {{o.totalCost}}</h2>   <br>
+                <h2>Date of Order: {{o.orderDate}}</h2>   <br>
+                <h2 style="color:#dd2c26">Order Status:{{o.state}}</h2>
+                     <button type="button" (click)="find(o.food)" class="btn btn-dark buttn" >View Details</button>
+                     <button type="button" (click)="cancleo(oId)" class="btn btn-dark button1" >Cancle Order</button>
+                     <div *ngIf="successMessage">
+                        {{successMessage}}
+                     </div>
+                     <div *ngIf="errorMessage">
+                        {{errorMessage}}
+                     </div>
+         </div>
+        </div>
+    </div>
+</div>
+</div>
+<ng-template #a>
+    <h1 style="color: #63a033">No orders</h1>
+</ng-template>

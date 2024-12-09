@@ -1,0 +1,33 @@
+
+.content-feat{
+	 display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.drop-feat:hover .content-feat {
+	display: block;
+}
+
+.featHov a:hover{
+	background-color: #5698e0;
+	color: white;
+}
+
+.rotate{
+	transition: 500ms;
+}
+
+.caret:hover .rotate{
+	transition: 500ms;
+	transform:rotate(180deg);
+}
+
+@media screen and (max-width:800px){
+    .mobview{
+        color: white;
+    }
+}

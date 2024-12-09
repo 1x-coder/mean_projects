@@ -1,0 +1,1500 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "1.0.0",
+    "title": "Mean Task Manager - OpenAPI 3.0",
+    "description": "Documentation of Mean Task Manager project developed by Lucas Rinaldi. Hope you guys enjoy and that will help you on your study journey.",
+    "contact": {
+      "name": "Lucas Rinaldi",
+      "email": "lucasreinaldi@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "externalDocs": {
+    "description": "Find more projects on my Github!",
+    "url": "https://github.com/rinaldilucas"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api",
+      "description": "Local server"
+    },
+    {
+      "url": "https://mean-task-manager.onrender.com/api",
+      "description": "Production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "User",
+      "description": "Operations about users"
+    },
+    {
+      "name": "Task",
+      "description": "Operations about tasks"
+    },
+    {
+      "name": "Category",
+      "description": "Operations about categories"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "AuthData": {
+        "type": "object",
+        "required": ["access", "expiresIn", "refresh", "userId"],
+        "properties": {
+          "access": {
+            "type": "string"
+          },
+          "refresh": {
+            "type": "string"
+          },
+          "expiresIn": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "keepUserLoggedIn": {
+            "type": "boolean"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "required": ["email", "password", "role"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "minLength": 5,
+            "maxLength": 150,
+            "example": "user@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 150
+          },
+          "role": {
+            "type": "string",
+            "enum": ["admin", "user"]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2019-05-17"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-05-22"
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "required": ["title", "status", "userId"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["toDo", "inProgress", "done"]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-05-22"
+          },
+          "category": {
+            "type": "string",
+            "example": "Groceries"
+          },
+          "userId": {
+            "type": "string",
+            "example": "655f5094e2371f34ac529ccc"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-05-22"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-05-22"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "required": ["name", "userId"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 2
+          },
+          "userId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-05-22"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-05-22"
+          }
+        }
+      },
+      "MongoResponse": {
+        "type": "object",
+        "required": ["n", "nModified", "ok"],
+        "properties": {
+          "n": {
+            "type": "integer"
+          },
+          "nModified": {
+            "type": "integer"
+          },
+          "ok": {
+            "type": "integer"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["success", "status", "message"],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "default": false
+          },
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "validationErrors": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "auth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Returns all users",
+        "description": "Returns all users which the user has access to",
+        "operationId": "getUsers",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error retrieving users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["User"],
+        "summary": "Register a new user",
+        "description": "Register a brand new user",
+        "operationId": "register",
+        "requestBody": {
+          "description": "User to be registered",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "minLength": 5,
+                    "maxLength": 150,
+                    "example": "user@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 150
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": ["admin", "user"],
+                    "example": "user"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 201
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "User already exists with email",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ErrorError creating document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Returns a user",
+        "description": "Returns a user based on a single ID",
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user to fetch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error removing user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["User"],
+        "summary": "Updates a user",
+        "description": "Updates a user based on the body of requisition",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the user to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "User to update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MongoResponse"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AuthData"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error removing user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["User"],
+        "summary": "Removes a user",
+        "description": "Removes a single user based on the ID supplied",
+        "operationId": "removeUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error removing user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/users/authenticate": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Authenticate the user",
+        "description": "Authenticates the user and retrieve a JWT token",
+        "operationId": "authenticate",
+        "requestBody": {
+          "description": "User to be authenticated",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "minLength": 5,
+                    "maxLength": 150,
+                    "example": "user@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 150,
+                    "example": "Userpassword#0"
+                  },
+                  "keepUserLoggedIn": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AuthData"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User or password mismatches",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/exists/{email}": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Verify if user is registered",
+        "description": "Returns a boolean if the user is already registered",
+        "operationId": "getUserByEmail",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email of user to fetch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "emailExists": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "User not registered"
+          },
+          "400": {
+            "description": "User already exists with email",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/changePassword/{id}": {
+      "put": {
+        "tags": ["User"],
+        "summary": "Change the password",
+        "description": "Change the password of the user generating hash",
+        "operationId": "changePassword",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the user to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "User to have the password changed",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 150
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/MongoResponse"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error updating user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/users/refreshToken": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Generate refresh token",
+        "description": "Generate a refresh token to user",
+        "operationId": "refreshToken",
+        "requestBody": {
+          "description": "Refresh token to be generated",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "refresh": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": ["access", "expiresIn", "refresh", "userId"],
+                      "properties": {
+                        "access": {
+                          "type": "string"
+                        },
+                        "refresh": {
+                          "type": "string"
+                        },
+                        "expiresIn": {
+                          "type": "string"
+                        },
+                        "userId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error refreshing token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/users/logout": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Sign out user",
+        "description": "Sign out user and invalidate token",
+        "operationId": "logout",
+        "requestBody": {
+          "description": "Sign out user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/tasks": {
+      "get": {
+        "tags": ["Task"],
+        "summary": "Returns all tasks",
+        "description": "Returns all tasks which the user has access to",
+        "operationId": "getTasks",
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Size of the page to be fetched",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "searchTerm",
+            "in": "query",
+            "description": "Term to be fetch withing the title of the task",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "description": "Index of the page to be fetched",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sortFilter",
+            "in": "query",
+            "description": "Field to be sorted",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortDirection",
+            "in": "query",
+            "description": "Direction of the sort (asc or desc)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Start date to set the date range",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2023-05-22"
+            }
+          },
+          {
+            "name": "finalDate",
+            "in": "query",
+            "description": "Final date to set the date range",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2023-05-22"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Task"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error retrieving tasks",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["Task"],
+        "summary": "Creates a new task",
+        "description": "Creates a new task for the current user. Duplicates are allowed",
+        "operationId": "createTask",
+        "requestBody": {
+          "description": "Task to add",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Task"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 201
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Task"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error creating task",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "tags": ["Task"],
+        "summary": "Returns a task",
+        "description": "Returns a task based on a single ID",
+        "operationId": "getTaskById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of task to fetch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Task"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error removing task",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["Task"],
+        "summary": "Updates a task",
+        "description": "Updates a task based on the body of requisition",
+        "operationId": "updateTask",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the task to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Task to update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MongoResponse"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AuthData"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error removing task",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["Task"],
+        "summary": "Removes a task",
+        "description": "Removes a single task based on the ID supplied",
+        "operationId": "removeTask",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of task to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error removing task",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/categories": {
+      "get": {
+        "tags": ["Category"],
+        "summary": "Returns all categories",
+        "description": "Returns all categories which the user has access to",
+        "parameters": [
+          {
+            "name": "onlyMine",
+            "in": "query",
+            "description": "Boolean to fetch only the selected data",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "operationId": "getCategories",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Category"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error retrieving categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["Category"],
+        "summary": "Creates a new category",
+        "description": "Creates a new category for the current user. Duplicates are allowed",
+        "operationId": "createCategory",
+        "requestBody": {
+          "description": "Category to add",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "example": 201
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Category"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error creating category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/categories/{id}": {
+      "delete": {
+        "tags": ["Category"],
+        "summary": "Removes a category",
+        "description": "Removes a single category based on the ID supplied",
+        "operationId": "removeCategory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of category to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Category not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error removing category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    }
+  }
+}

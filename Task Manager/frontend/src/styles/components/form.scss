@@ -1,0 +1,93 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - $header-height);
+  height: calc(100dvh - $header-height);
+
+  &__wrapper {
+    display: flex;
+    position: relative;
+    margin: vw(40) 0;
+    width: 100%;
+    max-width: vw(350);
+    height: 100%;
+    max-height: vw(640);
+  }
+
+  mat-card-header {
+    display: block;
+    margin: vw(20) 0;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  &__box {
+    position: relative;
+    margin-bottom: $header-height;
+    @extend %backdrop;
+    width: vw(330);
+
+    @include media(">=desktop") {
+      margin-top: vw(-45);
+      margin-bottom: 0;
+      width: vw(420);
+    }
+
+    mat-card {
+      position: relative;
+      top: 0;
+      float: left;
+      transform: scale(1);
+      opacity: 1;
+      z-index: 5;
+      margin: 0;
+      border-radius: vw(10);
+      background-color: mat-color($app-background, 50) !important;
+      padding: vw(40) vw(35) vw(30) !important;
+      width: 100%;
+      box-sizing: border-box;
+
+      .dark-mode & {
+        background-color: mat-contrast($app-background, 100) !important;
+      }
+    }
+  }
+
+  form {
+    width: 100%;
+    min-width: 100%;
+    max-width: vw(300);
+    height: 100%;
+
+    .mat-card {
+      padding: 0;
+    }
+
+    input[type="password"]::-ms-reveal,
+    input[type="password"]::-ms-clear {
+      display: none !important;
+    }
+  }
+
+  &__button {
+    @extend .button;
+  }
+
+  mat-icon {
+    display: flex;
+    position: relative;
+    top: vw(4);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: mat-contrast($app-background, 50) !important;
+    font-size: vw(24) !important;
+
+    .dark-mode & {
+      color: mat-color($app-background, 900) !important;
+    }
+  }
+}

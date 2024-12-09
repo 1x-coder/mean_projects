@@ -1,0 +1,80 @@
+<div *ngIf="foodD">
+<div class="row">
+    <div class="col-12">
+        <h1 class=" heading " ><b>Food #{{foodD.foodId}}</b></h1>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-5 col-12">
+        
+            <form [formGroup]="editFood" (ngSubmit)="edit()" enctype="multipart/form-data">
+                
+                    <table>
+                        <tr>
+                            <td> <strong>Food Name<span style="margin-left:76px;margin-right:20px;">:</span></strong> </td>
+                            <td> <input type="text"  class="form-control" formControlName="name" /> </td>
+                        </tr>
+                        <tr>
+                            <td> <strong>Food Description<span style="margin-left:40px;margin-right:20px;">:</span></strong> </td>
+                            <td><textarea type="text"  class="form-control"  formControlName="description" ></textarea> </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Food Category<span style="margin-left:55px;margin-right:20px;">:</span></strong></td>
+                            <td><select formControlName="category">
+                                <option value="{{foodD.category}}" selected>{{foodD.category}}</option>
+                                <option value="starter">Starter</option>
+                                <option value="mainCourse">Main Course</option>
+                                <option value="dessert">Desset</option>
+                                <option value="juice">Iuice</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Type<span style="margin-left:116px;margin-right:20px;">:</span></strong></td>
+                            <td> <input type="text"  class="form-control" formControlName="type" /> </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price<span style="margin-left:113px;margin-right:20px;">:</span></strong></td>
+                            <td> <input type="text"  class="form-control" formControlName="price" /> </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Discount<span style="margin-left:92px;margin-right:20px;">:</span></strong></td>
+                            <td> <input type="text"  class="form-control" formControlName="discount" /> </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Veg<span style="margin-left:123px;margin-right:20px;">:</span></strong></td>
+                            <td><mat-slide-toggle   formControlName="veg" value="true"></mat-slide-toggle></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Available<span style="margin-left:90px;margin-right:20px;">:</span></strong></td>
+                            <td><mat-slide-toggle   formControlName="available" value="true"></mat-slide-toggle></td>
+                        </tr>
+
+                        </table>
+                       
+                      
+                
+            </form>
+        </div>
+        <div class="col-md-7">
+            
+            <div class="row">
+                <div class="col-md-6 offset-md-2 ">
+                <img class="image" src="{{img}}" alt="food image" /> <br> <br>
+                    
+           
+                
+                <strong> Select an image: </strong>
+                <input type="file" (change)="checkFile($event)" />
+            </div>
+            </div>
+            <div class="row space">
+                <div class="col-md-6 offset-md-6 ">
+                    <button class="btn btn-success save-btn" type="submit" (click)="edit()">Save Changes</button>
+                    <button class="btn btn-danger discard-btn">Discard Changes</button>
+                </div>
+            </div>
+        </div>
+   </div>
+</div>
+ 

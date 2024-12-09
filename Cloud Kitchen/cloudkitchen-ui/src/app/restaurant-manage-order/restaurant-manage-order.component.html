@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-12">
+        <h1 class=" heading "><b>Orders Dashboard</b></h1>
+</div>
+
+<div class="row"> 
+    <div  *ngFor="let item of restaurantOrders; let i = index">
+      <div class="col-md-12">
+      <div class="card">
+        
+                 
+            <h1 class="colorg"><b>Order#{{item.orderId}}</b></h1>
+      <div class="textmarg textsize">Customer Id:{{item.customer}}</div>
+            <div class="textmarg textsize">Foods:{{item.food}}</div>
+            <div class="textmarg textsize1 textspace">Date:{{item.orderDate}}</div>
+            <div class="textmarg textsize1">Delivery Person:<span >{{item.deliveryPerson}}</span></div>
+            <div >
+                <span class="textmarg textsize colorg textspace">Total Amount:<b>{{item.totalCost|currency:'INR':'symbol':'1.0'}}</b></span>
+                <span >
+                    <div class="form-group textspaceX">
+                    <label for="status"><b class="colora textsize ">Status: </b></label>
+                    <select class="tsz" id="status" name="status" #status (change)="changeStatus(item.orderId,status.value)">
+                        <option value="" selected disabled>{{item.state}}</option>
+                      <option value="pending">pending</option>
+                      <option value="preparing">preparing</option>
+                      <option value="cooked">cooked</option>
+                      
+                    </select>
+                  </div></span>
+            </div>
+            
+            
+        
+        </div>
+    </div>
+    </div>
+    </div>

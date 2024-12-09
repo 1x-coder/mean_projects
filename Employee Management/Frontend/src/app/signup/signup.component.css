@@ -1,0 +1,110 @@
+::-webkit-scrollbar
+{
+    display: none;
+}
+
+img {
+    width: 102%;
+}
+
+.login {
+    height: 740px;
+    width: 100%;
+    background: linear-gradient(#ff00ee, #0278ff);
+    position: relative;
+}
+
+.login_box {
+    width: 70%;
+    height: 84%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 4px 22px -8px #0004;
+    display: flex;
+    overflow: hidden;
+}
+
+.login_box .left {
+    width: 51%;
+    height: 100%;
+    padding: 6px 16px;
+
+}
+
+.login_box .right {
+    width: 60%;
+    height: 100%
+}
+
+.left .contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.left {
+    background: linear-gradient(-45deg, #dcd7e0, #fff);
+}
+
+
+.form-group
+{
+    margin-bottom: 3px;
+}
+
+::placeholder
+{
+    font-style: italic;
+    opacity: 0.5;
+}
+
+.text-left
+{
+    font-size: small;
+}
+
+.text-left li{
+    list-style-type: none;
+}
+
+.eye
+{
+    margin-left: 2px;
+}
+
+button {
+    border: none;
+    padding: 12px 40px;
+    border-radius: 8px;
+    display: block;
+    margin: auto;
+    background: linear-gradient(#ff00ee, #0278ff);
+    color: #fff;
+    font-weight: bold;
+    -webkit-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
+    -moz-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
+    box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
+}
+
+button:hover
+{
+    background: linear-gradient(#0278ff,#ff00ee);
+}
+
+
+.right {
+    padding: 74px 0px;
+}
+
+label
+{
+    font-size: medium;
+}

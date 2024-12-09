@@ -1,0 +1,225 @@
+
+.picsum-img-wrapper{
+    width: 100%;
+    height: 85vh;
+    background-color: #004085;
+}
+
+div.ms-4{
+    flex-grow: 1;
+    padding-left: 3%;
+}
+@media (max-width: 700px) {
+    div.ms-4{
+        padding-left: 0;
+    }
+}
+
+ul.nav-pills{
+    padding: 3%;
+    padding-top: 0;
+}
+
+.d-flex{
+    flex-direction: row-reverse;
+    font-family: 'Caveat', cursive;
+}
+
+@media (max-width: 700px) {
+    .d-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    }
+    }
+
+
+
+
+
+.nav-link{
+    padding: 0.5rem 2.5rem;
+    font-size: larger;
+}
+
+.nav-link.active{
+    background-color: #004085;
+}
+
+.loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.helper{
+    background-color: rgba(255, 255, 255, 0.677);
+    padding: 5%;
+    border-radius: 10px;
+    color: #004085;
+}
+
+.helper input{
+    background-color: black;
+    margin: 2%;
+}
+
+.loginForm{
+    background: none;
+}
+
+.loginSmaller{
+    background-color: #e9ecef;
+    padding: 5%;
+    border-radius: 0.5rem;
+}
+
+.btn-primary{
+    background-color: #004085;
+}
+
+
+/**/
+
+
+
+    .row{
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .bg-indigo {
+    background-color: #004085;
+    }
+    @media (min-width: 992px) {
+    .card-registration-2 .bg-indigo {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    }
+    }
+    @media (max-width: 991px) {
+    .card-registration-2 .bg-indigo {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    }
+    }
+
+    /*---------------------------------------*/
+
+    .flexy{
+        display: flex;
+        justify-content: center;
+    }
+
+    
+    .requestsClass{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .requestCards{
+        margin-bottom: 0;
+    }
+
+    .historyTableContainer th, .historyTableContainer td{
+        padding: 0.5rem 2rem;
+    }
+
+    .historyTableContainer{
+        overflow-x: scroll;
+    }
+
+    .customBackground{
+        background-color: #29598a;
+    }
+
+    
+    .cardContainer{
+        max-width: 70vw;
+    }
+    @media (max-width: 700px) {
+        .cardContainer{
+            max-width: 100vw;
+        }
+    }
+
+    .registrationPanel{
+        max-width: 98vw;
+    }
+    @media (max-width: 700px) {
+        .registrationPanel{
+            max-width: 100vw;
+        }
+    }
+
+
+
+
+
+.grafico .content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 160px;
+}
+
+.grafico .content span{
+    font-family: 'Roboto';
+    font-size: 13px;
+    color: #707070;
+}
+
+.grafico .line{
+    background-color: #CCCCCC;
+    width: 100%;
+    height: 1px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.grafico .legends{
+    display: flex;
+    flex-direction: row;
+    color: #707070;
+    font-family: 'Roboto';
+    font-size: 12px;
+    text-align: center;
+}
+
+.grafico .legends span{
+    width: 60px;
+    margin:0 15px;
+}
+
+.grafico .bars{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.grafico .bar{
+    width: 60px;
+    min-height: 2px;
+    margin:0 15px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.grafico .bar:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.20);
+}
+
+.notificationClass{
+    background-color: #00000094;
+    margin: 0%;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+}

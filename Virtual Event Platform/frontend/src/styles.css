@@ -1,0 +1,45 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0; /* Set a background color */
+  }
+
+  .app-container {
+    padding :20px;
+  }
+  
+  h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #4285f4; /* Set a background color */
+    color: #fff; /* Set a text color */
+  }
+  
+  nav {
+    background-color: #333; /* Set a background color */
+    padding: 10px;
+  }
+  
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  li {
+    margin: 0 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #fff; /* Set a text color */
+    font-size: 1.2em;
+  }
+  
+  a:hover {
+    color: #ffd700; /* Set a different color on hover */
+  }
+  

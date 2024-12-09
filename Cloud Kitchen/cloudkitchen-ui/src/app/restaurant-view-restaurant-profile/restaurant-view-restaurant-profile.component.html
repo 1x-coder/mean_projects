@@ -1,0 +1,61 @@
+
+    <div class="row">
+        <div class="col-12">
+            <h1 class=" heading "><b>Restaurant #{{restaurantData.restaurantId}}</b></h1>
+    </div>
+   
+    <div class="row">
+        
+            
+                
+                    <div class="col-sm-7">
+                    <table>
+                        <tr>
+                            <td> <strong>Restaurant Name<span style="margin-left:10px;margin-right:20px;">:</span></strong> </td>
+                            <td>{{restaurantData.restaurantName}}</td>
+                        </tr>
+                        <tr>
+                            <td> <strong>Contact Number<span style="margin-left:15px;margin-right:20px;">:</span></strong> </td>
+                            <td>{{restaurantData.restaurantMobile}}</td>
+                        </tr>
+                        <tr>
+                            <td> <strong>Email ID<span style="margin-left:76px;margin-right:20px;">:</span></strong> </td>
+                            <td>{{restaurantData.restaurantEmail}}</td>
+                        </tr>
+                        <tr>
+                            <td> <strong>About<span style="margin-left:92px;margin-right:20px;">:</span></strong> </td>
+                            <td>{{restaurantData.restaurantAbout}}</td>
+                        </tr>
+                        <tr>
+                            <td> <strong>Address<span style="margin-left:75px;margin-right:20px;">:</span></strong> </td>
+                            <td>{{restaurantData.restaurantAddress}}</td>
+                        </tr>
+                        <tr>
+                            <td> <strong>Pincode<span style="margin-left:75px;margin-right:20px;">:</span></strong> </td>
+                            <td>{{restaurantData.restaurantPincode}}</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="col-sm-5">
+                
+                   
+                    <img class="image" src="{{restaurantImage}}"  alt="Restaurant Image">
+              
+            
+            </div>
+            </div>
+       
+   
+    </div>
+    <div class="row">
+        <div class="col-md-3 offset-md-9">
+            <button class="edit-btn" mat-raised-button (click)="goToEdit()">Edit Profile</button>
+        </div>
+    </div>
+    
+    
+
+      
+       
+

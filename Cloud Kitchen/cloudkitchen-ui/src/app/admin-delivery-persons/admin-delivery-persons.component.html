@@ -1,0 +1,27 @@
+<div>
+  <h1 class="z">Registered Delivery Persons</h1>
+</div>
+<div class="container">
+  <div class="table-responsive">
+<div *ngIf="deli;else a">
+<table class="table tl">
+      <tr>
+        <th>Delivery Person ID</th>
+        <th >Delivery Person Name</th>
+        <th >Delivery Person Contact</th>
+        <th >Delete</th>
+      </tr>
+        <tr *ngFor="let d of deli">
+          <th >{{d.deliveryPersonId}}</th>
+          <td>{{d.name}}</td>
+          <td>{{d.mobileNum}}</td>
+          <td><button class="btn btn-danger" (click)="del(d.deliveryPersonId)">Delete</button></td>
+        </tr>
+  </table>
+</div>
+
+<ng-template #a>
+  <h1 class="z">No Delivery Person </h1>
+</ng-template>
+</div>
+</div>

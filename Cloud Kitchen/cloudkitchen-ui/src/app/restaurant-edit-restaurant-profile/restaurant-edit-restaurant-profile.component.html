@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-12">
+        <h1 class=" heading "><b>Restaurant #{{restaurantData.restaurantId}}</b></h1>
+</div>
+</div>
+
+
+<div class="row">   
+            <form [formGroup]="editForm" (ngSubmit)="edit()" enctype="multipart/form-data">
+                
+                    <div class="row">
+                        <div class="col-sm-7 offset-sm-1">
+                            <table>
+                                <tr>
+                                    <td> <strong>Restaurant Name<span style="margin-left:10px;margin-right:20px;">:</span></strong></td>
+                                    <td> <input type="text"  class="form-control" formControlName="restaurantName" /> </td>
+                                </tr>
+                                <tr>
+                                    <td> <strong>Contact Number<span style="margin-left:15px;margin-right:20px;">:</span></strong> </td>
+                                    <td> <input type="tel"  class="form-control" formControlName="restaurantMobile" /> </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email ID<span style="margin-left:76px;margin-right:20px;">:</span></strong> </td>
+                                    <td> <input type="email" class="form-control" formControlName="restaurantEmail" /></td>
+                                </tr>
+                                <tr>
+                                    <td> <strong>About<span style="margin-left:92px;margin-right:20px;">:</span></strong> </td>
+                                    <td> <textarea type="text"  class="form-control"  formControlName="restaurantAbout" ></textarea> </td>
+                                </tr>
+                                <tr>
+                                    <td> <strong>Address<span style="margin-left:75px;margin-right:20px;">:</span></strong> </td>
+                                    <td> <textarea type="text"  class="form-control"  formControlName="restaurantAddress" ></textarea> </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pincode<span style="margin-left:75px;margin-right:20px;">:</span></strong></td>
+                                    <td> <input type="number"  class="form-control" formControlName="restaurantPincode" /></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                       
+                   
+                <div class="col-md-4">
+                
+                    <img class="image" src="{{restaurantImage}}" alt="user image" /> 
+                    <div class="box">
+                    <strong> Select an image: </strong>
+                    <input type="file" (change)="checkFile($event)" />
+                </div>
+            </div>
+        </div>
+        
+        <div class="row margbtn">
+            <div class="col-sm-5 offset-md-7">
+                <button class="edit-btn" mat-raised-button type="submit" >Update Changes</button>
+                <button class="discard-btn" mat-raised-button (click)="discard()">Discard Changes</button>
+            </div>
+        </div> 
+            </form>
+        </div>
+
+
+
+
+
+
+
+

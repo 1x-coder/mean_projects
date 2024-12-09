@@ -1,0 +1,54 @@
+.back-btn{
+    padding: 15px;
+    margin-top: 15px;
+    background-color: #63a033;
+    color: #e5e5e5;
+    border-radius: 10px;
+}
+
+.back-btn:hover{
+    background-color: #477425;
+    color: #e5e5e5;
+}
+
+.address-block{
+    margin-top: 50px;
+    background-color: #fbfcc9;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.address-label{
+    color: #63a033;
+}
+
+.cart-block{
+    margin-top: 25px;
+}
+
+.cart-label{
+    color: #63a033;
+}
+
+.foodItems{
+    padding: 15px;
+    font-size: medium;
+}
+
+.checkout-btn{
+    padding: 15px;
+    margin-top: 15px;
+    background-color: #63a033;
+    color: #e5e5e5;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.checkout-btn:hover{
+    background-color: #477425;
+    color: #e5e5e5;
+}
+
+.price-lebel{
+    color: #dd2c26;
+}

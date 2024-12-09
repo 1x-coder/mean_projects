@@ -1,0 +1,47 @@
+.card{
+margin-top:10px;
+height:530px;
+border-radius: 10px;
+}
+.bgimg{
+    height:530px;
+    border-radius: 10px;
+}
+.textcolorg{
+    color: #63a033;
+}
+.colorg{
+    background-color: #63a033;
+    color:white;
+}
+.full-width{
+    width:450px;
+}
+.space{
+    margin-left:90px;
+}
+.sizef{
+    font-size: 45px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .bgimg{
+        display: none;
+    }
+    .full-width{
+        width:300px;
+    }
+    mat-form-field{
+        width:300px;
+    }
+    .space{
+        margin-left:0px;
+    }
+    .card{
+        margin-top:10px;
+        margin-bottom:10px;
+        height:750px;
+        border-radius: 10px;
+        }
+}

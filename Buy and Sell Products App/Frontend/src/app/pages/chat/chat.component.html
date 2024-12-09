@@ -1,0 +1,50 @@
+<br>
+<div class="container wrapper">
+
+	<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 ml-auto mr-auto header">
+		<h4>{{other}}</h4>
+	</div>	
+
+	<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12  box ml-auto mr-auto">
+		<br>
+		<div *ngFor="let msg of allChats">
+		<div *ngIf="send  == msg.receiver && other ==msg.sender else right" class="left shadow">
+			<p>{{msg.message}}</p>
+			<span class="small text-secondary">{{msg.date|date:'short'}}</span>
+		</div>
+		
+
+		<br>
+		<!-- <div class="myChat ml-auto right ml-auto mr-auto" >
+			this is  is isis s issk fjdhjfhh hsjfhd
+		</div> -->
+		<ng-template #right>	
+		<div  class="myChat ml-auto right ml-auto mr-auto shadow" >
+			<p>{{msg.message}}</p>
+			<span class="small text-secondary">{{msg.date|date:'short'}}</span>
+			
+
+		</div>
+	</ng-template>
+		</div>
+
+	</div>
+
+	<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 ml-auto mr-auto message ">
+		<form [formGroup]="myForm" style="width: 100%" (ngSubmit)="sendMessage()">
+			<mat-form-field class="example-full-width">
+	    		<textarea  matInput placeholder="Type your message" formControlName="message"></textarea>
+	  		</mat-form-field>
+	  		<button type="submit" [disabled]="myForm.invalid" class="btn" mat-mini-fab style="background-color: #1ba94c; color: white;"><i class="fa fa-paper-plane " aria-hidden="true"></i>
+	  		</button>
+  		</form>
+
+	</div>
+
+	
+
+	
+
+</div>
+
+

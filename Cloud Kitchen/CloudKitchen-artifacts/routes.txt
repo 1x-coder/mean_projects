@@ -1,0 +1,75 @@
+admin: 
+------
+    login:
+        1. get /login => for admin to login.
+    Dashboard:
+        1. get /viewOrders => to fetch all orders.
+        2. get /viewRestaurants => to fetch all restaurants.
+        3. get /viewCustomers => to fetch all customers.
+        4. get /viewDeliveryPersons => to fetch all DeliveryPersons.
+    Orders:
+        1. put /changeOrderState => change state of order.
+    customers:
+        1. delete /deleteCustomer => delete customer.
+    restaurants:
+        1. delete /deleteRestaurant => delete restaurants.
+    DeliveryPersons:
+        1. delete /deleteDeliveryPerson => delete DeliveryPersons
+
+Delivery Person: 
+---------------
+    login:
+        1. get /login => for dp to login.
+    register:
+        1. post /register => for dp to register.
+    Dashboard:
+        1. get /getOrders => to display orders that have pending state.
+        2. put /pickedOrder => to allot the order for that dp.
+    Penalities:
+        1. get /getPenalities => to display all penalities.
+        2. put /payPenality => to pay for a penality.
+    edit dp profile:
+        1. put /updateProfile => to update dp profile.
+
+Restaurants: 
+-----------
+    login:
+        1. get /login => for restaurants to login.
+    register:
+        1. post /register => for restaurants to register.
+    food:
+        1. post /addFood => adds a food to the restaurants menu.
+        2. put /updateFood => to update food details.
+		3. delete /deleteFood => to remove a food from db.
+    edit restaurants profile:
+        1. put /updateProfile => to update restaurants profile
+        2. put /updateAmbience => to upload ambience photos of restaurant.
+    orders: 
+        1. get /getOrders => to display orders for that restaurant.
+        2. put /changeOrderState => to change the state of orders.
+
+customer: 
+---------
+    login:
+        1. get /login => for customer to login.
+    register:
+        1. post /register => for customer to register.  
+    edit customer profile:
+        1. put /updateProfile => to update customer profile.
+    view restaurants:
+        1. get /viewRestaurants => to fetch all restaurants.
+        2. get /filterRestaurants => to fetch all restaurants that match a keyword.
+        3. get /detailsOfRestaurant => to fetch all details of restaurant with ambient images.
+    view orders:
+        1. get /viewOrders => to fetch all orders.
+        2. put /cancelOrder => to change state of the order.
+    place order:
+        1. post /placeOrder => to place the order for that customer.
+        2. put /updateAddress => to update address for delivery.
+    
+
+    
+
+
+ 
+    

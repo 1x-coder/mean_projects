@@ -1,0 +1,30 @@
+<div class="education">
+  <div class="education__chip">
+    <app-chip [icon]="icon" [content]="'Education'"></app-chip>
+  </div>
+  <div class="education__content">
+    <h2>My <span>Education</span>.</h2>
+    <p>This section showcases my academic journey, highlighting my qualifications, degrees, courses, and educational accomplishments to provide a comprehensive overview of my scholastic background and expertise.</p>
+  </div>
+  <div *ngIf="!loading" class="education__educations">
+    <div class="education__educations__education glassmorphism-light" *ngFor="let education of educations" [class]="education.current ? 'current' : 'past' ">
+      <div class="education__educations__education__date">
+        <span>{{ education.start.month }} {{ education.start.year }} - </span>
+        <span *ngIf="!education.current">{{ education.end.month }} {{ education.end.year }}</span>
+        <span *ngIf="education.current">Present</span>
+      </div>
+      <h3 class="education__educations__education__title">
+        <span *ngIf="education.degree">{{ education.degree }} in</span> {{ education.field }} | {{ education.school }}
+      </h3>
+      <div class="education__educations__education__spacing"></div>
+      <p class="education__educations__education__description">
+        {{ education.description | truncate:18 }}
+      </p>
+      <div class="education__educations__education__spacing"></div>
+      <p class="education__educations__education__location">
+        {{ education.location }}
+      </p>
+    </div>
+  </div>
+  <app-loading-ripples *ngIf="loading"></app-loading-ripples>
+</div>

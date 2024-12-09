@@ -1,0 +1,10 @@
+a,
+button {
+  &:focus:not(.mat-nav-list a, .mat-menu-item) {
+    box-shadow: 0 0 0 vw(4) mat-color($primary, A100);
+
+    &.contrast {
+      box-shadow: 0 0 0 vw(4) mat-color($primary, A100);
+    }
+  }
+}

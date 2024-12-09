@@ -1,0 +1,128 @@
+
+
+
+.wrapper{
+	transition: .7s;
+	border-top: 4px solid grey;
+	animation-name: listAppear;
+	animation-delay: 0s;
+    animation-iteration-count: 1;
+    transition-timing-function: ease-in;
+    animation-duration: .5s;
+}
+
+@keyframes listAppearTop{
+    0%{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.animJumbo
+{
+	animation-name: listAppearTop;
+	animation-delay: 0s;
+    animation-iteration-count: 1;
+    transition-timing-function: ease-in;
+    animation-duration: .5s;
+}
+
+.wrapper:hover{
+	transition: .7s;
+		border-top: 4px solid #007bff;	
+}
+
+
+.carsImg img:hover{
+	transition: .7s;
+	filter: brightness(80%);
+
+}
+
+@keyframes listAppear{
+    0%{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.img{
+	background-image: url(src/assets/img/laptop1.jpg);
+	background-size: cover;
+
+}
+
+.hide{
+	display: none;
+}
+
+.rs{
+	position: relative;
+	top: -33px;
+	left: 5px;
+	font-size: 20px;
+	color: grey;
+}
+
+/*.label:hover label{
+	color: #007bff;
+	font-size: 20px;
+}*/
+
+sup{
+	color:red;
+	font-size: 14px;
+}
+
+.fuel li{
+	padding: 10px;
+	display: inline;
+	cursor:pointer;
+}
+ul{
+	list-style-type: none;
+	cursor: pointer;
+}
+
+label{
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+input{
+	border: none;
+	border-bottom: 2px solid grey;
+
+
+}
+
+input:focus{
+	transition: 1s;
+	background-color:#d9e6f4;
+	border: none;
+	border-bottom: 2px solid #007bff;
+	box-shadow: none;
+	
+	/*animation-name: borderAnim;
+	animation-duration: 5s;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;*/
+}
+
+/*@keyframes borderAnim{
+	0%{
+		border-bottom: 2px solid grey;
+	},
+	25%{border-bottom: 2px solid green;},
+	50%{border-bottom: 2px solid yellow;},
+	75%{border-bottom: 2px solid orange;},
+	100%{border-bottom: 2px solid #007bff;}
+
+}*/
+

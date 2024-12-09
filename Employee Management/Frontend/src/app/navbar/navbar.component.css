@@ -1,0 +1,55 @@
+.navbar
+{
+    background: linear-gradient(#ff00ee, #0278ff);
+}
+
+.btn
+{
+    margin: 0 6px 0 6px;
+}
+
+.navbar-brand
+{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    padding: 1px 1px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.navbar-brand:hover > a
+{
+    color: blue;
+    background-color: white;
+}
+
+.navbar-brand.active > a
+{
+    color: blue;
+    background-color: white;
+}
+
+.nav-link
+{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    padding: 3px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.nav-item:hover > a
+{
+    color: blue;
+    background-color: white;
+}
+
+.nav-item.active > a 
+{
+    color: blue;
+    background-color: white;
+}

@@ -1,0 +1,4 @@
+[build]
+    base = "client"
+    publish = "dist/eCommerce"
+    command = "ng build --prod"

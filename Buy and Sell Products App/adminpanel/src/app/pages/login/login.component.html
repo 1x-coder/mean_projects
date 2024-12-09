@@ -1,0 +1,39 @@
+<div class="container">
+    <br>
+    <br>
+    <div class="col-xl-4 col-md-6 col-sm-7 col-12 col-lg-5 Center">
+      
+       <h1 class="text-center">Admin Login</h1> 
+       <br>
+        <form [formGroup]="loginForm" (ngSubmit)="loginData()"> 
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+            <div *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
+                 <div *ngIf="loginForm.controls.email.errors.required" class="alert alert-danger">
+                 *This field is required
+                 </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="password" class="form-control" formControlName="password">
+            <div *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+                 <div *ngIf="loginForm.controls.password.errors.required" class="alert alert-danger">
+                 *This field is required</div>
+            
+            </div>
+        </div>
+        <div *ngIf="loginErr" class="alert alert-danger">
+                 Email or password is incorrect
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+        <a href="#" style="margin-left: 37%">Forgot password</a>
+        </form>
+        <br>
+        <p>
+            New user? <a style="cursor: pointer;"  routerLink="/signup">Sign up</a>
+        </p>
+        
+    </div>   
+</div>

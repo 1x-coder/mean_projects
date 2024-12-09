@@ -1,0 +1,19 @@
+.clr-row{
+    display: flex;
+    flex-direction: row;
+  
+}
+
+
+.movieTitles{
+
+width: 450px;
+margin-left: 30vw;
+
+      
+      
+}
+
+.container{
+    margin-top: 10vh;
+}

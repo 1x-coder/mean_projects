@@ -1,0 +1,42 @@
+.card{
+    margin-top:20px;
+    height:500px;
+   
+    border-radius: 10px;
+    }
+    .bgimg{
+        height:500px;
+        border-radius: 10px;
+    }
+.textcolor{
+     color:  #fbfcc9;
+     
+}
+.textcolorg{
+    color: #63a033;
+}
+.textbg{
+    margin-top:60px;
+    margin-left:10px;
+    
+}
+@media screen and (max-width: 600px) {
+    .card{
+        margin-top:20px;
+        height:600px;
+       
+        border-radius: 10px;
+        }
+        .bgimg{
+            height:600px;
+            border-radius: 10px;
+        }
+       .display-4{
+           font-size:32px;
+       }
+       .textbg{
+        margin-top:110px;
+        margin-left:10px;
+        
+    }
+}

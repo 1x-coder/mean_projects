@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-md-8 col-lg-8 col-12 offset-md-2 offset-lg-2">
+        <div class="reg-form-block">
+            <div class="form-area">
+                <div class="form-heading text-center">
+                    <span class="h3">Sign Up!</span>
+                </div>
+                <form [formGroup]="regForm" (ngSubmit)="register()" enctype="multipart/form-data">
+                    <mat-form-field>
+                        <mat-label>Username <sup>*</sup> </mat-label>
+                        <input matInput type="text" name="userName" id="userName" formControlName="userName" />
+                        <mat-error *ngIf="regForm.controls.userName.errors?.required">
+                            Username is required.
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field>
+                        <mat-label>Full Name <sup>*</sup> </mat-label>
+                        <input matInput type="text" name="name" id="name" formControlName="name" />
+                        <mat-error *ngIf="regForm.controls.name.errors?.required">
+                            Name is required.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>E-Mail ID <sup>*</sup> </mat-label>
+                        <input matInput type="email" name="email" id="email" formControlName="email" />
+                        <mat-error *ngIf="regForm.controls.email.errors?.required">
+                            Email is required.
+                        </mat-error>
+                        <mat-error *ngIf="regForm.controls.email.errors?.pattern">
+                            Enter a valid Email ID.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Contact Number <sup>*</sup> </mat-label>
+                        <input matInput type="tel" name="mobileNum" id="contact" formControlName="mobileNum" />
+                        <mat-error *ngIf="regForm.controls.mobileNum.errors?.required">
+                            Contact is required.
+                        </mat-error>
+                        <mat-error *ngIf="regForm.controls.mobileNum.errors?.pattern">
+                            Enter a valid contact number.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Addess <sup>*</sup> </mat-label>
+                        <input matInput type="text" name="address" id="address" formControlName="address" />
+                        <mat-error *ngIf="regForm.controls.address.errors?.required">
+                            Address is required.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Pincode <sup>*</sup> </mat-label>
+                        <input matInput type="number" name="pincode" id="pincode" formControlName="pincode" />
+                        <mat-error *ngIf="regForm.controls.pincode.errors?.required">
+                            Pincode is required.
+                        </mat-error>
+                        <mat-error *ngIf="regForm.controls.pincode.errors?.max || regForm.controls.pincode.errors?.min">
+                            Enter a valid pincode.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="form-group">
+                        <label for="profilePic" class="form-input-field">Choose your avatar <sup>*</sup> </label>
+                        <input type="file" name="profilePic" id="profilePic" (change)="checkFile($event)" />
+                        <div class="text-danger" *ngIf="regForm.controls.profilePic.errors?.required && regForm.controls.profilePic.touched">
+                            Profile Picture is required.
+                        </div>
+                    </div>
+
+                    <mat-form-field>
+                        <mat-label>Password <sup>*</sup> </mat-label>
+                        <input matInput type="password" name="password" id="password" formControlName="password" />
+                        <mat-error *ngIf="regForm.controls.password.errors?.required">
+                            Password is required.
+                        </mat-error>
+                        <mat-error *ngIf="regForm.controls.password.errors?.pattern">
+                            Enter a valid password.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div>
+                        <button class="btn btn-success reg-btn" type="submit">Register</button>
+                    </div>
+                </form>
+                <br>
+                <div class="text-danger h6" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </div>
+                <div class="login-banner" (click)="loginRedirect()" >
+                    <span>Already Signed Up? Click here to sign in!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

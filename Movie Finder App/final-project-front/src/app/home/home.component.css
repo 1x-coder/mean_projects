@@ -1,0 +1,95 @@
+.title{
+    margin-left: 25vw;
+    color: lightskyblue
+}
+
+.defaultMovies {
+    display: flex;
+    flex-flow: row wrap;
+    width: 90vw;
+    padding: 0%;
+    
+}
+
+
+.moviePosters {
+    margin: 1%;
+}
+
+
+.movieTitles {
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 170px;
+        margin: 0 auto;
+        color: white;
+        font-size: larger;
+
+}
+
+.rating {
+    float: right;
+    width: 30%;
+    color: white;
+
+}
+
+.movieSelector {
+    background-color: black;
+}
+
+.favorite_heart {
+   color: red;
+   background-color: none;
+   border: none;
+   background: none;
+
+}
+
+.favorite_heart_clicked {
+    color: rgb(24, 212, 24);
+    background-color: none;
+    border: none;
+    background: none;
+}
+
+
+  
+
+.movieCard{
+    background-color: rgb(19, 6, 47);
+    padding: 15px;
+}
+
+
+.text{
+    color: white;
+}
+
+.searchInput{
+    width: 30vw;
+}
+
+.searchBar {
+    
+    margin-left: 20vw;
+}
+
+.searchComponent{
+    width: 100vw;
+    background-color: black;
+    margin: 0 0;
+}
+
+.container{
+    margin-left: 0;
+}
+
+.searchTitle {
+    text-align: center;
+    color: whitesmoke;
+    position: relative;
+    left: -30vw;
+}

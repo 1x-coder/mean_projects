@@ -1,0 +1,39 @@
+<div class="product-data-table">
+    <div class="head-section" fxLayout="row" fxLayout.xs="column">
+        <h3 fxFlex="70">Product List</h3>
+        <div fxFlex="30" class="create-action">
+            <a [routerLink]="['./create']" mat-raised-button class="create-btn">Add New Product</a>
+        </div>
+    </div>
+    <!-- <div>
+        <mat-form-field fxFlex="60" fxFlex.lt-md="100" autofilled="false" class="form-field">
+            <input type="text" matInput placeholder="Search by product name" [formControl]="searchCtr" (keyup)="emptyCheck()" (keyup.enter)="loadDataTable()">
+        </mat-form-field>
+    </div> -->
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <app-data-table [config]="dataTableConfig" (dataTableEventChange)="dataTableEventChange($event)"></app-data-table>
+</div>
+
+
+<ng-template #CreatedAt let-row>
+    {{row.createdAt | date}}
+</ng-template>
+<ng-template #Action let-row>
+    <a [routerLink]="['./edit', row._id]" mat-icon-button>
+        <mat-icon>edit</mat-icon>
+    </a>
+    <button [ngClass]="row.disable ? 'disable' : ''" mat-icon-button (click)="openDeleteModal(row)">
+        <mat-icon>delete</mat-icon>
+    </button>
+</ng-template>
+
+<ng-template #dialogRef let-data>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <mat-dialog-content>
+        <p>Are you sure, you want to delete?</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="primary" (click)="deleteProduct(data)">Submit</button>
+    </mat-dialog-actions>
+</ng-template>
+

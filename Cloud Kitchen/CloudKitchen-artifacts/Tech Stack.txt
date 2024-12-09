@@ -1,0 +1,27 @@
+Learning Management System:
+---------------------------
+	Technology Stack:
+	-----------------
+		Front End
+		---------
+			|- Framework/Library : Angular JS
+			|- Styling : Angular material, Angular bootstrap, Sass/Scss, Bootstrap
+			|- ** Android Front End: Ionic & NativeScript
+			|- Animations Library : GSap, AnimeJS, ScrollReveal , Hover.css, Typed.js, Kute.js, Velocity.js	
+			|- Charts : Chart JS (> PrimeNG chart module), ngx-charts, D3.js
+		Backend
+		--------
+			|- * Server Side Language: Node JS (Express JS) / * Django (If analytics is used)
+			|- Authentication Tool: Passport JS
+			|- Encryption Tool: BCrypt
+			|- Token Creation Tool: JWT
+			|- * Compression Tool (For MIME Type): compression.js (npm package) / Sharp (npm package)
+			|- * Third-party authentication: Google, Facebook, Twitter, Github.
+		Database
+		--------
+			|- Database: Mongo DB
+			|- Caching: Memcached + Database sharding
+			|- Database Server: Azure Cosmos DB + Heroku + MongoDB Atlas
+			|- * Cloud space : Cloudinary, Cloudfare
+
+
